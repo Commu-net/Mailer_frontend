@@ -1,16 +1,148 @@
-.nav_bar{
-    max-width: 1104px;
+@font-face {
+    font-family: font;
+    src: url('../assets/IBM_Plex_Sans/IBMPlexSans-Medium.ttf');
+}
+*{
+    cursor:default;
+    font-family: font;
+}
+.nav_bar{   
+    background-color: rgba(255, 255, 255, 0.978);
+    font-size: 20px;
+    margin: 0 auto;
+    max-width: 1304px;
     height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+} 
+.logo{
+    height: 74px;
+    width: 74px;
 }
-.nav_bar div{
+.nav_options{
+    width: 400px;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.logo{
-    height: 74px;
-    width: 74px;
+.nav_option_text:hover{
+    transition:color 0.12s linear;
+color: black;
+}
+.auth_buttons{
+    width: 230px;
+    gap: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav_bar a{
+    color: #6c6c6c;
+  text-decoration: none;
+}
+
+.vert_nav{
+ height: 100px;
+ margin-right: -87px;
+ display: flex;
+ justify-content: space-around;
+ width: 80%;
+}
+
+
+.Sign_in:hover{
+     color: black;
+}
+.Sign_up{
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    align-items: center;
+    border-radius: 10px;
+    height: 48%;
+    font-size: 1.1rem;
+    background-color: black;
+    transition:gap 0.12s linear;
+}
+.Sign_in{
+    height: 48%;
+    width: 55%;
+    border: 0.6px solid rgb(201, 201, 201);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Sign_up:hover{
+    gap: 8px;
+    background-color: rgb(0, 119, 255);
+}
+.hamburger{
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    transform: scale(0);
+}
+
+@media  screen and (width<=854px) {
+    
+    .vert_nav{
+        right: -20%;
+        visibility: hidden;
+        justify-content: start;
+        padding-top: 50px;
+        margin-right: 0px;
+        align-items: end;
+        gap: 15px;
+        font-size: max(1.5vw,16px);
+        flex-direction: column;
+        z-index: -1;
+        position: absolute;
+        transition: right 0.4s cubic-bezier(0,.64,0,.91);
+        top: 0px;
+        
+    }
+
+    /* to make the vertical navbar visible when hamburger is clicked */
+    .vert_visible{
+        visibility: visible;
+        width: 22%;
+        transform-origin: right;
+        right: 0%;
+        height: max(900px,100vh);
+        z-index: 5;
+
+  }
+
+    .nav_options{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+        height: 154px;
+        border-bottom: 0.6px solid rgb(232, 232, 232);
+        width: 160px;
+    }
+    .auth_buttons{
+        height: 100px;
+        width: 180px;
+        flex-direction: column;
+        
+    }
+    .Sign_in,.Sign_up{
+        width: 80%;
+        height: 40%;
+    }
+    .hamburger{
+        visibility: visible;
+        margin-left: 15px;
+        z-index: 7;
+        height: fit-content;
+        width: fit-content;
+        transform: scale(1);
+
+    }
 }

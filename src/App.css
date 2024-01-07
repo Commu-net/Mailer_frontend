@@ -1,6 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #root {
-  max-width: 1280px;
+  max-width: 13040px;
   margin: 0 auto;
   padding: 0;
   text-align: center;
 }
+body {
+  height: 4860px;
+  width: 100%;
+  overflow: hidden;
+}
+

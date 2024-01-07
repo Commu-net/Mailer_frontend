@@ -9,7 +9,7 @@ import Wrapper from './layouts/Wrapper'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Wrapper></Wrapper>}>
-      <Route path='hud' element={<div>Helloworl d</div>}></Route>
+      <Route path='hud' element={<div>Helloworl d</div>}></Route> 
     </Route>
   )
 )
