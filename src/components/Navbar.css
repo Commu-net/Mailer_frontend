@@ -1,0 +1,16 @@
+.nav_bar{
+    max-width: 1104px;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_bar div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo{
+    height: 74px;
+    width: 74px;
+}
