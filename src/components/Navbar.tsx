@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Communet from "../assets/Communet.png";
-import "./Navbar.css";
+import "./css/Navbar.css";
 import { useState } from "react";
 import { Spin as Hamburger } from 'hamburger-react'
 import { FaArrowRight } from "react-icons/fa6";
@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <div className="nav_bar">
       <div>
-        <NavLink to="/Home">
+        <NavLink to="/">
           <img src={Communet} className="logo h-18 w-18" alt="Communet logo" />
         </NavLink>
       </div>
@@ -31,15 +31,12 @@ function Navbar() {
           </NavLink>
         </div>
         <div className="auth_buttons">
-          <NavLink to="./auth/signin" className="Sign_in">
-            Sign in
-          </NavLink>
           <NavLink
-            to="./auth/signup"
-            className="Sign_up"
+            to="./auth/signin"
+            className="Sign_in"
             style={{ color: "white" }}
           >
-            Sign up <FaArrowRight />{" "}
+            Log in <FaArrowRight />{" "}
           </NavLink>
         </div>
       </div>

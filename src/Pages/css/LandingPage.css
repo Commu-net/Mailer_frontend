@@ -1,0 +1,8 @@
+.LandingPage{
+    height: 4320px;
+    max-width: 1304px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}

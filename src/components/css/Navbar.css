@@ -1,16 +1,22 @@
-@font-face {
-    font-family: font;
-    src: url('../assets/IBM_Plex_Sans/IBMPlexSans-Medium.ttf');
-}
+
 *{
     cursor:default;
     font-family: font;
+}
+
+::-webkit-scrollbar,::-webkit-scrollbar-thumb{
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    transform: scale(0);
 }
 .nav_bar{   
     background-color: rgba(255, 255, 255, 0.978);
     font-size: 20px;
     margin: 0 auto;
-    max-width: 1304px;
+    position: sticky;
+    top: 0;
+    max-width: 1004px;
     height: 5rem;
     display: flex;
     justify-content: space-between;
@@ -52,11 +58,7 @@ color: black;
  width: 80%;
 }
 
-
-.Sign_in:hover{
-     color: black;
-}
-.Sign_up{
+.Sign_in{
     width: 55%;
     display: flex;
     justify-content: center;
@@ -68,24 +70,17 @@ color: black;
     background-color: black;
     transition:gap 0.12s linear;
 }
-.Sign_in{
-    height: 48%;
-    width: 55%;
-    border: 0.6px solid rgb(201, 201, 201);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.Sign_up:hover{
+.Sign_in:hover{
     gap: 8px;
-    background-color: rgb(0, 119, 255);
+    background-color: rgb(40, 40, 40);
 }
 .hamburger{
+    z-index: 7;
     visibility: hidden;
     height: 0;
     width: 0;
     transform: scale(0);
+    position: absolute;
 }
 
 @media  screen and (width<=854px) {
@@ -93,6 +88,9 @@ color: black;
     .vert_nav{
         right: -20%;
         visibility: hidden;
+        width: 0;
+        transform: scale(0);
+
         justify-content: start;
         padding-top: 50px;
         margin-right: 0px;
@@ -111,6 +109,8 @@ color: black;
     .vert_visible{
         visibility: visible;
         width: 22%;
+        background-color: white;
+        transform: scale(1);
         transform-origin: right;
         right: 0%;
         height: max(900px,100vh);
@@ -132,7 +132,7 @@ color: black;
         flex-direction: column;
         
     }
-    .Sign_in,.Sign_up{
+    .Sign_in{
         width: 80%;
         height: 40%;
     }
@@ -143,6 +143,7 @@ color: black;
         height: fit-content;
         width: fit-content;
         transform: scale(1);
+        right: 5px;
 
     }
 }
