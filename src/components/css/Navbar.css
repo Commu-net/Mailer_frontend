@@ -11,12 +11,17 @@
     transform: scale(0);
 }
 .nav_bar{   
-    background-color: rgba(255, 255, 255, 0.978);
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(5px);
     font-size: 20px;
     margin: 0 auto;
-    position: sticky;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    padding-left: 20%;
+    padding-right: 20%;
     top: 0;
-    max-width: 1004px;
+    width: 100vw;
     height: 5rem;
     display: flex;
     justify-content: space-between;
@@ -84,7 +89,9 @@ color: black;
 }
 
 @media  screen and (width<=854px) {
-    
+    .nav_bar{
+        padding: 0;
+    }
     .vert_nav{
         right: -20%;
         visibility: hidden;
@@ -108,7 +115,7 @@ color: black;
     /* to make the vertical navbar visible when hamburger is clicked */
     .vert_visible{
         visibility: visible;
-        width: 22%;
+        width: 176px;
         background-color: white;
         transform: scale(1);
         transform-origin: right;
