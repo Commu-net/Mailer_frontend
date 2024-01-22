@@ -1,4 +1,3 @@
-import globe from '../assets/images/net_earth.png'
 import './css/Globalization.css'
 function Globalization() {
     return ( <div className="Globalization h-[630px] w-full flex justify-start pt-12 items-center flex-col lg:h-[1030px] ">
