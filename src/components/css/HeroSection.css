@@ -1,0 +1,5 @@
+.span_1{
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #1181f1, #19dbf5);
+}
