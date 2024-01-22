@@ -2,12 +2,12 @@
 import "./css/HeroSection.css"
 function HeroSection() {
     return ( 
-        <div className="hero h-[800px] w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px]">
+        <div className="hero h-[800px] w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
            <div className="heromain h-[450px] w-full flex justify-center items-center flex-col sm:h-[650px]">
             <div className="h-[40%]  mt-[30px] w-[90%] text-[min(18vw,8.5rem)] font-extrabold flex justify-center items-end sm:mt-[0px] lg:mt-[50px]">
                 <h1><span className="span_1">Comm</span>unet</h1>
             </div>
-            <div className="h-[10%] w-[90%] mt-[30px] text-[min(4vw,1.5rem)] font-medium text-[#838383] flex justify-center items-center text-center sm:w-[60%] lg:w-[50%]">
+            <div className="h-[10%] w-[90%] mt-[30px] text-[min(4vw,1.5rem)] font-medium text-[#838383] flex justify-center items-center text-center sm:w-[70%] lg:w-[50%]">
                 The cold mailer built on microservice architecture, with the capabilities of email scraping 
             </div>
             <div className="h-[10%] w-full mt-[40px] gap-3 flex justify-center items-center sm:h-[13%] mt-[60px]    ">
@@ -22,7 +22,6 @@ function HeroSection() {
                 {/* this video thing i snot working as of now */}
             </video>
            </div>
-           <div className="vert_line h-[100px] w-0 mt-[100px] relative z-6 border border-[0.6px] border-[rgb(220,220,220)] transform rotate-180 sm:mt-[80px]"></div>
         </div>);
 }
 
