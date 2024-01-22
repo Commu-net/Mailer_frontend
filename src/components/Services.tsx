@@ -1,5 +1,5 @@
 import ServiceCard from './ServiceCard';
-import './css/services.css'
+import './css/Services.css'
 import { service } from '@/Content/service';
 function Services() {
     return ( <div className="services h-[930px] w-[100vw] bg-black flex justify-start items-center flex-col sm:h-[1100px] lg:h-[420px]">
