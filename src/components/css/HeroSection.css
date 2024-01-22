@@ -1,5 +1,13 @@
 .span_1{
     color: transparent;
     background-clip: text;
-    background-image: linear-gradient(to right, #1181f1, #19dbf5);
+    background-image: linear-gradient(to right,var(--blue), #19b3f5);
+}
+.gs_button{
+    background-color: var(--blue);
+    border-radius: 5px;
+}
+.lm_button{
+    border-radius: 5px;
+    background-color: var(--black);
 }
