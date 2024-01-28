@@ -10,7 +10,7 @@ function ToolInfo() {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio non vero nulla quod tempora at 
     </div>
     <div className='image h-1/2 w-4/5 flex justify-center items-center'>
-        <img src={features}  className='h-[60%] sm:w-[60%] sm:h-[90%] '/>
+        <img src={features}  className='h-[60%] sm:w-[60%] sm:h-[90%] ' alt='feat'/>
     </div>
     </div> );
 }

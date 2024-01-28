@@ -1,4 +1,5 @@
 import './css/Globalization.css'
+import 'react'
 function Globalization() {
     return ( <div className="Globalization h-[630px] w-full flex justify-start pt-12 items-center flex-col lg:h-[1030px] ">
         <div className="header h-20 w-5/5 flex items-start justify-center text-2xl font-semibold lg:text-4xl">
