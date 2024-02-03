@@ -91,6 +91,7 @@ color: black;
 @media  screen and (width<=854px) {
     .nav_bar{
         padding: 0;
+        background-color: black;
     }
     .vert_nav{
         right: -20%;
@@ -98,7 +99,7 @@ color: black;
         width: 0;
         transform: scale(0);
 
-        justify-content: start;
+        justify-content: flex-start;
         padding-top: 50px;
         margin-right: 0px;
         align-items: end;

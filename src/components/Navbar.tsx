@@ -32,7 +32,7 @@ function Navbar() {
         </div>
         <div className="auth_buttons">
           <NavLink
-            to="./auth/signin"
+            to="./login"
             className="Sign_in"
             style={{ color: "white" }}
           >

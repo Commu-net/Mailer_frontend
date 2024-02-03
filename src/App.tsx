@@ -7,11 +7,20 @@ import {
 import './App.css'
 import Wrapper from './layouts/Wrapper'
 import LandingPage from './Pages/LandingPage'
+import LoginPage from './Pages/LoginPage'
+import Dashboard from './Pages/Dashboard'
+import PrivateRoute from './components/PrivateRoute'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Wrapper></Wrapper>}>
-      <Route index element={<LandingPage></LandingPage>}></Route>
-    </Route>
+      <Route index element={<LandingPage></LandingPage>} />
+      <Route path='login' element={<LoginPage />} />
+      <Route path='dashboard' element={
+         <PrivateRoute isLogggednIn={false}>
+            <Dashboard />
+        </PrivateRoute>
+      } />
+      </Route>
   )
 )
 function App() {
