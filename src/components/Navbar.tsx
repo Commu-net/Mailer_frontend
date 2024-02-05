@@ -4,8 +4,16 @@ import "./css/Navbar.css";
 import { useState } from "react";
 import { Spin as Hamburger } from 'hamburger-react'
 import { FaArrowRight } from "react-icons/fa6";
+import { useSelector,useDispatch } from "react-redux";
+import { RootState } from "../redux/store";
+import { logout } from "../redux/slices/authSlice";
+import { log } from "console";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state: RootState) => state.authorization.isLoggedIn);
+  const navigate = useNavigate();
   const [isVertVisible, setVertVisible] = useState(true);
   function clickHandler() {
     console.log("clicked");
@@ -20,8 +28,9 @@ function Navbar() {
       </div>
       <div className={isVertVisible? "vert_nav":"vert_nav vert_visible"}>
         <div className="nav_options">
-          <NavLink to="./about" className="nav_option_text">
-            About us
+          
+          <NavLink to="./" className="nav_option_text">
+            Home
           </NavLink>
           <NavLink className="nav_option_text" to="./blog">
             Blog
@@ -31,13 +40,34 @@ function Navbar() {
           </NavLink>
         </div>
         <div className="auth_buttons">
-          <NavLink
+          {
+          !isLogged ?
+          (<NavLink
             to="./login"
             className="Sign_in"
             style={{ color: "white" }}
           >
             Log in <FaArrowRight />{" "}
+          </NavLink>):
+          (<div className="authrized_options"><NavLink
+            to='/dashboard'
+            className="authzed_buttn"
+            style={{ color: "white" }}
+          >
+            Dashboard
           </NavLink>
+          <button
+          onClick={()=>{
+            dispatch(logout());
+            navigate('/');
+
+          }}
+            className="authzed_buttn"
+            style={{ color: "white" }}
+          >
+            Log out <FaArrowRight />{" "}
+          </button></div>)
+          }
         </div>
       </div>
       <div className="hamburger" onClick={clickHandler}>
