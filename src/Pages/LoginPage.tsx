@@ -1,7 +1,7 @@
 
 import './css/LoginPage.css'
-import { GoogleLogin } from '@react-oauth/google'
-import {login, logout} from '../redux/slices/authSlice'
+// import { GoogleLogin } from '@react-oauth/google'
+import {login} from '../redux/slices/authSlice'
 import { useDispatch,useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 export default function LoginPage() {
