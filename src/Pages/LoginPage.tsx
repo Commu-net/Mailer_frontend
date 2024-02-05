@@ -2,7 +2,7 @@
 import './css/LoginPage.css'
 // import { GoogleLogin } from '@react-oauth/google'
 import {login} from '../redux/slices/authSlice'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ export default function LoginPage() {
   
 
   // added for testing purpose
-  const isLogged = useSelector((state: any) => state.authorization.isLoggedIn);
 
   {/*  doing mannualy for testing purpose */}
   {/* <GoogleLogin onSuccess={()=>{
