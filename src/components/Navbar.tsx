@@ -7,7 +7,6 @@ import { FaArrowRight } from "react-icons/fa6";
 import { useSelector,useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { logout } from "../redux/slices/authSlice";
-import { log } from "console";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
