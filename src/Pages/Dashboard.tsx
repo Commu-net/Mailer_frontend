@@ -1,6 +1,5 @@
 import  './css/Dashboard.css'
 import { IoIosSearch } from "react-icons/io";
-import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -10,40 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/Select"
-import { Payment, columns } from "../components/DataTable/Columns"
-import { DataTable } from "../components/DataTable/DataTable"
+import DemoPage from '@/components/table/page';
 
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "success",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed51f",
-      amount: 250,
-      status: "pending",
-      email: "fus@gace.com",
-    },
-    {
-      id: "728ed50f",
-      amount: 654,
-      status: "success",
-      email: "gay@gamil.com",
-    },
-    // ...
-  ]
-}
 export default function Dashboard() {
-  const [data, setData] = useState<Payment[]>([])
-  useEffect(()=>{
-    getData().then((data) => {
-      setData(data)
-    })
-  })
+  
   return (
     <div className="dashboard relative top-20 h-[700px] bg-[rgba(169,188,204,0.34)] w-screen">
       <div className='dashboard_header '>
@@ -79,9 +48,10 @@ export default function Dashboard() {
          </div>
         </div>
         <div className='table_cont_down'>
-           <DataTable columns={columns} Data={data}/>  
+          <DemoPage />
           {/* this is the table container */}</div>
       </div>
     </div>
   )
 }
+

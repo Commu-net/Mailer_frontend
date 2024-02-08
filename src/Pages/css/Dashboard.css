@@ -119,4 +119,11 @@
       width: 25%;
       height: 100%;
    }
+   .table_cont_down{
+      height: 80%;
+      width: 95%;
+      overflow-y: scroll;
+      border: 0.6px solid rgb(255, 255, 255);
+      border-radius: 10px;
+   }
 }

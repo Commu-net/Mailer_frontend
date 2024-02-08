@@ -8,8 +8,9 @@ import './App.css'
 import Wrapper from './layouts/Wrapper'
 import LandingPage from './Pages/LandingPage'
 import LoginPage from './Pages/LoginPage'
-import Dashboard from './Pages/Dashboard'
+// import Dashboard from './Pages/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
+import Dashboard from './Pages/Dashboard'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Wrapper></Wrapper>}>
