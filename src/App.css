@@ -5,6 +5,7 @@
 }
 #root {
   max-width: 100vw;
+  height: 100%;
   margin: 0 auto;
   padding: 0;
   scroll-behavior: smooth ;
@@ -13,7 +14,7 @@
   
 }
 body {
-  height: fit-content;
+  height: max(100vh,700px);
   width: 100%;
   display: flex;
   justify-content: flex-start;

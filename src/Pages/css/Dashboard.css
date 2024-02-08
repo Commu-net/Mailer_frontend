@@ -17,7 +17,7 @@
    }
    .dashboard_header{
          display: flex;
-         height: 10%;
+         height: 15%;
          width: 95%;
          background-color: rgb(255, 255, 255);
          border-radius: 12px;
@@ -71,7 +71,7 @@
       flex-direction: column;
       gap: 20px;
       width: 95%;
-      height: 70%;
+      height: 85%;
       background-color: white;
       border-radius: 12px;
    }

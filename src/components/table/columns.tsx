@@ -1,9 +1,8 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
-import { MoreHorizontal } from "lucide-react"
- 
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -23,16 +22,37 @@ export type Payment = {
   name: string
   email: string
   profession:string
+  date:string
 }
 
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "company",
@@ -43,6 +63,21 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Profession",
   },
   {
+    accessorKey: "date",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
+    header:"Actions",
     id: "actions",
     cell: ({ row }) => {
       const payment = row.original

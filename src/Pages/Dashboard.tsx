@@ -14,7 +14,7 @@ import DemoPage from '@/components/table/page';
 export default function Dashboard() {
   
   return (
-    <div className="dashboard relative top-20 h-[700px] bg-[rgba(169,188,204,0.34)] w-screen">
+    <div className="dashboard relative top-20 bg-[rgba(169,188,204,0.34)] w-screen">
       <div className='dashboard_header '>
         {/* all , special marked and add enty (blue big ) and create new table  */}
         <div className='dash_headup'>

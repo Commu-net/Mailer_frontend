@@ -18,7 +18,7 @@ export default  function DemoPage() {
 //   const data = 
     
   return (
-    <div className="container  p-0 w-[100%]">
+    <div className="container   p-0 w-[100%]">
       <DataTable columns={columns} data={payments} />
     </div>
   )
