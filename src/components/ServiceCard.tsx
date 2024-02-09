@@ -3,7 +3,7 @@ import { MdMail } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { FaGlobeAmericas } from "react-icons/fa";
 import './css/servicecard.css'
-function ServiceCard({service}: {service: any}) {
+function ServiceCard({service}: {service: {icon:number,head:string,desc:string}}) {
     return ( 
     <div className="serviceCard h-[200px] w-[min(100%,400px)] rounded-lg flex justify-center gap-5 items-center flex-col bg-white lg:h-55 sm:h-45 lg:w-[30%]">
         <div className="iconCont h-12  w-12 rounded-full flex justify-center items-center text-white text-xl">
