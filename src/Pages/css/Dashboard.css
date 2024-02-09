@@ -1,0 +1,107 @@
+.dashboard{
+   position: relative;
+   top: 80px;
+   height: 700px;
+   background-color: rgba(169, 188, 204, 0.24);
+   width: 100vw;
+}
+@media (max-width: 670px){
+   .dashboard{
+       top: 80px;
+       display: flex;
+       justify-content: flex-start;
+       flex-direction: column;
+       align-items: center;
+       gap: 20px;
+       padding: 20px 0px 20px 0px
+   }
+   .dashboard_header{
+         display: flex;
+         height: 15%;
+         width: 95%;
+         background-color: rgb(255, 255, 255);
+         border-radius: 12px;
+         justify-content: center;
+         align-items: center;
+         gap: 20px;
+         flex-direction: column;
+   }
+   .dash_headup{
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 10px 0px 10px;
+      width: 100%;
+      align-items: center;
+      gap: 20px;
+   }
+   .dash_head,.new_ent_cont{
+      display: flex;
+      justify-content: flex-start;
+      width: 45%;
+      height: 100%;
+      align-items: center;
+      gap: 20px;
+   }
+   .dash_head{
+      justify-content: flex-start;
+      font-size: 1.1rem;
+      letter-spacing: 0.05rem;
+      font-weight: 600;
+   }
+   .new_ent_cont{width: 30%;
+      justify-content: end;
+   }
+   .add_new_tab{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 5px;
+      width: 70%;
+      height: 40%;
+      background-color: #0062ff;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+   }
+   .table_container{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      width: 95%;
+      height: 85%;
+      background-color: white;
+      border-radius: 12px;
+   }
+   .srch_input{
+      width: 90%;
+      height: 100%;
+      border: 0.6px solid rgba(88, 88, 88, 0.205);
+      border-radius:15px 0 0 15px;
+      padding: 0px 10px 0px 10px;
+   }
+   .srch_input:focus{
+      outline: none;
+   }
+   .srch_btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 16%;
+      background-color: #000000;
+      color: white;
+      border-radius: 0px 15px 15px 0;
+   }
+   .table_cont_down{
+      height: 100%;
+      width: 95%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border: 0.6px solid rgb(255, 255, 255);
+      border-radius: 10px;
+   }
+}

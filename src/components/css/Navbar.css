@@ -15,7 +15,7 @@
     backdrop-filter: blur(5px);
     font-size: 20px;
     margin: 0 auto;
-    z-index: 10;
+    z-index: 100;
     position: fixed;
     left: 0;
     padding-left: 20%;
@@ -43,18 +43,29 @@
 color: black;
 }
 .auth_buttons{
-    width: 230px;
+    width: 300px;
     gap: 10px;
     height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+.authrized_options{
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
 .nav_bar a{
     color: #6c6c6c;
   text-decoration: none;
 }
+.active{
+    color: black;
 
+}
 .vert_nav{
  height: 100px;
  margin-right: -87px;
@@ -63,7 +74,7 @@ color: black;
  width: 80%;
 }
 
-.Sign_in{
+.Sign_in,.authzed_buttn{
     width: 55%;
     display: flex;
     justify-content: center;
@@ -97,8 +108,7 @@ color: black;
         visibility: hidden;
         width: 0;
         transform: scale(0);
-
-        justify-content: start;
+        justify-content: flex-start;
         padding-top: 50px;
         margin-right: 0px;
         align-items: end;
@@ -122,8 +132,12 @@ color: black;
         right: 0%;
         height: max(900px,100vh);
         z-index: 5;
-
-  }
+     }
+     .authrized_options{
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 80%;
+     }
 
     .nav_options{
         flex-direction: column;
@@ -134,14 +148,20 @@ color: black;
         width: 160px;
     }
     .auth_buttons{
-        height: 100px;
+        height: 200px;
         width: 180px;
         flex-direction: column;
-        
+        justify-content: start;
+        align-items: center;
+        padding-top: 5%;
     }
     .Sign_in{
         width: 80%;
-        height: 40%;
+        height: 20%;
+    }
+    .authzed_buttn{
+        width: 80%;
+        height: 100px;
     }
     .hamburger{
         visibility: visible;

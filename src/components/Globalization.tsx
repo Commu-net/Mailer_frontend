@@ -7,7 +7,7 @@ function Globalization() {
         <div className="text h-20 w-4/5 text-gray-500 flex items-end justify-center text-[min(3.5vw,1.4rem)]">
             with communet you can xpand you r reach globally inmany sectors such as marketing busines e.t.c
         </div>
-        <div className='globe relative top-[95px] h-1/2 w-4/5 bg-center bg-contain flex justify-center items-center lg:mt-[200px]'>
+        <div className='globe relative top-[95px] h-1/2 w-4/5 bg-center bg-contain flex justify-center items-center lg:mt-[30px]'>
            <div className=' h-[min(380px,50vw)] w-[min(380px,50vw)] rounded-[min(195px,27.5vw)] -mt-14 ml-2.5'></div>
         </div> 
     </div> );
