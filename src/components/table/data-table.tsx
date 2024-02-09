@@ -1,5 +1,5 @@
 "use client"
-
+import '../css/dummy.css'
 import {
   ColumnDef,
   getSortedRowModel,
@@ -70,8 +70,9 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="rounded-md ">
-     <div className="flex items-center py-4">
+    <div className="rounded-md h-[90%]">
+     <div  className='up_contr'>
+        <div className="flex items-center py-4 search">
         <Input
           placeholder="Filter emails..."
           name="email"
@@ -81,10 +82,10 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-      </div>
-      <DropdownMenu>
+        </div>
+        <DropdownMenu > 
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
+            <Button variant="outline" className="ml-auto h-8 rounded-none ">
               Columns
             </Button>
           </DropdownMenuTrigger>
@@ -110,17 +111,18 @@ export function DataTable<TData, TValue>({
               })}
           </DropdownMenuContent>
         </DropdownMenu>
+      </div>
 
-      <Table className=" bg-opacity-60">
+      <Table className="bg-opacity-60 grass">
         <TableHeader className="bg-black z-10 sticky top-[-2px]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow 
-             className="border-b-20 text-white text-[12px] font-bold px-4 py-2"
+             className="border-b-20 bg-black text-white text-[12px] font-bold px-4 py-2"
             key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                return (
+                return (  
                   <TableHead
-                  className="border-b-20 text-white text-[12px] font-bold px-4 py-2"
+                  className="border-b-20 w-[30px] text-white text-[12px] font-bold py-1"
                   key={header.id}>
                     {header.isPlaceholder
                       ? null
@@ -134,13 +136,13 @@ export function DataTable<TData, TValue>({
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody className="">
+        <TableBody className="  h-[300px]">
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="h-[80px]"
+                className="h-[30px]"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

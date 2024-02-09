@@ -1,0 +1,13 @@
+.up_contr{
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search{
+    height: 50px;
+    width: 48%;
+
+}
