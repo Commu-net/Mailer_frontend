@@ -53,6 +53,7 @@ export default function EmailForm() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        console.log("hello")
         console.log(values)
     }
 
@@ -65,7 +66,11 @@ export default function EmailForm() {
                 <DialogTitle>Compose your mail</DialogTitle>
             </DialogHeader>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={(event) => {
+                    event.preventDefault()
+                    onSubmit(form.getValues())
+                    console.log('submitted')
+                }} className="space-y-4">
                     <FormField
                         control={form.control}
                         name="title"
@@ -86,7 +91,54 @@ export default function EmailForm() {
                             <FormItem>
                                 <FormLabel>Email body</FormLabel>
                                 <FormControl>
-                                    <Input  placeholder="Contents of your mail " {...field} />
+                                    <textarea
+                                        placeholder="Body of your mail"
+                                        {...field}
+                                        autoComplete="off"
+                                        className=" resize-none flex-grow flex h-[80px] w-[90%] border border-solid border-gray-200 px-3 py-2 text-sm ring-offset-background file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50 background-red-200 "
+
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="file"
+                        render={() => (
+                            <FormItem>
+                                <FormLabel>Attachment</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        type="file"
+                                        className="file:bg-transparent h-[100px]  file:text-sm file:font-medium placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50 background-red-200 border-dashed border-2 border-gray-300 flex justify-center items-center"
+                                        onChange={(e) => {
+                                            const file = e.target.files && e.target.files[0];
+                                            if (file) {
+                                                form.setValue("file", file); // Set the file value
+                                            }
+                                        }}
+                                        onDragEnter={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const inputElement = e.target as HTMLInputElement;
+                                            inputElement.classList.add("bg-blue-100"); // Add blue background
+                                        }}
+                                        onDragOver={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const inputElement = e.target as HTMLInputElement;
+                                            inputElement.classList.add("bg-blue-100"); // Add blue background
+                                        }}
+                                        onDragLeave={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const inputElement = e.target as HTMLInputElement;
+                                            inputElement.classList.remove("bg-blue-100"); // Remove blue background
+                                        }}
+                                    />
+
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -99,3 +151,4 @@ export default function EmailForm() {
     </Dialog>
     )
 }
+
