@@ -15,6 +15,14 @@
        align-items: center;
        gap: 20px;
    }
+   .email_container{
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 105;
+      top:90%;
+      left: 0;
+   }
    .dashboard_up{
       height: 15%;
       width: 100%;

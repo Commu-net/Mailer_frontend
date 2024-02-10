@@ -1,10 +1,14 @@
 import  './css/Dashboard.css'
 import DemoPage from '../components/table/page';
+import EmailForm from '@/components/emailForm/EmailForm';
 
 export default function Dashboard() {
   
   return (
     <div className="dashboard relative top-20  w-screen">
+      <div className='email_container'>
+        <EmailForm />
+      </div>
        <div className='dashboard_up'>
         
             <div className='dash_head'>Welcome Back, Alexis !</div>
@@ -19,8 +23,9 @@ export default function Dashboard() {
          <div className='table_cont overflow-y-scroll'>
           <DemoPage />
          </div>
-           
+         
        </div>
+      
     </div>
   )
 }
