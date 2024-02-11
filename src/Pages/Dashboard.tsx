@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 
 export default function Dashboard() {
   useEffect(()=>{
-    async function getUserData(email:string) {
-  const response = await fetch(`https://api.api-communet.tech/api/v1/mail?email=${email}`, {
+    async function getUserData() {
+  const response = await fetch(`https://api.api-communet.tech/api/v1/mail/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export default function Dashboard() {
 
 }
 
-getUserData('internship4857@gmail.com')
+getUserData()
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
   })
