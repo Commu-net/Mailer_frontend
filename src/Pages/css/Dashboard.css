@@ -1,7 +1,7 @@
 .dashboard{
    position: relative;
    top: 80px;
-   height: max(100vh - 80px, 700px);
+   height: max(100vh - 80px, 620px);
    width: 100vw;
 }
 @media (max-width: 670px){
@@ -27,11 +27,37 @@
       height: 15%;
       width: 100%;
       display: flex;
-      gap: 5px;
+      justify-content: space-between;
+      align-items: center;
+      
+   }
+   .dash_up_left{
+      height: 100%;
+      width: 75%;
+      display: flex;
       justify-content: center;
-      padding: 20px 0 0 10px ;
+      gap: 7px;
+      padding: 0px 0 0 10px ;
       align-items: flex-start;
       flex-direction: column;
+   }
+   .dash_up_right{
+      height: 100%;
+      width: 25%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   .un_image{
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
    }
    .dash_head{
       font-size: 1.2rem;
@@ -77,8 +103,9 @@
       color: white;
    }
    .import_btn{
-      background-color: black;
-      color: white;
+      background-color: rgb(255, 255, 255);
+      color: #008EFF;
+      border: 1px solid #008EFF;
    }
    .table_cont{
       height: 80%;

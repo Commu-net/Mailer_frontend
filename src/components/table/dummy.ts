@@ -16,7 +16,7 @@ type Payment = {
       company: "Amazon",
       name: "Raj Patel",
       email: "m@example.com",
-      profession:"Software Developer",
+      profession:"Hiring manager",
       date:"01/01/2024"
     },
     {

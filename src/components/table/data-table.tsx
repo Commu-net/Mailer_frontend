@@ -70,22 +70,22 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="rounded-md h-[90%]">
+    <div className="rounded-md h-[100%] w-[95%] flex flex-col justify-start items-center gap-[15px]">
      <div  className='up_contr'>
         <div className="flex items-center py-4 search">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Search emails..."
           name="email"
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm rounded-sm"
         />
         </div>
         <DropdownMenu > 
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto h-8 rounded-none ">
+            <Button variant="outline" className="ml-auto h-8 rounded-sm ">
               Visibility
             </Button>
           </DropdownMenuTrigger>
@@ -117,7 +117,7 @@ export function DataTable<TData, TValue>({
         <TableHeader className="bg-black z-10 sticky top-[-2px]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow 
-             className="border-b-20 bg-black text-white text-[12px] font-bold px-4 py-2"
+             className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"
             key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (  
@@ -136,13 +136,13 @@ export function DataTable<TData, TValue>({
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody className="  h-[300px]">
+        <TableBody className="  h-fit]">
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="h-[30px]"
+                className="h-[60px]"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

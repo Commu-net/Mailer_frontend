@@ -18,7 +18,7 @@ export default  function DemoPage() {
 //   const data = 
     
   return (
-    <div className="container  h-[100%] p-0 w-[100%]">
+    <div className="container flex justify-center items-center   h-[100%] p-0 w-[100%]">
       <DataTable columns={columns} data={payments} />
     </div>
   )

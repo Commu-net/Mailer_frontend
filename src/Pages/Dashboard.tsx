@@ -34,8 +34,13 @@ getUserData('internship4857@gmail.com')
       </div>
        <div className='dashboard_up'>
         
-            <div className='dash_head'>Welcome Back, Alexis !</div>
-            <div className='dash_msg'>Here is the list of all email profiles you have saved</div>
+            <div className='dash_up_left'>
+              <div className='dash_head'>Welcome Back, Alexis !</div>
+              <div className='dash_msg'>Here is the list of all email profiles you have saved</div>
+            </div>
+            <div className='dash_up_right'>
+                <div className='un_image'>AL</div>
+            </div>
       
        </div>
        <div className='dashboard_down'>
