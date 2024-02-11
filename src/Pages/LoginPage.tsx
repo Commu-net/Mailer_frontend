@@ -3,7 +3,10 @@ import './css/LoginPage.css'
 // import { GoogleLogin } from '@react-oauth/google'
 import {login} from '../redux/slices/authSlice'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { 
+  // NavLink,
+   useNavigate
+   } from 'react-router-dom'
 import { useEffect } from 'react';
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -54,7 +57,8 @@ export default function LoginPage() {
       <button onClick={()=>{
         dispatch(login())
         navigate('/dashboard')
-      }}> Log in </button>
+      }}
+      > Log in </button>
        
     </div> 
   )
