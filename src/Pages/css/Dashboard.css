@@ -1,119 +1,43 @@
-.dashboard{
+.dashboard {
    position: relative;
    top: 80px;
    height: max(100vh - 80px, 620px);
    width: 100vw;
 }
-@media (max-width: 670px){
-   .dashboard{
-       top: 80px;
-       padding-left: 10px;
-       padding-right: 10px;
-       display: flex;
-       justify-content: flex-start;
-       flex-direction: column;
-       align-items: center;
-       gap: 20px;
-   }
-   .email_container{
-      height: 100%;
-      width: 100%;
-      position: fixed;
-      z-index: 105;
-      top:90%;
-      left: 0;
-   }
-   .dashboard_up{
-      height: 15%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      
-   }
-   .dash_up_left{
-      height: 100%;
-      width: 75%;
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-      padding: 0px 0 0 10px ;
-      align-items: flex-start;
-      flex-direction: column;
-   }
-   .dash_up_right{
-      height: 100%;
-      width: 25%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-   }
-   .un_image{
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      background-color: black;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-   }
-   .dash_head{
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04rem;
-   }
-   .dash_msg{
-      margin-left: px;
-      font-size: 0.8rem;
-      width: 90%;
-      color: rgb(96, 96, 96);
-      text-align:left;
-      font-weight: 400;
-   }
-   .dashboard_down{
-         gap: 20px;
-         height: 80%;
-         width: 100%;
-         display: flex;
-         justify-content: flex-start;
-         flex-direction: column;
-         align-items: center;
-   }
-   .up_buttons{
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-      height: 10%;
-      width: 100%;
-   }
-   .add_btn,.import_btn{
-      height: 38px;
-      border-radius: 5px;
-      border: 0.3px solid rgba(151, 147, 95, 0.345);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.03rem;
-      width: 160px;
-   }
-   .add_btn{
+
+@media (max-width: 800px) {
+   .add_btn {
       background-color: #008EFF;
       color: white;
    }
-   .import_btn{
+   .import_btn {
       background-color: rgb(255, 255, 255);
       color: #008EFF;
       border: 1px solid #008EFF;
    }
-   .table_cont{
-      height: 80%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 20px;
+}
+
+@media screen and (min-width:800px) {
+   .dashboard {
+      /* background-color: rgb(254, 226, 226); */
+      height: calc(100%-80px);
    }
+
+   .dashboard_up {
+      height: 15%;
+      background-color: rgb(255, 255, 255);
+   }
+   .dash_up_left {
+      height: 100%;
+      width: 40%;
+   }
+   .dash_up_right {
+      height: 100%;
+      width: 15%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+   }
+
+
 }

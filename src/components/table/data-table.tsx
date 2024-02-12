@@ -32,15 +32,26 @@ import React from "react"
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
 
+import { crEmail,importEmail } from '@/redux/slices/emailList'
+import { useDispatch } from 'react-redux'
+
+import { GoPlusCircle } from "react-icons/go";
+import { FaFile } from "react-icons/fa";
+
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData, TValue>(
+  
+  {
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData, TValue>) 
+{
+  const dispatch = useDispatch();
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -70,9 +81,9 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="rounded-md h-[100%] w-[95%] flex flex-col justify-start items-center gap-[15px]">
+    <div className="rounded-md h-[100%] w-[100%] flex flex-col justify-start items-center gap-[15px]">
      <div  className='up_contr'>
-        <div className="flex items-center py-4 search">
+        <div className="flex items-center py-1 search">
         <Input
           placeholder="Search emails..."
           name="email"
@@ -80,8 +91,22 @@ export function DataTable<TData, TValue>({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm rounded-sm"
+          className="max-w-sm rounded-sm border-black border-[1px]"
         />
+        <div className='invisible h-0 w-0 md:h-12 md:w-3/5 md:visible md:h-8 md:mx-[15px] flex justify-start items-center gap-[15px]'>
+          <button onClick={()=>{
+            dispatch(crEmail())
+          }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
+            <div><GoPlusCircle /></div>
+            <div>Add</div>
+            </button>
+          <button onClick={()=>{
+            dispatch(importEmail())
+          }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
+            <div><FaFile /></div>
+            <div>Import</div>
+            </button>
+        </div>
         </div>
         <DropdownMenu > 
           <DropdownMenuTrigger asChild>
@@ -113,7 +138,7 @@ export function DataTable<TData, TValue>({
         </DropdownMenu>
       </div>
 
-      <Table className="bg-opacity-60 grass">
+      <Table className="bg-opacity-60 grass w-[100%]">
         <TableHeader className="bg-black z-10 sticky top-[-2px]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow 

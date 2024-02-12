@@ -18,8 +18,8 @@
     z-index: 100;
     position: fixed;
     left: 0;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 3%;
+    padding-right: 2%;
     top: 0;
     width: 100vw;
     height: 5rem;
@@ -71,6 +71,7 @@ color: black;
  margin-right: -87px;
  display: flex;
  justify-content: space-around;
+ padding-right: 2%;
  width: 80%;
 }
 
