@@ -13,6 +13,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import { updateMailList } from "@/redux/slices/emailList"
+
+import { useDispatch } from "react-redux"
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
@@ -23,6 +27,7 @@ export type Payment = {
   profession:string
   date:string
 }
+
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -39,15 +44,20 @@ export const columns: ColumnDef<Payment>[] = [
         aria-label="Select all"
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
+    cell: ({ row }) => {
+      //  the function hre to update the email list
+      const dispatch = useDispatch()
+      
+      
+      return (<Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value:boolean) =>{
-          console.log(row.original.email)
+          dispatch(updateMailList(row.original))
+          // console.log(data)
           row.toggleSelected(!!value)}}
         aria-label="Select row"
-      />
-    ),
+      />)
+        },
     enableSorting: false,
     enableHiding: false,
   },

@@ -32,9 +32,6 @@ import React from "react"
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
 
-import { crEmail,importEmail } from '@/redux/slices/emailList'
-import { useDispatch } from 'react-redux'
-
 import { GoPlusCircle } from "react-icons/go";
 import { FaFile } from "react-icons/fa";
 
@@ -51,7 +48,6 @@ export function DataTable<TData, TValue>(
   data,
 }: DataTableProps<TData, TValue>) 
 {
-  const dispatch = useDispatch();
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -95,13 +91,13 @@ export function DataTable<TData, TValue>(
         />
         <div className='invisible h-0 w-0 md:h-12 md:w-3/5 md:visible md:h-8 md:mx-[15px] flex justify-start items-center gap-[15px]'>
           <button onClick={()=>{
-            dispatch(crEmail())
+            // dispatch(crEmail()) 
           }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
             <div><GoPlusCircle /></div>
             <div>Add</div>
             </button>
           <button onClick={()=>{
-            dispatch(importEmail())
+            // dispatch(importEmail()) 
           }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
             <div><FaFile /></div>
             <div>Import</div>
