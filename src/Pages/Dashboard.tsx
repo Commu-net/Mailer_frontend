@@ -1,11 +1,10 @@
 import  './css/Dashboard.css'
 import DemoPage from '../components/table/page';
 import EmailForm from '@/components/emailForm/EmailForm';
-import { crEmail,importEmail } from '@/redux/slices/emailList';
-import { useDispatch } from 'react-redux';
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
+
+  // wrirte a function to implement create and import data from excel method and pass them to add and import buttons in Demo page and button inside data-table inside DemoPage and do an api call 
   return (
     <div className="dashboard relative top-20  w-screen top-20 pl-2.5 pr-2.5 flex justify-start flex-col items-center space-y-5 md:w-[95%]">
       <div className='email_container h-full w-full fixed z-[105] top-[90%] left-0 md:h-0'>
@@ -25,10 +24,10 @@ export default function Dashboard() {
        <div className='dashboard_down space-y-5 h-[85%] w-full flex justify-start flex-col items-center '>
          <div className='up_buttons flex space-x-5 justify-center items-center h-[10%] w-full md:invisible md:h-0 md:w-0 md:opacity-0 '>
             <button onClick={()=>{
-              dispatch(crEmail())
+              // dispatch(crEmail())  write a function to implement creating a profile
             }} className='add_btn h-[38px] rounded-sm  text-sm font-semibold tracking-tighter w-40'>Add New</button>
             <button onClick={()=>{
-              dispatch(importEmail())
+              // dispatch(importEmail()) write a function to implement mail
             }}  className='import_btn h-[38px] rounded-sm border  text-sm font-semibold tracking-tighter w-40'>Import</button>
          </div>
          <div className='table_cont overflow-y-scroll h-[95%] w-full flex justify-center items-center flex-col p-0 m-0'>

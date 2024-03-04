@@ -2,6 +2,7 @@ import { RootState } from "@/redux/store"
 import {  columns } from "./columns"
 import { DataTable } from "./data-table"
 import { useSelector } from "react-redux"
+import {emailContent} from '../../Content/profiles'
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
 //   return [
@@ -17,7 +18,7 @@ import { useSelector } from "react-redux"
 
 export default  function DemoPage() {
 //   const data = 
-    const emailList = useSelector((state: RootState) => state.emailList.emailList)
+    const emailList = emailContent.profileList
     console.log(emailList)
   return (
     <div className="container max-w-full flex justify-center items-center  h-[100%] p-0 w-[100%]">
