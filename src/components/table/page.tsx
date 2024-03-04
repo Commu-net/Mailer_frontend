@@ -1,7 +1,5 @@
-import { RootState } from "@/redux/store"
 import {  columns } from "./columns"
 import { DataTable } from "./data-table"
-import { useSelector } from "react-redux"
 import {emailContent} from '../../Content/profiles'
 // async function getData(): Promise<Payment[]> {
 //   // Fetch data from your API here.
