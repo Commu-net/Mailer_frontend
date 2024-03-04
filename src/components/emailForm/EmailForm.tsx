@@ -24,6 +24,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import { FaPencil } from "react-icons/fa6";
+import { IoFolderOpenSharp } from "react-icons/io5";
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
@@ -138,6 +140,7 @@ export default function EmailForm() {
                                         const node = e.target as HTMLDivElement;
                                         node.classList.add("bg-blue-100"); // Add blue background
                                     }}>
+                                        <div className="text-6xl text-blue-600"><IoFolderOpenSharp/></div>
                                         <div>{ form.control._fields.file? form.control._fields.file._f.value ? `${form.control._fields.file._f.value.name.slice(0,5)+"..."}`:"Click to upload or drag your file here" : "Click to upload or drag your file here"}</div>
                                     <Input
                                         type="file"
