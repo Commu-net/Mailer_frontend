@@ -10,7 +10,7 @@ export default function Dashboard() {
   useEffect(()=>{
     var storedSubValue = localStorage.getItem('communet_user_sub');
 
-    async function fetchUserData(url = 'https://api.api-communet.tech/api/v1/user/getuser', data = {}) {
+    async function fetchUserData(url = 'https://api.api-communet.tech/api/v1/user/getuser') {
       // Default options are marked with *
       const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -24,7 +24,6 @@ export default function Dashboard() {
         },
         redirect: 'follow', // manual, *follow, error
         referrerPolicy: 'no-referrer', // no-referrer, *client
-        body: JSON.stringify(data) // body data type must match "Content-Type" header
       });
     
       return response.json(); // parses JSON response into native JavaScript objects
