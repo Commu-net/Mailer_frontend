@@ -32,8 +32,6 @@ import React from "react"
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
 
-import { GoPlusCircle } from "react-icons/go";
-import { FaFile } from "react-icons/fa";
 
 import AddProfileForm from '../addProfileForm/AddProfileForm'
 import ImportProfileForm from '../importProfileForm/ImportProfileForm'
