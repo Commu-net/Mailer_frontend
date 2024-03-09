@@ -10,12 +10,13 @@ import { login } from "@/redux/slices/authSlice";
 
 
 function LandingPage() {
-    const dipatch = useDispatch();
+    const dispatch = useDispatch();
     var storedSubValue = localStorage.getItem('communet_user_sub');
     
     // Check if 'sub' value is already logged in
     if (storedSubValue) {
         console.log('Already logged in');
+        dispatch(login());
         // show dashboard and other user-specific content
     } else {
         console.log('Please login');
@@ -36,7 +37,7 @@ function LandingPage() {
             var sub = new URLSearchParams(window.location.search).toString().split("=")[3];
             // after the user logs in, save the 'sub' value to local storage
             localStorage.setItem('communet_user_sub', sub);
-            dipatch(login());
+            dispatch(login());
             // show dashboard and other user-specific content
     
         } else {
