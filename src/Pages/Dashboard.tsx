@@ -39,7 +39,7 @@ export default function Dashboard() {
             dispatch(setUserInfo({
                 name: data?.data?.name,
                 useremail: data?.data?.email,
-                emails: data?.data?.savedProfiles
+                emails: data?.data?.emailSelected
             }))
         })
     }
