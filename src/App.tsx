@@ -17,9 +17,9 @@ const router = createBrowserRouter(
       <Route index element={<LandingPage></LandingPage>} />
       <Route path='login' element={<LoginPage />} />
       <Route path='dashboard' element={
-         <PrivateRoute isLogggednIn={true}>
-            <Dashboard />
-        </PrivateRoute>
+         <PrivateRoute  >
+           <Dashboard />
+         </PrivateRoute >
       } />
       </Route>
   )
@@ -27,9 +27,7 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-
         <RouterProvider router={router}></RouterProvider>
-    
   )
 }
 
