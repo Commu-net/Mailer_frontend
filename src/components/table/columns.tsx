@@ -146,15 +146,19 @@ export const columns: ColumnDef<Payment>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              Update profile
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(payment.id)}
+            >
+              Delete profile
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          
           </DropdownMenuContent>
         </DropdownMenu>
       )
