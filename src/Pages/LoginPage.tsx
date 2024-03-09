@@ -1,16 +1,8 @@
 
 import './css/LoginPage.css'
 // import { GoogleLogin } from '@react-oauth/google'
-import {login} from '../redux/slices/authSlice'
-import { useDispatch } from 'react-redux'
-import { 
-  // NavLink,
-   useNavigate
-   } from 'react-router-dom'
 import { useEffect } from 'react';
 export default function LoginPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   
 
   // added for testing purpose
