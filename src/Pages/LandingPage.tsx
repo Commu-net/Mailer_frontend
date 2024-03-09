@@ -5,21 +5,22 @@ import './css/LandingPage.css'
 import Globalization from "@/components/Globalization";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { login } from "@/redux/slices/authSlice";
 
 
 function LandingPage() {
     const dispatch = useDispatch();
+    let isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
     var storedSubValue = localStorage.getItem('communet_user_sub');
     
     // Check if 'sub' value is already logged in
     if (storedSubValue) {
-        console.log('Already logged in');
         dispatch(login());
+        console.log('Already logged in',isLoggedIn);
         // show dashboard and other user-specific content
     } else {
-        console.log('Please login');
+        console.log('Please login',isLoggedIn);
         // set the protected URL to redirect after successful login
     }
 
