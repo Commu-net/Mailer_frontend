@@ -5,13 +5,12 @@ import { useState } from "react";
 import { Spin as Hamburger } from 'hamburger-react'
 import { FaArrowRight } from "react-icons/fa6";
 import { useSelector,useDispatch } from "react-redux";
-import { RootState } from "../redux/store";
 import { logout } from "../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const dispatch = useDispatch();
-  const isLogged = useSelector((state: RootState) => state.authorization.isLoggedIn);
+  const isLogged = useSelector((state: any) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const [isVertVisible, setVertVisible] = useState(true);
   function clickHandler() {
