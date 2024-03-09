@@ -4,8 +4,8 @@ import { useSelector} from 'react-redux'
 import { RootState } from '../redux/store'
 
 export default function PrivateRoute({ children }: { children: React.ReactNode }) {
-  // const isLogggednIn = useSelector((state: RootState) => state.authorization.isLoggedIn)
-  const isLogggednIn = true
+  const isLogggednIn = useSelector((state: RootState) => state.authorization.isLoggedIn)
+  // const isLogggednIn = true
 
   return (isLogggednIn ? children : (<Navigate to="/login" />))  
 }
