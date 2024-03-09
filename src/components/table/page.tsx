@@ -1,22 +1,18 @@
 import {  columns } from "./columns"
 import { DataTable } from "./data-table"
-import {emailContent} from '../../Content/profiles'
-// async function getData(): Promise<Payment[]> {
-//   // Fetch data from your API here.
-//   return [
-//     {
-//       id: "728ed52f",
-//       amount: 100,
-//       status: "pending",
-//       email: "m@example.com",
-//     },
-//     // ...
-//   ]
-// }
+import {emailContent} from '../../Content/profiles' // delete this - this is just for testing
+// becaouse we are not using redux store here, we are using a dummy data from the emailContent file
+// now we extract user saved profiles from the redux store and pass it to the data prop of the data-table
+
+import { useSelector } from "react-redux"
+import { RootState } from "@/redux/store"
+
+
+ const data = useSelector((state: RootState) => state.emailList.emailList)
 
 export default  function DemoPage() {
-//   const data = 
-    const emailList = emailContent.profileList
+//   const data = useSelector((state: RootState) => state.emailList.emailList)     // use this line instead of the line below
+    const emailList = emailContent.profileList   //  dont use this line, this is just for testing
     console.log(emailList)
   return (
     <div className="container max-w-full flex justify-center items-center  h-[100%] p-0 w-[100%]">

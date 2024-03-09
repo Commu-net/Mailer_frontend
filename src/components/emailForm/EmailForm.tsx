@@ -43,10 +43,29 @@ const formSchema = z.object({
     }),
 })
 
-export function sendMail(values: z.infer<typeof formSchema>,profileList: any[]) {
+
+async function sendMail(values: z.infer<typeof formSchema>, profileList: any[]) {
+    const formData = new FormData();
+    formData.append('subject', values.title);
+    formData.append('text', values.body);
+    formData.append('file', values.file);
+    formData.append('profiles', JSON.stringify(profileList));
+
+    const response = await fetch('https://api.api-communet.tech/api/v1/email/send', {
+        method: 'POST',
+        body: formData,
+    })
+    const data = await response.json();
+    console.log(data);
+
+}
+
+export function onSend(values: z.infer<typeof formSchema>,profileList: any[]) {
 
     console.log("this is the form",values)
     console.log("this is the profiles",profileList)
+    sendMail(values,profileList)
+    
 
 }
 
@@ -63,8 +82,8 @@ export default function EmailForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        sendMail(values,emailList)
+    function submitHandler(values: z.infer<typeof formSchema>) {
+        onSend(values,emailList)
     }
 
     return (<Dialog>
@@ -78,7 +97,8 @@ export default function EmailForm() {
             <Form {...form}>
                 <form onSubmit={(event) => {
                     event.preventDefault()
-                    onSubmit(form.getValues())
+                    console.log(form.getValues())
+                    submitHandler(form.getValues())
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField

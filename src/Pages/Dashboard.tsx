@@ -3,38 +3,49 @@ import DemoPage from '../components/table/page';
 import EmailForm from '@/components/emailForm/EmailForm';
 import AddProfileForm from '@/components/addProfileForm/AddProfileForm';
 import ImportProfileForm from '@/components/importProfileForm/ImportProfileForm';
+
 import { useEffect } from 'react';
 
-export default function Dashboard() {
+import { RootState } from '@/redux/store';
+import { useDispatch,useSelector } from 'react-redux';
 
-  useEffect(()=>{
+import { setUserInfo } from '@/redux/slices/userData';
+
+export default function Dashboard() {
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.userData.userName);
+
+ useEffect(() => {
     var storedSubValue = localStorage.getItem('communet_user_sub');
 
     async function fetchUserData(url = 'https://api.api-communet.tech/api/v1/user/getuser') {
-      // Default options are marked with *
-      const response = await fetch(url, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': 'Bearer ' + storedSubValue
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *client
-      });
-    
-      return response.json(); // parses JSON response into native JavaScript objects
+        const response = await fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + storedSubValue
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+        });
+        let data = await response.json()
+        return data;
     }
-    if(storedSubValue){
-      let data = fetchUserData()
-      data.then((res)=>{
-        console.log(res);
-      })
-  }
-},[])
+    if (storedSubValue) {
+        fetchUserData().then(data => {
+            dispatch(setUserInfo({
+                name: data?.data?.name,
+                useremail: data?.data?.email,
+                emails: data?.data?.savedProfiles
+            }))
+        })
+    }
+}, [])
+
+
 
   // wrirte a function to implement create and import data from excel method and pass them to add and import buttons in Demo page and button inside data-table inside DemoPage and do an api call 
   return (
@@ -45,11 +56,11 @@ export default function Dashboard() {
        <div className='dashboard_up h-[15%] w-full flex justify-between items-center'>
         
             <div className='dash_up_left h-full w-3/4 flex justify-center gap-[7px] space-x-1.5 py-0 pl-2.5 items-start flex-col md:gap-[15px] md:pl-4'>
-              <div className='dash_head text-lg font-semibold tracking-wider md:text-[30px]'>Welcome Back, Alexis !</div>
+              <div className='dash_head text-lg font-semibold tracking-wider md:text-[30px]'>Welcome Back, {user.split(' ')[0]} !</div>
               <div className='dash_msg text-sm w-9/10 text-gray-600 text-left font-normal md:text-[20px]'>Here is the list of all email profiles you have saved</div>
             </div>
             <div className='dash_up_right h-full w-1/4 flex justify-center items-center md:justify-end md:pr-[20px]'>
-                <div className='un_image h-12 w-12 rounded-full object-cover bg-black text-white flex justify-center items-center md:h-16 md:w-16 md:text-[24px]'>AL</div>
+                <div className='un_image h-12 w-12 rounded-full object-cover bg-black text-white flex justify-center items-center md:h-16 md:w-16 md:text-[24px]'>{user.split(' ')[0].slice(0,2).toUpperCase()}</div>
             </div>
       
        </div>
