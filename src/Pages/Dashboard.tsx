@@ -1,6 +1,8 @@
 import  './css/Dashboard.css'
 import DemoPage from '../components/table/page';
 import EmailForm from '@/components/emailForm/EmailForm';
+import AddProfileForm from '@/components/addProfileForm/AddProfileForm';
+import ImportProfileForm from '@/components/importProfileForm/ImportProfileForm';
 
 export default function Dashboard() {
 
@@ -22,14 +24,10 @@ export default function Dashboard() {
       
        </div>
        <div className='dashboard_down space-y-5 h-[85%] w-full flex justify-start flex-col items-center '>
-         <div className='up_buttons flex space-x-5 justify-center items-center h-[10%] w-full md:invisible md:h-0 md:w-0 md:opacity-0 '>
-            <button onClick={()=>{
-              // dispatch(crEmail())  write a function to implement creating a profile
-            }} className='add_btn h-[38px] rounded-sm  text-sm font-semibold tracking-tighter w-40'>Add New</button>
-            <button onClick={()=>{
-              // dispatch(importEmail()) write a function to implement mail
-            }}  className='import_btn h-[38px] rounded-sm border  text-sm font-semibold tracking-tighter w-40'>Import</button>
-         </div>
+         <div className='up_buttons flex space-x-5 justify-center gap-[20px] items-center h-[10%] w-full md:invisible md:h-0 md:w-0 md:opacity-0 '>
+           <AddProfileForm/>
+           <ImportProfileForm />
+           </div>
          <div className='table_cont overflow-y-scroll h-[95%] w-full flex justify-center items-center flex-col p-0 m-0'>
           <DemoPage />
          </div>

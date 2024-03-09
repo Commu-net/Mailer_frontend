@@ -35,6 +35,8 @@ import { Input } from "@/components/ui/input"
 import { GoPlusCircle } from "react-icons/go";
 import { FaFile } from "react-icons/fa";
 
+import AddProfileForm from '../addProfileForm/AddProfileForm'
+import ImportProfileForm from '../importProfileForm/ImportProfileForm'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -90,18 +92,8 @@ export function DataTable<TData, TValue>(
           className="max-w-sm rounded-sm border-black border-[1px]"
         />
         <div className='invisible h-0 w-0 md:h-12 md:w-3/5 md:visible md:h-8 md:mx-[15px] flex justify-start items-center gap-[15px]'>
-          <button onClick={()=>{
-            // dispatch(crEmail()) 
-          }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
-            <div><GoPlusCircle /></div>
-            <div>Add</div>
-            </button>
-          <button onClick={()=>{
-            // dispatch(importEmail()) 
-          }} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px]'>
-            <div><FaFile /></div>
-            <div>Import</div>
-            </button>
+          <AddProfileForm />
+          <ImportProfileForm/>
         </div>
         </div>
         <DropdownMenu > 
