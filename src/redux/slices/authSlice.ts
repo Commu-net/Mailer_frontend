@@ -9,6 +9,7 @@ export interface CounterState {
 // the state data
 const initialState: CounterState = {
     isLoggedIn: false,
+    
     userName: null,
 }
 

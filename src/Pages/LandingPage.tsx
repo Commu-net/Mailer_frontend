@@ -23,7 +23,7 @@ function LandingPage() {
         // set the protected URL to redirect after successful login
     }
 
-
+    
     function isRedirected() {
         // Check if URL contains the expected parameter
         var urlParams = new URLSearchParams(window.location.search);
