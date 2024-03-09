@@ -1,16 +1,8 @@
 
 import './css/LoginPage.css'
 // import { GoogleLogin } from '@react-oauth/google'
-import {login} from '../redux/slices/authSlice'
-import { useDispatch } from 'react-redux'
-import { 
-  // NavLink,
-   useNavigate
-   } from 'react-router-dom'
 import { useEffect } from 'react';
 export default function LoginPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   
 
   // added for testing purpose
@@ -54,11 +46,7 @@ export default function LoginPage() {
   return (
     <div className='login h-[1000px] w-[1304px]'>
      
-      <button onClick={()=>{
-        dispatch(login())
-        navigate('/dashboard')
-      }}
-      > Log in </button>
+      <a href='https://api.api-communet.tech/api/v1/user/auth/google'>log in </a>
        
     </div> 
   )
