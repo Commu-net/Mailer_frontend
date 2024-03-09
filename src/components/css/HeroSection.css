@@ -1,7 +1,7 @@
 .span_1{
     color: transparent;
     background-clip: text;
-    background-image: linear-gradient(to right,var(--blue), #19b3f5);
+    background-image: linear-gradient(to right,var(--blue), #03c0d9);
 }
 .gs_button{
     background-color: var(--blue);
