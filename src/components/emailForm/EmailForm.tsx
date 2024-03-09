@@ -51,7 +51,7 @@ async function sendMail(values: z.infer<typeof formSchema>, profileList: any[]) 
     formData.append('file', values.file);
     formData.append('profiles', JSON.stringify(profileList)); // chck for error regarding type of date 
 
-    const response = await fetch('https://api.api-communet.tech/api/v1/send', {
+    const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
         method: 'POST',
         body: formData,
     })
