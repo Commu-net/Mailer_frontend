@@ -5,12 +5,11 @@ import './css/LandingPage.css'
 import Globalization from "@/components/Globalization";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices/authSlice";
 
 
 function LandingPage() {
-    const isLogggednIn = useSelector((state: any) => state.auth.isLogggednIn)
     const dipatch = useDispatch();
     var storedSubValue = localStorage.getItem('communet_user_sub');
     
