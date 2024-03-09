@@ -7,10 +7,12 @@ import { FaArrowRight } from "react-icons/fa6";
 import { useSelector,useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { RootState } from '../redux/store'
+
 
 function Navbar() {
   const dispatch = useDispatch();
-  const isLogged = useSelector((state: any) => state.auth.isLoggedIn);
+  const isLogged = useSelector((state: RootState) => state.authorization.isLoggedIn);
   const navigate = useNavigate();
   const [isVertVisible, setVertVisible] = useState(true);
   function clickHandler() {
