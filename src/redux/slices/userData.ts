@@ -28,15 +28,12 @@ export const userDataSlice = createSlice({
   name: 'emailList',
   initialState,
   reducers: {
-    setUserInfo:( initialState,action)=>{
-        initialState.userName = action.payload.name
-        initialState.userEmail = action.payload.useremail
-        action.payload.emails.forEach((element: {
-                id: string; name: string; email: string; company // defigning the type of the state
-                    : string; profession: string; date: string
-            }) => {
-            initialState.userLeads.push(element);
-        });
+    setUserInfo: (state, action) => {
+      state.userName = action.payload.name;
+      state.userEmail = action.payload.useremail;
+      action.payload.emails.forEach((element: Profile) => {
+        state.userLeads.push(element);
+      });
     }
   }
 })
