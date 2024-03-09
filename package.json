@@ -21,6 +21,7 @@
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.1.0",
     "@tanstack/react-table": "^8.11.8",
+    "@vee-validate/zod": "^4.12.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "hamburger-react": "^2.5.0",
@@ -35,6 +36,7 @@
     "tailwind": "^4.0.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.12.6",
     "zod": "^3.22.4"
   },
   "devDependencies": {
