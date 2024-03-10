@@ -44,13 +44,12 @@ const formSchema = z.object({
 })
 
 
-async function sendMail(values: z.infer<typeof formSchema>, profileList: any[]) {
+async function sendMail(values: z.infer<typeof formSchema>, emailString: string) {
     const formData = new FormData();
     formData.append('subject', values.title);
     formData.append('text', values.body);
     formData.append('file', values.file);
-    // formData.append('emails', JSON.stringify(profileList)); // chck for error regarding type of date 
-    console.log(profileList)
+    formData.append('emails', emailString); // chck for error regarding type of date 
 
     const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
         method: 'POST',
@@ -65,7 +64,13 @@ export function onSend(values: z.infer<typeof formSchema>,profileList: any[]) {
 
     console.log("this is the form",values)
     console.log("this is the profiles",profileList)
-    sendMail(values,profileList)
+    let str = ""
+    for (let i = 0; i < profileList.length; i++) {
+        str+=profileList[i].email+","
+    }
+    str = str.slice(0,-1)
+    console.log(str)
+    sendMail(values,str)
     
 
 }
