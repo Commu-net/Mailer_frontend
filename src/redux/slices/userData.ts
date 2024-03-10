@@ -11,12 +11,14 @@ export interface Profile {
 }
 
 export interface userData {
+    userId:string,
     userName:string,
     userEmail:string,
     userLeads:Profile[]
 }
 
 const initialState : userData = {
+    userId:"",
     userName:'',
     userEmail:'',
    userLeads:[]
@@ -29,6 +31,7 @@ export const userDataSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action) => {
+      state.userId = action.payload.id;
       state.userName = action.payload.name;
       state.userEmail = action.payload.useremail;
       action.payload.emailSelected?.forEach((element: Profile) => {

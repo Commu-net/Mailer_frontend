@@ -131,6 +131,7 @@ export function DataTable<TData, TValue>(
              className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"
             key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
+                console.log(header.id)
                 return (  
                   <TableHead
                   className="border-b-20 w-[30px] text-white text-[12px] font-bold py-1"
@@ -149,8 +150,10 @@ export function DataTable<TData, TValue>(
         </TableHeader>
         <TableBody className="  h-fit]">
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
+            table.getRowModel().rows.map((row) =>{
+              console.log(row)
+              return (
+                <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
                 className="h-[60px]"
@@ -161,7 +164,9 @@ export function DataTable<TData, TValue>(
                   </TableCell>
                 ))}
               </TableRow>
-            ))
+              )
+            
+            })
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">

@@ -19,6 +19,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 
+import {RootState } from "@/redux/store"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -28,6 +29,7 @@ import { GoPlusCircle } from "react-icons/go"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
+import { useSelector } from "react-redux"
 
 const profileSchema = z.object({
     name:z.string({required_error:"name is required"}).min(2,'name should not be empty or less than 2 letter').max(50),
@@ -38,16 +40,30 @@ const profileSchema = z.object({
 
 
 
-export function addProfile(values: z.infer<typeof profileSchema>) {
+export function addProfile(values: z.infer<typeof profileSchema>,userId:string) {
 
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
-    
-   // write an api call to add the profile to the user profile list
+     
+    fetch("https://api.api-communet.tech/api/v1/mail", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            userId: userId,
+            data: {
+                email: values.email,
+                currentDesignation: values.designation,
+                name: values.name,
+                company: values.company,
+            },
+        }),
+    })
 }
 
 export default function AddProfileForm() {
-    
+    const userId = useSelector((state: RootState) => state.userData.userId)
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
@@ -60,8 +76,8 @@ export default function AddProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof profileSchema>) {
-        addProfile(values)
+    function onSubmit(values: z.infer<typeof profileSchema>,userId:string) {
+        addProfile(values,userId)
     }
 
     return (<Dialog>
@@ -78,7 +94,7 @@ export default function AddProfileForm() {
             <Form {...form}>
                 <form onSubmit={(event) => {
                     event.preventDefault()
-                    onSubmit(form.getValues())
+                    onSubmit(form.getValues(),userId)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField

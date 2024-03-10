@@ -26,7 +26,9 @@ import { Input } from "@/components/ui/input"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { useSelector } from "react-redux"
 
+import { RootState } from "@/redux/store"
 
 const profileSchema = z.object({
     name:z.string({required_error:"name is required"}).min(2,'name should not be empty or less than 2 letter').max(50),
@@ -37,16 +39,41 @@ const profileSchema = z.object({
 
 
 
-export function EditProfile(values: z.infer<typeof profileSchema>) {
-
+export function EditProfile(values: z.infer<typeof profileSchema>,userid:string) {
+    console.log(values)
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
     // write an api call to update the profile 
+    fetch("https://api.api-communet.tech/api/v1/mail", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            userId: userid,
+            data: {
+                _id: "65ec9df9a5e535a714ad1bb7",
+                email: "newEmailBC@gmail.com",
+                currentDesignation: "big owner",
+                name: "new Mailer",
+                company: "big limited",
+            },
+        }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Success:", data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 
 }
 
 export default function EditProfileForm() {
     
+    const userid = useSelector((state: RootState) => state.userData.userId); 
+
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
@@ -59,8 +86,9 @@ export default function EditProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof profileSchema>) {
-        EditProfile(values)
+    function submithandler(values: z.infer<typeof profileSchema>,userid:string) {
+        console.log(values,userid)
+        EditProfile(values,userid)
     }
 
     return (<Dialog>
@@ -76,8 +104,9 @@ export default function EditProfileForm() {
             </DialogHeader>
             <Form {...form}>
                 <form onSubmit={(event) => {
+                    console.log(form.getValues())
                     event.preventDefault()
-                    onSubmit(form.getValues())
+                    submithandler(form.getValues(),userid)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField

@@ -37,6 +37,7 @@ export default function Dashboard() {
     if (storedSubValue) {
         fetchUserData().then(data => {
             dispatch(setUserInfo({
+                id: data?.data?._id,
                 name: data?.data?.name,
                 useremail: data?.data?.email,
                 emails: data?.data?.emailSelected

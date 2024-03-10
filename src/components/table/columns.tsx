@@ -165,8 +165,9 @@ export const columns: ColumnDef<Payment>[] = [
                   event.preventDefault()
               }}
             >
-              <EditProfileForm/>
-              
+              <EditProfileForm />  
+               {/* // waiting for the profile id to be passed */}
+
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
