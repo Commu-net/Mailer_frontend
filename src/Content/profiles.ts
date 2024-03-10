@@ -46,8 +46,8 @@ export interface Profile {
       {
         id: "2c5f8a91",
         company: "Microsoft",
-        name: "John Doe",
-        email: "john.doe@example.com",
+        name: "chahat Doe",
+        email: "chahatsagar2003@gmail.com",
         profession:"Software Developer",
         date:"04/04/2024"
   
