@@ -24,9 +24,23 @@ export type Payment = {
   company: string
   name: string
   email: string
-  profession:string
-  date:string
+  profession: string
+  date: string
 }
+
+import  EditProfileForm  from "@/components/editProfileForm/EditProfileForm"
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 
 export const columns: ColumnDef<Payment>[] = [
@@ -38,26 +52,27 @@ export const columns: ColumnDef<Payment>[] = [
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
-        onCheckedChange={(value: boolean) => 
-          { 
-            table.toggleAllPageRowsSelected(!!value)}}
+        onCheckedChange={(value: boolean) => {
+          table.toggleAllPageRowsSelected(!!value)
+        }}
         aria-label="Select all"
       />
     ),
     cell: ({ row }) => {
       //  the function hre to update the email list
       const dispatch = useDispatch()
-      
-      
+
+
       return (<Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value:boolean) =>{
+        onCheckedChange={(value: boolean) => {
           dispatch(updateMailList(row.original))
           // console.log(data)
-          row.toggleSelected(!!value)}}
+          row.toggleSelected(!!value)
+        }}
         aria-label="Select row"
       />)
-        },
+    },
     enableSorting: false,
     enableHiding: false,
   },
@@ -132,11 +147,10 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    header:"Actions",
+    header: "Actions",
     id: "actions",
-    cell: ({ row }) => {
-      const payment = row.original
-     
+    cell: () => {  
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -147,18 +161,37 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={(event) => {
+                  event.preventDefault()
+              }}
             >
-              Update profile
+              <EditProfileForm/>
+              
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={(event) => {
+                  event.preventDefault()
+              }}
             >
-              Delete profile
+              <AlertDialog>
+                <AlertDialogTrigger className="w-[100%]" style={{outline:"2px solid transparent"}}>Delete</AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete this profile
+                      and remove the data from our servers.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>Continue</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-          
+
           </DropdownMenuContent>
         </DropdownMenu>
       )

@@ -23,7 +23,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-import { GoPlusCircle } from "react-icons/go"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -38,15 +37,15 @@ const profileSchema = z.object({
 
 
 
-export function addProfile(values: z.infer<typeof profileSchema>) {
+export function EditProfile(values: z.infer<typeof profileSchema>) {
 
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
-    
-   // write an api call to add the profile to the user profile list
+    // write an api call to update the profile 
+
 }
 
-export default function AddProfileForm() {
+export default function EditProfileForm() {
     
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
@@ -61,19 +60,19 @@ export default function AddProfileForm() {
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof profileSchema>) {
-        addProfile(values)
+        EditProfile(values)
     }
 
     return (<Dialog>
         <DialogTrigger asChild>
-            <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm border-dashed border-[1px] border-black flex justify-center items-center gap-[10px] bg-white active:bg-white'> 
-            <div><GoPlusCircle /></div>
-            <div>Add</div>
+            <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm  flex justify-center items-center gap-[10px] bg-white active:bg-white'> 
+            
+            <div>Edit</div>
             </Button>
         </DialogTrigger>
         <DialogContent className="W-[300px] sm:max-w-[425px] h-[500px]">
             <DialogHeader>
-                <DialogTitle>Add profile</DialogTitle>
+                <DialogTitle>Edit profile</DialogTitle>
             </DialogHeader>
             <Form {...form}>
                 <form onSubmit={(event) => {
@@ -140,7 +139,7 @@ export default function AddProfileForm() {
                         )}
                     />
                     <div className="w-[100%] flex justify-center items-center">
-                    <Button type="submit" className="w-[20%] ">Create</Button>
+                    <Button type="submit" className="w-[20%] ">Update</Button>
 
                     </div>
                 </form>

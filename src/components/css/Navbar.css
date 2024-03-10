@@ -22,7 +22,7 @@
     padding-right: 2%;
     top: 0;
     width: 100vw;
-    height: 5rem;
+    height: 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@
     width: 74px;
 }
 .nav_options{
-    width: 400px;
+    width: 500px;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -43,18 +43,16 @@
 color: black;
 }
 .auth_buttons{
-    width: 300px;
-    gap: 10px;
+    width: 100px;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 .authrized_options{
     display: flex;
-    gap: 60px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
     width: 100%;
 }
@@ -72,11 +70,12 @@ color: black;
  display: flex;
  justify-content: space-around;
  padding-right: 2%;
+ gap: 100px;
  width: 80%;
 }
 
 .Sign_in,.authzed_buttn{
-    width: 55%;
+    width: 100%;
     display: flex;
     justify-content: center;
     gap:5px;

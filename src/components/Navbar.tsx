@@ -38,6 +38,11 @@ function Navbar() {
           <NavLink className="nav_option_text" to="./resources">
             Resources
           </NavLink>
+          {
+            isLogged ? <NavLink className="nav_option_text" to="./dashboard">
+            Dashboard
+            </NavLink> : null
+          }
         </div>
         <div className="auth_buttons">
           {
@@ -49,13 +54,7 @@ function Navbar() {
           >
             Log in <FaArrowRight />{" "}
           </NavLink>):
-          (<div className="authrized_options"><NavLink
-            to='/dashboard'
-            className="authzed_buttn"
-            style={{ color: "white" }}
-          >
-            Dashboard
-          </NavLink>
+          (<div className="authrized_options">
           <button
           onClick={()=>{
             dispatch(logout());

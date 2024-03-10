@@ -1,9 +1,7 @@
 .login{
     height: 100%;
     width: 100%;
-    background-color: rgba(66, 138, 245, 0.13);
     display: flex;
-    flex-direction: column;
     gap: 50px;
     justify-content: center;
     align-items: center;
@@ -17,4 +15,74 @@
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
+}
+.image_container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(rgba(0, 13, 255, 0.924),rgba(0, 13, 255, 0.524),rgba(0, 1, 12, 0),white,white);
+    width: 50%;
+}
+.planet_cont{
+    height: 400px;
+    width:400px;
+    background-image: url('../../assets/images/earth.png');  
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.login_sect{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.plane{
+    position: relative;
+    left: 80px;
+    top: -80px;
+    animation: plane 10s infinite linear ;
+}
+@keyframes plane {
+    0% {
+      left: 85px;
+      top: -85px;
+      transform: scale(0.5);
+    }
+    20%{
+        left: 88px;
+      top: -83px;
+      transform: scale(0.55);
+
+    }
+    40%{
+        left: 80px;
+        top: -80px;
+      transform: scale(0.57);
+
+    }60%{
+        left: 84px;
+        top: -84px;
+      transform: scale(0.5);
+
+    }
+    80%{
+      left: 83px;
+      top: -86px;
+      transform:scale(0.6);
+
+    }
+    100%{
+        left: 88px;
+        top: -85px;
+        transform: scale(0.5);
+    }
 }
