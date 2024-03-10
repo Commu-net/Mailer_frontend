@@ -46,9 +46,9 @@ const formSchema = z.object({
 })
 
 
-async function sendMail(values: z.infer<typeof formSchema>, emailString: string) {
+async function sendMail(values: z.infer<typeof formSchema>, emailString: string,userEmail: string) {
 
-    const userEmail = useSelector((state: RootState) => state.userData.userEmail);
+   
 
     const formData = new FormData();
     formData.append('subject', values.title);
@@ -68,7 +68,7 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string)
 
 }
 
-export function onSend(values: z.infer<typeof formSchema>,profileList: any[]) {
+export function onSend(values: z.infer<typeof formSchema>,profileList: any[], userEmail: string) {
 
     console.log("this is the form",values)
     console.log("this is the profiles",profileList)
@@ -78,13 +78,13 @@ export function onSend(values: z.infer<typeof formSchema>,profileList: any[]) {
     }
     str = str.slice(0,-1) 
     console.log(str)
-    sendMail(values,str)
+    sendMail(values,str, userEmail)
     
 
 }
 
 export default function EmailForm() {
-    
+    const userEmail = useSelector((state: RootState) => state.userData.userEmail);
     const emailList = useSelector((state:any) => state.emailList.emailList)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -97,7 +97,7 @@ export default function EmailForm() {
 
     // 2. Define a submit handler.
     function submitHandler(values: z.infer<typeof formSchema>) {
-        onSend(values,emailList)
+        onSend(values,emailList, userEmail)
     }
 
     return (<Dialog>
