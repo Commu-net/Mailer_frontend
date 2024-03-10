@@ -55,9 +55,9 @@ export interface Profile {
       },
       {
         id: "5e9d764f",
-        company: "Apple",
-        name: "Emily Johnson",
-        email: "emily@apple.com",
+        company: "ritu raj ",
+        name: "ritu raj",
+        email: "ritu.12797.raj@gmail.com",
         profession:"Software Developer",
         date:"05/05/2024"
   
