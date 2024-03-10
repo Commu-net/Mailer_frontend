@@ -68,7 +68,7 @@ export function onSend(values: z.infer<typeof formSchema>,profileList: any[]) {
     for (let i = 0; i < profileList.length; i++) {
         str+=profileList[i].email+","
     }
-    str = str.slice(0,-1)
+    str = str.slice(0,-1) 
     console.log(str)
     sendMail(values,str)
     
