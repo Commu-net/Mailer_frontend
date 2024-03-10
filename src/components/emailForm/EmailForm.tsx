@@ -10,6 +10,8 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 
+import { RootState } from "@/redux/store"
+
 import {
     Form,
     FormControl,
@@ -45,11 +47,17 @@ const formSchema = z.object({
 
 
 async function sendMail(values: z.infer<typeof formSchema>, emailString: string) {
+
+    const userEmail = useSelector((state: RootState) => state.userData.userEmail);
+
     const formData = new FormData();
     formData.append('subject', values.title);
     formData.append('text', values.body);
     formData.append('file', values.file);
-    formData.append('emails', emailString); // chck for error regarding type of date 
+    formData.append('emails', emailString);
+    formData.append('sender', userEmail);
+
+     // chck for error regarding type of date 
 
     const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
         method: 'POST',
