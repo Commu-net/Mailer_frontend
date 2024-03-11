@@ -20,7 +20,6 @@ import { useDispatch } from "react-redux"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
-  [x: string]: any
   id: string
   company: string
   name: string
@@ -150,7 +149,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     header: "Actions",
     id: "actions",
-    cell: ({row}) => {  
+    cell: ({row}:any) => {  
        console.log("this is the row ",row,row.original._id);
       return (
         <DropdownMenu>
