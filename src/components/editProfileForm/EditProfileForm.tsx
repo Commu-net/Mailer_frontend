@@ -103,10 +103,10 @@ export default function EditProfileForm(rowData:any) {
             </DialogHeader>
             <Form {...form}>
                 <form onSubmit={(event) => {
+                    console.log('submitted')
                     event.preventDefault()
                     console.log(form.getValues())
                     submithandler(form.getValues(),userid)
-                    console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}
@@ -167,7 +167,10 @@ export default function EditProfileForm(rowData:any) {
                         )}
                     />
                     <div className="w-[100%] flex justify-center items-center">
-                    <Button type="submit" className="w-[20%] ">Update</Button>
+                    <Button type="submit" className="w-[20%] " onClick={()=>{
+                        console.log('submitted')
+                        console.log(form.getValues())
+                    }}>Update</Button>
 
                     </div>
                 </form>
