@@ -45,6 +45,7 @@ export function addProfile(values: z.infer<typeof profileSchema>,userId:string) 
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
      
+    console.log(values,userId)
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "POST",
         headers: {
