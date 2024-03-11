@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
+  [x: string]: any
   id: string
   company: string
   name: string
@@ -150,7 +151,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Actions",
     id: "actions",
     cell: ({row}) => {  
-       console.log("this is the row ",row);
+       console.log("this is the row ",row,row.original._id);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -165,8 +166,8 @@ export const columns: ColumnDef<Payment>[] = [
                   event.preventDefault()
               }}
             >
-              <EditProfileForm />  
-               {/* // waiting for the profile id to be passed */}
+              <EditProfileForm row={row.original}/>  
+              
 
             </DropdownMenuItem>
             <DropdownMenuSeparator />

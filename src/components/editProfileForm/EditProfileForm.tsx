@@ -31,6 +31,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
 
 const profileSchema = z.object({
+    id:z.string(),
     name:z.string({required_error:"name is required"}).min(2,'name should not be empty or less than 2 letter').max(50),
     email:z.string().email(),
     company:z.string().min(2).max(50),
@@ -40,9 +41,7 @@ const profileSchema = z.object({
 
 
 export function EditProfile(values: z.infer<typeof profileSchema>,userid:string) {
-    console.log(values)
-    values.company = values.company? values.company : " - "
-    values.designation = values.designation? values.designation : " - "
+    console.log(values,userid)
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "POST",
@@ -52,11 +51,11 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string)
         body: JSON.stringify({
             userId: userid,
             data: {
-                _id: "65ec9df9a5e535a714ad1bb7",
-                email: "newEmailBC@gmail.com",
-                currentDesignation: "big owner",
-                name: "new Mailer",
-                company: "big limited",
+                _id: values.id,
+                email: values.email,
+                currentDesignation: values.designation,
+                name: values.name,
+                company: values.company,
             },
         }),
     })
@@ -70,18 +69,19 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string)
 
 }
 
-export default function EditProfileForm() {
+export default function EditProfileForm(rowData:any) {
     
     const userid = useSelector((state: RootState) => state.userData.userId); 
+    const rowId = rowData._id
 
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
+            id: rowId,
             name: "",
             email: "",
             company: "",
             designation: ""
-
         },
     })
 
