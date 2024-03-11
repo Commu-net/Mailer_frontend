@@ -33,6 +33,8 @@ export default function Dashboard() {
         });
         let data = await response.json()
         console.log("this is the user data",data)
+
+       
         return data; 
     }
     if (storedSubValue) {

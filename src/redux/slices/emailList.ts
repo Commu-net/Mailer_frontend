@@ -6,8 +6,8 @@ export interface Profile {
   name:string,
   email:string,
   company:string,
-  profession:string,
-  date:string,
+  currentDesignation:string,
+  addedOn:string,
 
 }
 

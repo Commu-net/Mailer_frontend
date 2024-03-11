@@ -131,7 +131,6 @@ export function DataTable<TData, TValue>(
              className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"
             key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                console.log(header.id)
                 return (  
                   <TableHead
                   className="border-b-20 w-[30px] text-white text-[12px] font-bold py-1"

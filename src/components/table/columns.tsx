@@ -24,8 +24,8 @@ export type Payment = {
   company: string
   name: string
   email: string
-  profession: string
-  date: string
+  currentDesignation: string
+  addedOn: string
 }
 
 import  EditProfileForm  from "@/components/editProfileForm/EditProfileForm"
@@ -119,7 +119,7 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    accessorKey: "profession",
+    accessorKey: "currentDesignation",
     header: ({ column }) => {
       return (
         <Button
@@ -133,7 +133,7 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    accessorKey: "date",
+    accessorKey: "addedOn",
     header: ({ column }) => {
       return (
         <Button
