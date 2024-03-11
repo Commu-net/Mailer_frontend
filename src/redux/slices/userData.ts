@@ -37,7 +37,6 @@ export const userDataSlice = createSlice({
       action.payload.emails?.forEach((element: Profile) => {
         console.log("this is the element",element)
         state.userLeads.find((item:Profile) => item.email === element.email) ? state.userLeads : state.userLeads.push(element);
-        console.log(state.userLeads.find((item:Profile) => item.email === element.email)," for ",element)
       });
     }
   }
