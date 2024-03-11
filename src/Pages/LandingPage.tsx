@@ -36,7 +36,7 @@ function LandingPage() {
             console.log('User is redirected.');
             const url = new URLSearchParams(window.location.search).toString()
             const userEmail = decodeURIComponent(url.split("=")[1].split("&")[0])
-            const userName = decodeURIComponent(url.split("=")[2].split("&")[0])
+            const userName = decodeURIComponent(url.split("=")[2].split("%")[0])
             const  sub = url.split("=")[3];
             // after the user logs in, save the 'sub' value to local storage
             localStorage.setItem('communet_user_sub', sub);
