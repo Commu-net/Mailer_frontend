@@ -68,6 +68,7 @@ export async function addProfile(values: z.infer<typeof profileSchema>,userId:st
 
 export default function AddProfileForm() {
     const userId = useSelector((state: RootState) => state.userData.userId)
+    console.log("this is user id ",userId)
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
