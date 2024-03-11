@@ -52,7 +52,7 @@ export async function addProfile(values: z.infer<typeof profileSchema>,userId:st
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            userId: '65c3c7ab19728265ad970414',
+            userId: userId,
             data: [{
                 email: values.email,
                 currentDesignation: values.designation,
