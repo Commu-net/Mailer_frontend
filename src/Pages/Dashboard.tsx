@@ -32,7 +32,7 @@ export default function Dashboard() {
             referrerPolicy: 'no-referrer',
         });
         let data = await response.json()
-        return data;
+        return data; 
     }
     if (storedSubValue) {
         fetchUserData().then(data => {
