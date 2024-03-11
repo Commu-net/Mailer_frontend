@@ -18,7 +18,7 @@ export interface userData {
 }
 
 const initialState : userData = {
-    userId:"65c3c7ab19728265ad970414",
+    userId:"",
     userName:'',
     userEmail:'',
    userLeads:[]
