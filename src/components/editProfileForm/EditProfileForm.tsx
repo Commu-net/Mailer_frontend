@@ -94,8 +94,7 @@ export default function EditProfileForm(rowData:any) {
     return (<Dialog>
         <DialogTrigger asChild>
             <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm  flex justify-center items-center gap-[10px] bg-white active:bg-white'> 
-            
-            <div>Edit</div>
+              Edit
             </Button>
         </DialogTrigger>
         <DialogContent className="W-[300px] sm:max-w-[425px] h-[500px]">
@@ -104,8 +103,8 @@ export default function EditProfileForm(rowData:any) {
             </DialogHeader>
             <Form {...form}>
                 <form onSubmit={(event) => {
-                    console.log(form.getValues())
                     event.preventDefault()
+                    console.log(form.getValues())
                     submithandler(form.getValues(),userid)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
