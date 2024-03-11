@@ -40,13 +40,13 @@ const profileSchema = z.object({
 
 
 
-export function addProfile(values: z.infer<typeof profileSchema>,userId:string) {
+export async function addProfile(values: z.infer<typeof profileSchema>,userId:string) {
 
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
      
     console.log(values,userId)
-    fetch("https://api.api-communet.tech/api/v1/mail", {
+   let data = await fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -61,6 +61,9 @@ export function addProfile(values: z.infer<typeof profileSchema>,userId:string) 
             }],
         }),
     })
+    let response = await data.json()
+    console.log(response)
+    
 }
 
 export default function AddProfileForm() {
@@ -77,7 +80,7 @@ export default function AddProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof profileSchema>,userId:string) {
+    function submitHandler(values: z.infer<typeof profileSchema>,userId:string) {
         addProfile(values,userId)
     }
 
@@ -95,7 +98,7 @@ export default function AddProfileForm() {
             <Form {...form}>
                 <form onSubmit={(event) => {
                     event.preventDefault()
-                    onSubmit(form.getValues(),userId)
+                    submitHandler(form.getValues(),userId)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField
