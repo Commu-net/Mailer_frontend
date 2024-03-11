@@ -40,7 +40,7 @@ const profileSchema = z.object({
 
 
 
-export function EditProfile(values: z.infer<typeof profileSchema>,userid:string) {
+export function EditProfile(values: z.infer<typeof profileSchema>,userid:string, rowId:string) {
     console.log(values,userid)
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
@@ -51,7 +51,7 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string)
         body: JSON.stringify({
             userId: userid,
             data: {
-                _id: values.id,
+                _id: rowId,
                 email: values.email,
                 currentDesignation: values.designation,
                 name: values.name,
@@ -72,12 +72,11 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string)
 export default function EditProfileForm(rowData:any) {
     
     const userid = useSelector((state: RootState) => state.userData.userId); 
-    const rowId = rowData._id
+
 
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
-            id: rowId,
             name: "",
             email: "",
             company: "",
@@ -88,7 +87,8 @@ export default function EditProfileForm(rowData:any) {
     // 2. Define a submit handler.
     function submithandler(values: z.infer<typeof profileSchema>,userid:string) {
         console.log(values,userid)
-        EditProfile(values,userid)
+        const rowId = rowData._id
+        EditProfile(values,userid,rowId)
     }
 
     return (<Dialog>
