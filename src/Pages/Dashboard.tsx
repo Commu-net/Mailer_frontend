@@ -15,6 +15,16 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.userData.userName);
 
+  function formatDate(dateString: string) {
+    let date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const year = date.getFullYear();
+
+    const output = `${day}/${month}/${year}`;
+    return output;
+  }
+
   useEffect(() => {
     var storedSubValue = localStorage.getItem('communet_user_sub');
 
@@ -45,15 +55,7 @@ export default function Dashboard() {
           useremail: localStorage.getItem('communet_user_email'),
           emails: data?.data.map((item: any) => ({
             ...item,
-            addedOn: () => {
-              const date = new Date(item.addedOn);
-              const day = String(date.getDate()).padStart(2, '0');
-              const month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-              const year = date.getFullYear();
-
-              const output = `${day}/${month}/${year}`;
-              return output;
-            }
+            addedOn: formatDate(item.addedOn)
           }))
         }))
       })
