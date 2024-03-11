@@ -32,13 +32,13 @@ export default function Dashboard() {
             referrerPolicy: 'no-referrer',
         });
         let data = await response.json()
-        console.log("this is the user data",user)
+        console.log("this is the user data",data)
         return data; 
     }
     if (storedSubValue) {
         fetchUserData().then(data => {
             dispatch(setUserInfo({
-                id: data.data._id? data.data._id: '65c38a36f478503907137ed6' ,   // temporarly getting id like this will updae when api gets updated 
+                id: data.data._id? data.data._id: Math.random().toString() ,   // temporarly getting id like this will updae when api gets updated 
                 name: localStorage.getItem('communet_user_name'),
                 useremail: localStorage.getItem('communet_user_email'),
                 emails: data?.data
