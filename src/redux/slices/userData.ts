@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // defigning the type of the state
 export interface Profile {
-  id:string,
+  _id:string,
   name:string,
   email:string,
   company:string,
-  profession:string,
-  date:string,
+  currentDesignation:string,
+  addedOn:string,
 }
 
 export interface userData {
@@ -36,7 +36,7 @@ export const userDataSlice = createSlice({
       state.userEmail = action.payload.useremail;
       action.payload.emails?.forEach((element: Profile) => {
         console.log("this is the element",element)
-        state.userLeads.find((item:Profile) => item.id === element.id) ? state.userLeads : state.userLeads.push(element);
+        state.userLeads.find((item:Profile) => item._id === element._id) ? state.userLeads : state.userLeads.push(element);
       });
     }
   }

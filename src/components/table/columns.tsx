@@ -20,12 +20,12 @@ import { useDispatch } from "react-redux"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
-  id: string
+  _id: string
   company: string
   name: string
   email: string
-  profession: string
-  date: string
+  currentDesignation: string
+  addedOn: string
 }
 
 import  EditProfileForm  from "@/components/editProfileForm/EditProfileForm"
