@@ -167,11 +167,11 @@ export default function EditProfileForm(rowData:any) {
                         )}
                     />
                     <div className="w-[100%] flex justify-center items-center">
-                    <Button type="submit" className="w-[20%] " onClick={()=>{
-                        console.log('submitted')
-                        console.log(form.getValues())
+                    <Button type="submit" className="w-[20%] " onClick={(event)=>{
+                        event.preventDefault()
+                        submithandler(form.getValues(),userid)
                     }}>Update</Button>
-
+                       
                     </div>
                 </form>
             </Form>
