@@ -18,7 +18,7 @@ export interface userData {
 }
 
 const initialState : userData = {
-    userId:"",
+    userId:"65c3c7ab19728265ad970414",
     userName:'',
     userEmail:'',
    userLeads:[]
@@ -36,7 +36,7 @@ export const userDataSlice = createSlice({
       state.userEmail = action.payload.useremail;
       action.payload.emails?.forEach((element: any) => {
         console.log("this is the element",element)
-        state.userLeads.find((item:Profile) => item.id === element._id) ? state.userLeads : state.userLeads.push(element);
+        state.userLeads.find((item:Profile) => item.id == element._id) ? state.userLeads : state.userLeads.push(element);
       });
     }
   }
