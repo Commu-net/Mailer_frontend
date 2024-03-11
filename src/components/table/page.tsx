@@ -1,6 +1,8 @@
 import {  columns } from "./columns"
 import { DataTable } from "./data-table"
-import {emailContent} from '../../Content/profiles' // delete this - this is just for testing
+import { useSelector } from "react-redux"
+import { RootState } from "@/redux/store"
+ // delete this - this is just for testing
 // becaouse we are not using redux store here, we are using a dummy data from the emailContent file
 // now we extract user saved profiles from the redux store and pass it to the data prop of the data-table
 
@@ -11,8 +13,8 @@ import {emailContent} from '../../Content/profiles' // delete this - this is jus
 //  const data = useSelector((state: RootState) => state.emailList.emailList)
 
 export default  function DemoPage() {
-//   const data = useSelector((state: RootState) => state.emailList.emailList)     // use this line instead of the line below
-    const emailList = emailContent.profileList   //  dont use this line, this is just for testing
+  const data = useSelector((state: RootState) => state.userData.userLeads)     // use this line instead of the line below
+    const emailList = data  //  dont use this line, this is just for testing
     console.log(emailList)
   return (
     <div className="container max-w-full flex justify-center items-center  h-[100%] p-0 w-[100%]">
