@@ -38,7 +38,7 @@ export default function Dashboard() {
     if (storedSubValue) {
         fetchUserData().then(data => {
             dispatch(setUserInfo({
-                id: data.data._id? data.data._id: '65c3c7ab19728265ad970414' ,   // temporarly getting id like this will updae when api gets updated 
+                id: localStorage.getIitem('communet_user_id'),   // temporarly getting id like this will updae when api gets updated 
                 name: localStorage.getItem('communet_user_name'),
                 useremail: localStorage.getItem('communet_user_email'),
                 emails: data?.data
