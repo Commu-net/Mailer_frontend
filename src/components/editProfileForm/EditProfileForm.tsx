@@ -88,7 +88,7 @@ export default function EditProfileForm(rowData:any) {
     function submithandler(values: z.infer<typeof profileSchema>,userid:string) {
         console.log("these are the Updte form values",values,userid,rowData)
         const rowId = rowData.row._id
-        EditProfile(values,userid,rowId.row._id)
+        EditProfile(values,userid,rowId)
     }
 
     return (<Dialog>
