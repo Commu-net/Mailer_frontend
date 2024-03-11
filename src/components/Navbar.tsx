@@ -59,6 +59,7 @@ function Navbar() {
           onClick={()=>{
             dispatch(logout());
             navigate('/');
+            localStorage.removeItem('communet_user_sub');
 
           }}
             className="authzed_buttn"
