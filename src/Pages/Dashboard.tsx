@@ -18,7 +18,7 @@ export default function Dashboard() {
  useEffect(() => {
     var storedSubValue = localStorage.getItem('communet_user_sub');
 
-    async function fetchUserData(url = 'https://api.api-communet.tech/api/v1/user/getuser') {
+    async function fetchUserData(url = `https://api.api-communet.tech/api/v1/mail?userEmail=${localStorage.getItem('communet_user_email')}`) {
         const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
@@ -32,15 +32,16 @@ export default function Dashboard() {
             referrerPolicy: 'no-referrer',
         });
         let data = await response.json()
+        console.log("this is the user data",user)
         return data; 
     }
     if (storedSubValue) {
         fetchUserData().then(data => {
             dispatch(setUserInfo({
-                id: data?.data?._id,
-                name: data?.data?.name,
-                useremail: data?.data?.email,
-                emails: data?.data?.emailSelected
+                id: data.data._id? data.data._id: '65c38a36f478503907137ed6' ,   // temporarly getting id like this will updae when api gets updated 
+                name: localStorage.getItem('communet_user_name'),
+                useremail: localStorage.getItem('communet_user_email'),
+                emails: data?.data
             }))
         })
     }

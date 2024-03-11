@@ -34,7 +34,8 @@ export const userDataSlice = createSlice({
       state.userId = action.payload.id;
       state.userName = action.payload.name;
       state.userEmail = action.payload.useremail;
-      action.payload.emailSelected?.forEach((element: Profile) => {
+      action.payload.emails?.forEach((element: Profile) => {
+        console.log("this is the element",element)
         state.userLeads.push(element);
       });
     }

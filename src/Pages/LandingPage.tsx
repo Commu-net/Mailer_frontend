@@ -29,14 +29,19 @@ function LandingPage() {
         var urlParams = new URLSearchParams(window.location.search);
         return urlParams.has('sub'); // Assuming 'sub' parameter indicates successful redirection
     }
-    
+    // store user email and name from redirected url into the redux store and sub in local stprage for checing login validity 
     // run this only if user is not logged in or communet_user_sub is not in loal storage
     if(!storedSubValue){
         if (isRedirected()) {
             console.log('User is redirected.');
-            var sub = new URLSearchParams(window.location.search).toString().split("=")[3];
+            const url = new URLSearchParams(window.location.search).toString()
+            const userEmail = decodeURIComponent(url.split("=")[1].split("&")[0])
+            const userName = decodeURIComponent(url.split("=")[2].split("&")[0])
+            const  sub = url.split("=")[3];
             // after the user logs in, save the 'sub' value to local storage
             localStorage.setItem('communet_user_sub', sub);
+            localStorage.setItem('communet_user_email',userEmail)
+            localStorage.setItem('communet_user_name',userName)
             dispatch(login());
             // show dashboard and other user-specific content
     
