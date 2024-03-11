@@ -60,7 +60,7 @@ function Navbar() {
             dispatch(logout());
             navigate('/');
             localStorage.removeItem('communet_user_sub');
-
+            dispatch(logout());
           }}
             className="authzed_buttn"
             style={{ color: "white" }}
