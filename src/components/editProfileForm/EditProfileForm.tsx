@@ -86,7 +86,7 @@ export default function EditProfileForm(rowData:any) {
 
     // 2. Define a submit handler.
     function submithandler(values: z.infer<typeof profileSchema>,userid:string) {
-        console.log(values,userid)
+        console.log("these are the Updte form values",values,userid,rowData._id)
         const rowId = rowData._id
         EditProfile(values,userid,rowId)
     }
