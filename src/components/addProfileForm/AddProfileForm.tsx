@@ -52,12 +52,12 @@ export function addProfile(values: z.infer<typeof profileSchema>,userId:string) 
         },
         body: JSON.stringify({
             userId: userId,
-            data: {
+            data: [{
                 email: values.email,
                 currentDesignation: values.designation,
                 name: values.name,
                 company: values.company,
-            },
+            }],
         }),
     })
 }
