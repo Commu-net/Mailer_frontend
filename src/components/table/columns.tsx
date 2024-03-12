@@ -15,7 +15,7 @@ import {
 
 import { updateMailList } from "@/redux/slices/emailList"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -27,6 +27,8 @@ export type Payment = {
   currentDesignation: string
   addedOn: string
 }
+
+import { RootState } from "@/redux/store"
 
 import  EditProfileForm  from "@/components/editProfileForm/EditProfileForm"
 
@@ -42,6 +44,35 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
+
+async function deleteProfile( userId:string ,rowId :any){
+  // write a function to do a delete request to this api end point http://localhost:4000/api/v1/mail
+  // here it goes write the function to delete the profile
+  fetch("https://api.api-communet.tech/api/v1/mail", {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        userId: userId,
+        _id: rowId,
+    }),
+})
+    .then((response) => response.json())
+    .then((data) => {
+        console.log("Success:", data);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+    
+}
+
+function submitHandler(rowId:string){
+  let userId = useSelector((state: RootState) => state.userData.userId)
+  console.log("this is the row id",rowId,"this is the user ID",userId);
+  deleteProfile(userId,rowId)
+}
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -189,6 +220,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogAction>
                       <Button onClick={()=>{
                         console.log("delete this profile ",row.original)
+                        submitHandler(row.original.id)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
