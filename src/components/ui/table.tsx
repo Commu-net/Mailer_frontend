@@ -87,7 +87,6 @@ const TableCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
 >(({ className, ...props }, ref) => {
-  console.log("table cell", props,ref)
   return (
     <td
     ref={ref}

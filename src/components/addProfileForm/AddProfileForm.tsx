@@ -38,10 +38,8 @@ const profileSchema = z.object({
     designation:z.string().min(2).max(50),
 })
 
-
-
 export async function addProfile(values: z.infer<typeof profileSchema>,userId:string) {
-
+    
     values.company = values.company? values.company : " - "
     values.designation = values.designation? values.designation : " - "
      
