@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     gap: 50px;
+    background-color: #ffffff;
     justify-content: center;
     align-items: center;
 }
@@ -21,16 +22,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient(rgba(0, 13, 255, 0.924),rgba(0, 13, 255, 0.524),rgba(0, 1, 12, 0),white,white);
     width: 50%;
 }
 .planet_cont{
     height: 400px;
     width:400px;
-    background-image: url('../../assets/images/earth.png');  
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;  
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,44 +42,47 @@
     justify-content: center;
     align-items: center;
 }
-.plane{
-    position: relative;
-    left: 80px;
-    top: -80px;
-    animation: plane 10s infinite linear ;
+.card_container{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-@keyframes plane {
-    0% {
-      left: 85px;
-      top: -85px;
-      transform: scale(0.5);
-    }
-    20%{
-        left: 88px;
-      top: -83px;
-      transform: scale(0.55);
-
-    }
-    40%{
-        left: 80px;
-        top: -80px;
-      transform: scale(0.57);
-
-    }60%{
-        left: 84px;
-        top: -84px;
-      transform: scale(0.5);
-
-    }
-    80%{
-      left: 83px;
-      top: -86px;
-      transform:scale(0.6);
-
-    }
-    100%{
-        left: 88px;
-        top: -85px;
-        transform: scale(0.5);
-    }
+.log_head{
+    font-size: 45px;
+    font-weight: bold;
+    color: #000000;
+}
+.log_text{
+    font-size: 17px;
+    color: #000000;
+}
+.log_link{
+  height: 40px;
+    width: 50%;
+    font-size: 17px;
+    cursor: pointer;
+}
+.log_link_t{
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+  color: white;
+}
+.log_terms{
+    font-size: 14px;
+    font-weight: 100;
+    width: 80%;
+    color: #626262;
 }

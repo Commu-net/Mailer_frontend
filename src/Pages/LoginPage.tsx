@@ -3,6 +3,9 @@ import './css/LoginPage.css'
 import plane from '../assets/images/plane.png'
 import { FcGoogle } from "react-icons/fc";
 
+import mailanimation from '../assets/json/mailanimation.json'
+
+import { Player } from '@lottiefiles/react-lottie-player';
 
 import {
   Avatar,
@@ -24,9 +27,12 @@ export default function LoginPage() {
     <div className='login h-[728px] w-[100% ] flex justify-center items-center'>
       <div className='image_container'>
         <div className='planet_cont'>
-          <div className='plane'>
-            <img src={plane} />
-          </div>
+           <Player
+            src={mailanimation}
+            loop
+            autoplay
+            className='h-[650px] w-[650px]'
+            />
         </div>
       </div>
       <div className='login_sect'>
@@ -34,18 +40,18 @@ export default function LoginPage() {
           <div className='log_head'>
             Welcome user
           </div>
-          <div>
+          <div className='log_text'>
             Create an account or login using
           </div>
-          <div>
+          <div className='log_link'>
             <a
               href='https://api.api-communet.tech/api/v1/user/auth/google'
-              className='h-[50px] w-[200px] bg-black text-white'>
-              <div className='bg-black'><FcGoogle /></div>
-              <div className='bg-black'>Google</div>
-            </a>
+              className='log_link_t'>
+              <div ><FcGoogle className='h-[25px] w-[25px]' /></div>
+              <div>Google</div>
+            </a> 
           </div>
-          <div>
+          <div className='log_terms'>
             By continuing, you agree to our
             <HoverCard>
               <HoverCardTrigger asChild>
