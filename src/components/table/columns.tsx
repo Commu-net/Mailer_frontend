@@ -150,7 +150,6 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Actions",
     id: "actions",
     cell: ({row}:any) => {  
-       console.log("this is the row ",row,row.original._id);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
