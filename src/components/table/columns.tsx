@@ -186,7 +186,11 @@ export const columns: ColumnDef<Payment>[] = [
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Continue</AlertDialogAction>
+                    <AlertDialogAction>
+                      <Button onClick={()=>{
+                        console.log("delete this profile ",row.original)
+                      }}>Continue</Button>
+                    </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
