@@ -41,15 +41,7 @@ const profileSchema = z.object({
 
 
 export function EditProfile(values: z.infer<typeof profileSchema>,userid:string, rowInf:any) {
-    console.log(values,userid)
-    console.log({userId: userid,
-        data: {
-            _id: rowInf.id,
-            email: values.email ? values.email : rowInf.email,
-            currentDesignation: values.designation ? values.designation : rowInf.currentDesignation,
-            name: values.name ? values.name : rowInf.name,
-            company: values.company ? values.company : rowInf.company,
-        }})
+
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "PUT",
@@ -59,11 +51,11 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string,
         body: JSON.stringify({
             userId: userid,
             data: {
-                _id: rowId,
-                email: values.email ,
-                currentDesignation: values.designation,
-                name: values.name,
-                company: values.company,
+                _id: rowInf.id,
+                email: values.email ? values.email : rowInf.email,
+                currentDesignation: values.designation ? values.designation : rowInf.currentDesignation,
+                name: values.name ? values.name : rowInf.name,
+                company: values.company ? values.company : rowInf.company,
             },
         }),
     })
