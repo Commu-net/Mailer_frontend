@@ -221,7 +221,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogAction>
                       <Button onClick={()=>{
                         console.log("delete this profile ",row.original)
-                        submitHandler(userId,row.original.id)
+                        submitHandler(userId,row.original._id)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
