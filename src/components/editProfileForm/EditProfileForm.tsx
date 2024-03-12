@@ -52,7 +52,7 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string,
         }})
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
