@@ -68,8 +68,7 @@ async function deleteProfile( userId:string ,rowId :any){
     
 }
 
-function submitHandler(rowId:string){
-  let userId = useSelector((state: RootState) => state.userData.userId)
+function submitHandler(userId:string,rowId:string){
   console.log("this is the row id",rowId,"this is the user ID",userId);
   deleteProfile(userId,rowId)
 }
@@ -181,6 +180,8 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Actions",
     id: "actions",
     cell: ({row}:any) => {  
+      
+     let userId = useSelector((state: RootState) => state.userData.userId)
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -220,7 +221,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogAction>
                       <Button onClick={()=>{
                         console.log("delete this profile ",row.original)
-                        submitHandler(row.original.id)
+                        submitHandler(userId,row.original.id)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
