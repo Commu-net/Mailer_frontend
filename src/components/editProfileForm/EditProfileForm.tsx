@@ -42,6 +42,14 @@ const profileSchema = z.object({
 
 export function EditProfile(values: z.infer<typeof profileSchema>,userid:string, rowId:string) {
     console.log(values,userid)
+    console.log({userId: userid,
+        data: {
+            _id: rowId,
+            email: values.email,
+            currentDesignation: values.designation,
+            name: values.name,
+            company: values.company,
+        }})
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "POST",
