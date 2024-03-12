@@ -57,36 +57,15 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string,
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            userId: "65c3c7ab19728265ad970414",
+            userId: userid,
             data: {
-                _id: "65ec9df9a5e535a714ad1bb7",
-                email: "depshikha@gmail.com",
-                currentDesignation: "Engineering Manager",
-                name: "Depshikha",
-                company: "Communet",
+                _id: rowId,
+                email: values.email,
+                currentDesignation: values.designation,
+                name: values.name,
+                company: values.company,
             },
         }),
-
-        // {
-        //     "userId" : "65c3c7ab19728265ad970414",
-        //     "data" : {
-        //         "_id" : "65ec9df9a5e535a714ad1bb7",
-        //         "email" : "depshikha@gmail.com",
-        //         "currentDesignation" : "Engineering Manager",
-        //         "name" : "Dep",
-        //         "company" : "Elon musk  news"
-        //     }
-        // }
-
-
-        // userId: userid,
-        // data: {
-        //     _id: rowId,
-        //     email: values.email,
-        //     currentDesignation: values.designation,
-        //     name: values.name,
-        //     company: values.company,
-        // },
     })
         .then((response) => response.json())
         .then((data) => {
