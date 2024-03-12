@@ -1,6 +1,5 @@
 
 import './css/LoginPage.css'
-import plane from '../assets/images/plane.png'
 import { FcGoogle } from "react-icons/fc";
 
 import mailanimation from '../assets/json/mailanimation.json'
