@@ -1,0 +1,96 @@
+
+.doc{
+    
+    position: fixed;
+    background-color: white;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    overflow-y: hidden;
+}
+.side_doc{
+    height: 30%;
+    position: relative;
+    top: 5%;
+    color: white;
+    width: 15%;
+    margin:0px 13px 0 13px;
+    background-color: black;
+    border-radius: 15px;
+}
+.side_doc li {
+    font-size: 17px;
+    width: 100%;
+    text-align: start;
+}
+.main_doc{
+    width: 65%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    overflow-y: scroll;
+}
+.page_start{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+.page_head{
+    font-size: 50px;
+    font-weight: 600;
+    width: 100%;
+    text-align: start;
+}
+.page_intro{
+    font-size: 15px;
+    width: 100%;
+    text-align: justify;
+    padding-left: 30px;
+}
+.image_cont{
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.introduction_doc{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+.features{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+.sub_head{
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    text-align: start;
+}
+.sub_body{
+    margin-top: 10px;
+    font-size: 15px;
+    width: 100%;
+    text-align: justify;
+    padding-left: 30px;
+}
+.security{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}

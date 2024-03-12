@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0px;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 #root {
   max-width: 100vw;
