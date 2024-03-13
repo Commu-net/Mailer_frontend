@@ -22,6 +22,9 @@ import {
 } from "@/components/ui/form"
 
 
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -49,7 +52,8 @@ const formSchema = z.object({
 
 async function sendMail(values: z.infer<typeof formSchema>, emailString: string, userEmail: string) {
 
-
+    
+    const { toast } = useToast()
 
     const formData = new FormData();
     formData.append('subject', values.title);
@@ -66,6 +70,15 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
     })
     const data = await response.json();
     console.log(data);
+    if (response.ok) {
+        toast({
+            title: "Mail sent successfully",
+            className:" text-green600 bg-green-100"})
+    } else {
+        toast({
+            title: "an error occured while sending the mail",
+            className:" text-red-600 bg-red-100"})
+    }
 
 }
 
@@ -85,6 +98,7 @@ export function onSend(values: z.infer<typeof formSchema>, profileList: any[], u
 }
 
 export default function EmailForm() {
+
     const userEmail = useSelector((state: RootState) => state.userData.userEmail);
     const emailList = useSelector((state: any) => state.emailList.emailList)
     const form = useForm<z.infer<typeof formSchema>>({
@@ -199,8 +213,7 @@ export default function EmailForm() {
                     />
                     <div className="w-[100%] flex justify-center items-center">
                         <DialogClose asChild>
-                            <Button type="submit" className="w-[20%] ">Submit</Button>
-
+                            <Button type="submit" className="w-[20%] " >Submit</Button>
                         </DialogClose>
 
                     </div>
