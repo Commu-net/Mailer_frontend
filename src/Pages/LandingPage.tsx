@@ -5,24 +5,17 @@ import './css/LandingPage.css'
 import Globalization from "@/components/Globalization";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { RootState } from "@/redux/store";
 import { login } from "@/redux/slices/authSlice";
 
 
 function LandingPage() {
+    // we have implemented checklogin in the navbar component, but we also need to check if the user is logged in or not in the landing page
+    const isLogged = useSelector((state:RootState) => state.authorization.isLoggedIn);
     const dispatch = useDispatch();
-    var storedSubValue = localStorage.getItem('communet_user_sub');
-    
-    // Check if 'sub' value is already logged in
-    if (storedSubValue) {
-        dispatch(login());
-        console.log('Already logged in');
-        // show dashboard and other user-specific content
-    } else {
-        console.log('Please login');
-        // set the protected URL to redirect after successful login
-    }
-
+     
+     
     
     function isRedirected() {
         // Check if URL contains the expected parameter
@@ -31,7 +24,7 @@ function LandingPage() {
     }
     // store user email and name from redirected url into the redux store and sub in local stprage for checing login validity 
     // run this only if user is not logged in or communet_user_sub is not in loal storage
-    if(!storedSubValue){
+    if(!isLogged){
         if (isRedirected()) {
             console.log('User is redirected.');
             const url = new URLSearchParams(window.location.search).toString()

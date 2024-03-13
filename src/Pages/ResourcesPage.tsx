@@ -14,22 +14,8 @@ import {
 
 const ResourcePage = () => {
   return (
-    <div className="doc flex h-[100vh] justify-center  text-black w-[100%]">
-      {/* Sidebar */}
-      <div className="side_doc ">
-        <div className="p-4">
-          {/* Sidebar navigation links */}
-          <ul className="space-y-2 flex justify-start items-start flex-col">
-            <li><a href="#getting-started" className="hover:text-blue-500">Getting Started</a></li>
-            <li><a href="#introduction_doc" className="hover:text-blue-500">Introduction</a></li>
-            <li><a href="#features" className="hover:text-blue-500">Features</a></li>
-            <li><a href="#security" className="hover:text-blue-500">Security</a></li>
-            <li><a href="#contribute" className="hover:text-blue-500">Contribute</a></li>
-            <li><a href="#faqs" className="hover:text-blue-500">FAQs</a></li>
-            {/* Add more navigation links as needed */}
-          </ul>
-        </div>
-      </div>
+    <div className="doc flex justify-center  text-black w-[100%]">
+      
 
       {/* Main content area */}
       <div className=" main_doc py-8 ">
@@ -104,77 +90,98 @@ const ResourcePage = () => {
             </div>
             {/*  ere starts various points regarding security */}
             <div>
-              <div>Data Encryption
+              <div className='sub_head'>1. Data Encryption
               </div>
-              <div>
+              <div className='sub_body'>
                 All data transmitted between your device and Communet's servers is encrypted using industry-standard encryption protocols (such as SSL/TLS). This ensures that your data remains confidential and secure during transit, protecting it from unauthorized access or interception by third parties.
               </div>
             </div>
             <div>
-              <div> Secure Storage </div>
-              <div> Your data is stored securely on Communet's servers, which are hosted on trusted and reputable cloud infrastructure providers. We adhere to strict security standards and regularly audit our systems to ensure compliance with industry best practices.</div>
+              <div className='sub_head'>2. Secure Storage </div>
+              <div className='sub_body'> Your data is stored securely on Communet's servers, which are hosted on trusted and reputable cloud infrastructure providers. We adhere to strict security standards and regularly audit our systems to ensure compliance with industry best practices.</div>
             </div>
             <div>
-              <div> User Authentication </div>
-              <div> Communet utilizes strong user authentication mechanisms to verify the identity of users accessing the platform. We support multi-factor authentication (MFA) and encourage users to enable this feature to add an extra layer of security to their accounts. </div>
+              <div className='sub_head'>3. User Authentication </div>
+              <div className='sub_body'> Communet utilizes strong user authentication mechanisms to verify the identity of users accessing the platform. We support multi-factor authentication (MFA) and encourage users to enable this feature to add an extra layer of security to their accounts. </div>
             </div>
             <div>
-              <div> Continuous Improvement </div>
-              <div> We are dedicated to continuously improving our security measures and privacy practices to adapt to evolving threats and challenges. We regularly review and update our security policies, conduct security assessments and audits, and invest in the latest security technologies to safeguard your data effectively. </div>
+              <div className='sub_head'>4. Continuous Improvement </div>
+              <div className='sub_body'> We are dedicated to continuously improving our security measures and privacy practices to adapt to evolving threats and challenges. We regularly review and update our security policies, conduct security assessments and audits, and invest in the latest security technologies to safeguard your data effectively. </div>
             </div>
             <div>
-              <div> Reporting Security Concerns </div>
-              <div> If you have any security concerns or believe that your data has been compromised, please report it to us immediately at communet@gmail.com. We take all reports of security incidents seriously and will investigate and address them promptly. </div>
+              <div className='sub_head'>5. Reporting Security Concerns </div>
+              <div className='sub_body'> If you have any security concerns or believe that your data has been compromised, please report it to us immediately at <a href='mailto:communet@gmail.com' style={{color:"rgb(0,100,255)",cursor:"pointer"}}>communet@gmail.com</a>. We take all reports of security incidents seriously and will investigate and address them promptly. </div>
             </div>
           </div>
-          <div id='contribute' className='contribute'>
-            <div>Contribute to Communet <a href='https://github.com/orgs/Commu-net/repositories'><FaGithub /></a></div>
-            <div>Communet is an open-source project, and we welcome contributions from the community to help improve and enhance the platform. Whether you're a developer, designer, tester, or enthusiast, there are many ways you can contribute to Communet's development and growth. This section outlines how you can get involved and contribute to the project:</div>
+          <div id='contribute' className='contribute flex flex-col justify-center  items-center gap-[15px] '>
+            <div className='page_head gap-[30px]'>
+              <div>Contribute to Communet</div>
+              <a className='hover:text-blue-400 cursor-pointer' href='https://github.com/orgs/Commu-net/repositories' style={{height:"50px",width:"50px",display:"flex",cursor:"pointer"}}><FaGithub /></a></div>
+            <div className='page_intro'>Communet is an open-source project, and we welcome contributions from the community to help improve and enhance the platform. Whether you're a developer, designer, tester, or enthusiast, there are many ways you can contribute to Communet's development and growth. This section outlines how you can get involved and contribute to the project:</div>
             <div>
-              <div> 1. Reporting Issues</div>
-              <div>If you encounter any bugs, errors, or issues while using Communet, we encourage you to report them to us on our GitHub repository. Please provide detailed information about the problem you encountered, including steps to reproduce it and any relevant error messages. Your feedback helps us identify and address issues promptly, improving the overall quality and stability of Communet.</div>
+              <div className='sub_head'> 1. Reporting Issues</div>
+              <div className='sub_body'>If you encounter any bugs, errors, or issues while using Communet, we encourage you to report them to us on our GitHub repository. Please provide detailed information about the problem you encountered, including steps to reproduce it and any relevant error messages. Your feedback helps us identify and address issues promptly, improving the overall quality and stability of Communet.</div>
             </div>
             <div>
-              <div>2. Feature Requests</div>
-              <div>Have an idea for a new feature or enhancement that you'd like to see in Communet? We'd love to hear from you! Submit your feature requests on our GitHub repository, and share your vision for how the feature would improve the platform. We value your input and take feature requests into consideration when planning future development efforts.</div>
+              <div className='sub_head'>2. Feature Requests</div>
+              <div className='sub_body'>Have an idea for a new feature or enhancement that you'd like to see in Communet? We'd love to hear from you! Submit your feature requests on our GitHub repository, and share your vision for how the feature would improve the platform. We value your input and take feature requests into consideration when planning future development efforts.</div>
             </div>
             <div>
-              <div>3. Code Contributions</div>
-              <div> If you're a developer, you can contribute directly to the development of Communet by submitting code contributions via pull requests on GitHub. Whether it's fixing bugs, implementing new features, or improving existing functionality, your contributions are invaluable to the project's success. Please follow our contribution guidelines and coding standards when submitting pull requests to ensure smooth integration into the project.</div>
+              <div className='sub_head'>3. Code Contributions</div>
+              <div className='sub_body'> If you're a developer, you can contribute directly to the development of Communet by submitting code contributions via pull requests on GitHub. Whether it's fixing bugs, implementing new features, or improving existing functionality, your contributions are invaluable to the project's success. Please follow our contribution guidelines and coding standards when submitting pull requests to ensure smooth integration into the project.</div>
             </div>
             <div>
-              <div>4. Testing</div>
-              <div>Help ensure the quality and reliability of Communet by participating in testing efforts. You can help test new features, verify bug fixes, and report any issues you encounter during testing. Your testing feedback helps us identify and address potential issues before they affect users, improving the overall stability and performance of Communet.</div>
+              <div className='sub_head'>4. Testing</div>
+              <div className='sub_body'>Help ensure the quality and reliability of Communet by participating in testing efforts. You can help test new features, verify bug fixes, and report any issues you encounter during testing. Your testing feedback helps us identify and address potential issues before they affect users, improving the overall stability and performance of Communet.</div>
             </div>
             <div>
-              <div>5. Documentation</div>
-              <div>Good documentation is essential for helping users understand how to use Communet effectively. If you have strong writing skills, you can contribute to the project by improving our documentation. This could involve writing new documentation, updating existing documentation, or translating documentation into different languages. Your contributions help make Communet more accessible and user-friendly for everyone.</div>
+              <div className='sub_head'>5. Documentation</div>
+              <div className='sub_body'>Good documentation is essential for helping users understand how to use Communet effectively. If you have strong writing skills, you can contribute to the project by improving our documentation. This could involve writing new documentation, updating existing documentation, or translating documentation into different languages. Your contributions help make Communet more accessible and user-friendly for everyone.</div>
             </div>
           </div>
-          <div id='faqs' className='faqs'>
-            <Accordion type="single" collapsible className="w-full">
+          
+          <div id='faqs' className='h-[300px] w-[100%] flex justify-center items-center gap-[20px] flex-col'>
+            <h2 className='page_head'>Frequently Asked Questions</h2>
+            <div className='w-[100%] px-[1rem]'>
+            <Accordion type="single" collapsible className="w-[100%]">
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionTrigger>Is there any rate limiting on the number of emails to which a mail can be sent at once ?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It adheres to the WAI-ARIA design pattern.
+                  Yes. due to constraints on the server, we have a rate limit of 20 emails per request at once.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger>Is this platform safe ?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It comes with default styles that matches the other
-                  components&apos; aesthetic.
+                  Yes. We have implemented robust security measures to safeguard your data and maintain the highest standards of data protection.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger>Does the platform supports importing profile via excel sheet ?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. It's animated by default, but you can disable it if you prefer.
+                   Currently we do not support importing profiles via excel sheet. However, we are working on this feature and it will be available soon.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+            </div>
           </div>
           {/* Add more sections of the documentation as needed */}
+      </div>
+
+      {/* Sidebar */}
+      <div className="side_doc ">
+        <div className="inner_side p-4">
+          {/* Sidebar navigation links */}
+          <ul className="space-y-2 flex justify-start items-start flex-col">
+            <li><a href="#getting-started" className="hover:text-blue-500">Getting Started</a></li>
+            <li><a href="#introduction_doc" className="hover:text-blue-500">Introduction</a></li>
+            <li><a href="#features" className="hover:text-blue-500">Features</a></li>
+            <li><a href="#security" className="hover:text-blue-500">Security</a></li>
+            <li><a href="#contribute" className="hover:text-blue-500">Contribute</a></li>
+            <li><a href="#faqs" className="hover:text-blue-500">FAQs</a></li>
+            {/* Add more navigation links as needed */}
+          </ul>
+        </div>
       </div>
     </div>
   );

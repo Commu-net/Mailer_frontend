@@ -1,6 +1,5 @@
 
 .doc{
-    
     position: fixed;
     background-color: white;
     top: 60px;
@@ -9,14 +8,22 @@
     overflow-y: hidden;
 }
 .side_doc{
-    height: 30%;
-    position: relative;
+    height: 35%;
     top: 5%;
+    position: relative;
     color: white;
-    width: 15%;
+    width: 20%;
     margin:0px 13px 0 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner_side{
+    height: 100%;
     background-color: black;
     border-radius: 15px;
+    width: 80%;
+
 }
 .side_doc li {
     font-size: 17px;
@@ -24,9 +31,10 @@
     text-align: start;
 }
 .main_doc{
-    width: 65%;
+    width: 70%;
     overflow-x: hidden;
     display: flex;
+    padding-bottom: 2rem;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -43,6 +51,9 @@
     font-size: 50px;
     font-weight: 600;
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     text-align: start;
 }
 .page_intro{
