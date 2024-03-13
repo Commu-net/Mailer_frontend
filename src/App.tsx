@@ -13,6 +13,8 @@ import ResourcePage from './Pages/ResourcesPage'
 import PrivateRoute from './components/PrivateRoute'
 import Dashboard from './Pages/Dashboard'
 import Errorpage from './Pages/ErrorPage'
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Wrapper></Wrapper>}>
@@ -25,6 +27,7 @@ const router = createBrowserRouter(
       } />
       <Route path='resources' element={<ResourcePage /> } />
       <Route path='*' element={<Errorpage />}></Route>
+      
       </Route>
   )
 )

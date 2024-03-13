@@ -1,5 +1,7 @@
 
 import "./css/HeroSection.css"
+
+
 function HeroSection() {
     return ( 
         <div className="hero h-[800px] w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">

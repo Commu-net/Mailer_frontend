@@ -178,7 +178,7 @@ export default function EmailForm() {
                                         <div>{ form.control._fields.file? form.control._fields.file._f.value ? `${form.control._fields.file._f.value.name.slice(0,5)+"..."}`:"Click to upload or drag your file here" : "Click to upload or drag your file here"}</div>
                                     <Input
                                         type="file"
-                                        className="file:bg-transparent z-[3] absolute h-[100px] w-[90%] opacity-[0]
+                                        className="file:bg-transparent z-[11] absolute h-[100px] w-[90%] opacity-[0]
                                           file:text-sm file:font-medium placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50  flex justify-center items-center bg-blue-100"
                                         onChange={(e) => {
                                             const file = e.target.files && e.target.files[0];
