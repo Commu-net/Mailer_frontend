@@ -49,10 +49,10 @@ const formSchema = z.object({
 })
 
 
-async function sendMail(values: z.infer<typeof formSchema>, emailString: string, userEmail: string) {
+async function sendMail(values: z.infer<typeof formSchema>, emailString: string, userEmail: string,toast:Function) {
 
     
-    const { toast } = useToast()
+  
 
     const formData = new FormData();
     formData.append('subject', values.title);
@@ -81,7 +81,7 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
 
 }
 
-export function onSend(values: z.infer<typeof formSchema>, profileList: any[], userEmail: string) {
+export function onSend(values: z.infer<typeof formSchema>, profileList: any[], userEmail: string,toast:Function) {
 
     console.log("this is the form", values)
     console.log("this is the profiles", profileList)
@@ -91,7 +91,7 @@ export function onSend(values: z.infer<typeof formSchema>, profileList: any[], u
     }
     str = str.slice(0, -1)
     console.log(str)
-    sendMail(values, str, userEmail)
+    sendMail(values, str, userEmail,toast)
 
 
 }
@@ -110,9 +110,10 @@ export default function EmailForm() {
     })
 
     // 2. Define a submit handler.
-    function submitHandler(values: z.infer<typeof formSchema>) {
-        onSend(values, emailList, userEmail)
+    function submitHandler(values: z.infer<typeof formSchema>,toast:Function) {
+        onSend(values, emailList, userEmail,toast)
     }
+    let {toast} = useToast()
 
     return (<Dialog>
         <DialogTrigger asChild>
@@ -126,7 +127,7 @@ export default function EmailForm() {
                 <form onSubmit={(event) => {
                     event.preventDefault()
                     console.log(form.getValues())
-                    submitHandler(form.getValues())
+                    submitHandler(form.getValues(),toast)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField
