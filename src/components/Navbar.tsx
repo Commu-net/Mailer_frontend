@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { RootState } from '../redux/store'
 
 
-import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 
 function Navbar() {
