@@ -63,7 +63,8 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
 
     // chck for error regarding type of date 
 
-    const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
+    try {
+        const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
         method: 'POST',
         body: formData,
     })
@@ -73,9 +74,10 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
         toast({
             title: "Mail sent successfully",
             className:" text-green600 bg-green-100"})
-    } else {
+    } 
+    } catch (error) {
         toast({
-            title: "an error occured while sending the mail",
+            title: "Mail not sent",
             className:" text-red-600 bg-red-100"})
     }
 
