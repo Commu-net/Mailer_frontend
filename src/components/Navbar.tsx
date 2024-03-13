@@ -70,7 +70,7 @@ function Navbar() {
             localStorage.removeItem('communet_user_sub');
             toast({
               title: "Logged out successfully ",
-              className:" bg-green-100 text-green tracking-wider",
+              className:" bg-green-100 text-green-600 tracking-wider",
             })
           }}
             className="authzed_buttn"

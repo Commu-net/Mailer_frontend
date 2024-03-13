@@ -33,6 +33,7 @@ import { useForm } from "react-hook-form"
 
 
 import { useSelector } from "react-redux"
+import { DialogClose } from "@radix-ui/react-dialog"
 
 const formSchema = z.object({
     title: z.string().min(2).max(50),
@@ -46,9 +47,9 @@ const formSchema = z.object({
 })
 
 
-async function sendMail(values: z.infer<typeof formSchema>, emailString: string,userEmail: string) {
+async function sendMail(values: z.infer<typeof formSchema>, emailString: string, userEmail: string) {
 
-   
+
 
     const formData = new FormData();
     formData.append('subject', values.title);
@@ -57,7 +58,7 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
     formData.append('emails', emailString);
     formData.append('sender', userEmail);
 
-     // chck for error regarding type of date 
+    // chck for error regarding type of date 
 
     const response = await fetch('https://api.api-communet.tech/api/v1/send/', {
         method: 'POST',
@@ -68,24 +69,24 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
 
 }
 
-export function onSend(values: z.infer<typeof formSchema>,profileList: any[], userEmail: string) {
+export function onSend(values: z.infer<typeof formSchema>, profileList: any[], userEmail: string) {
 
-    console.log("this is the form",values)
-    console.log("this is the profiles",profileList)
+    console.log("this is the form", values)
+    console.log("this is the profiles", profileList)
     let str = ""
     for (let i = 0; i < profileList.length; i++) {
-        str+=profileList[i].email+","
+        str += profileList[i].email + ","
     }
-    str = str.slice(0,-1) 
+    str = str.slice(0, -1)
     console.log(str)
-    sendMail(values,str, userEmail)
-    
+    sendMail(values, str, userEmail)
+
 
 }
 
 export default function EmailForm() {
     const userEmail = useSelector((state: RootState) => state.userData.userEmail);
-    const emailList = useSelector((state:any) => state.emailList.emailList)
+    const emailList = useSelector((state: any) => state.emailList.emailList)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -97,7 +98,7 @@ export default function EmailForm() {
 
     // 2. Define a submit handler.
     function submitHandler(values: z.infer<typeof formSchema>) {
-        onSend(values,emailList, userEmail)
+        onSend(values, emailList, userEmail)
     }
 
     return (<Dialog>
@@ -154,41 +155,41 @@ export default function EmailForm() {
                             <FormItem >
                                 <FormLabel>Attachment</FormLabel>
                                 <FormControl
-                                 >
+                                >
                                     <div className="file_back border-dashed border-2 rounded-md border-gray-300 h-[130px] relative  flex justify-center items-center flex-col "
-                                    onDragEnter={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        const node = e.target as HTMLDivElement;
-                                        node.classList.add("bg-blue-100"); // Add blue background
-                                    }}
-                                    onDragOver={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        const node = e.target as HTMLDivElement;
-                                        node.classList.add("bg-blue-100"); // Add blue background
-                                    }}
-                                    onDragLeave={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        const node = e.target as HTMLDivElement;
-                                        node.classList.add("bg-blue-100"); // Add blue background
-                                    }}>
-                                        <div className="text-6xl text-blue-600"><IoFolderOpenSharp/></div>
-                                        <div>{ form.control._fields.file? form.control._fields.file._f.value ? `${form.control._fields.file._f.value.name.slice(0,5)+"..."}`:"Click to upload or drag your file here" : "Click to upload or drag your file here"}</div>
-                                    <Input
-                                        type="file"
-                                        className="file:bg-transparent z-[11] absolute h-[100px] w-[90%] opacity-[0]
-                                          file:text-sm file:font-medium placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50  flex justify-center items-center bg-blue-100"
-                                        onChange={(e) => {
-                                            const file = e.target.files && e.target.files[0];
-                                            if (file) {
-                                                form.setValue("file", file); // Set the file value
-                                            }
+                                        onDragEnter={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const node = e.target as HTMLDivElement;
+                                            node.classList.add("bg-blue-100"); // Add blue background
                                         }}
-                                        aria-hidden="true"
-                                        
-                                    />
+                                        onDragOver={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const node = e.target as HTMLDivElement;
+                                            node.classList.add("bg-blue-100"); // Add blue background
+                                        }}
+                                        onDragLeave={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const node = e.target as HTMLDivElement;
+                                            node.classList.add("bg-blue-100"); // Add blue background
+                                        }}>
+                                        <div className="text-6xl text-blue-600"><IoFolderOpenSharp /></div>
+                                        <div>{form.control._fields.file ? form.control._fields.file._f.value ? `${form.control._fields.file._f.value.name.slice(0, 5) + "..."}` : "Click to upload or drag your file here" : "Click to upload or drag your file here"}</div>
+                                        <Input
+                                            type="file"
+                                            className="file:bg-transparent z-[11] absolute h-[100px] w-[90%] opacity-[0]
+                                          file:text-sm file:font-medium placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50  flex justify-center items-center bg-blue-100"
+                                            onChange={(e) => {
+                                                const file = e.target.files && e.target.files[0];
+                                                if (file) {
+                                                    form.setValue("file", file); // Set the file value
+                                                }
+                                            }}
+                                            aria-hidden="true"
+
+                                        />
                                     </div>
 
                                 </FormControl>
@@ -197,7 +198,10 @@ export default function EmailForm() {
                         )}
                     />
                     <div className="w-[100%] flex justify-center items-center">
-                    <Button type="submit" className="w-[20%] ">Submit</Button>
+                        <DialogClose asChild>
+                            <Button type="submit" className="w-[20%] ">Submit</Button>
+
+                        </DialogClose>
 
                     </div>
                 </form>
