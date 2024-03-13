@@ -5,6 +5,7 @@
     top: 60px;
     height: calc(100vh - 60px);
     width: 100vw;
+    letter-spacing: 0.3px;
     overflow-y: hidden;
 }
 .side_doc{
@@ -39,26 +40,33 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    padding-left: 15px;
     height: 100%;
     overflow-y: scroll;
 }
 .page_start{
     display: flex;
     gap: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     flex-direction: column;
 }
 .page_head{
     font-size: 50px;
     font-weight: 600;
     width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
     text-align: start;
 }
 .page_intro{
-    font-size: 15px;
+    font-size: 17px;
     width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     text-align: justify;
     padding-left: 30px;
 }
@@ -87,6 +95,8 @@
 .sub_head{
     margin-left: 15px;
     font-size: 20px;
+        font-family: 'Segoe UI',l Tahoma, Geneva, Verdana, sans-serif;
+
     font-weight: 600;
     width: 100%;
     text-align: start;
@@ -95,8 +105,12 @@
     margin-top: 10px;
     font-size: 15px;
     width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: justify;
     padding-left: 30px;
+}
+.in_text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .security{
     display: flex;

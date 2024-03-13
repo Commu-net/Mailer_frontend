@@ -72,9 +72,9 @@ const ResourcePage = () => {
                 Compose personalized email campaigns with ease using Communet's dynamic content capabilities. Customize your emails with recipient-specific information using dynamic tags. Choose from a library of pre-designed templates or create your own to match your brand identity.
               </div>
               <div className='sub_body'>
-                <div> <span style={{color:"rgb(0,160,255)"}}>@name</span> for the name of the profile </div>
-                <div> <span style={{color:"rgb(0,160,255)"}}>@company</span> for the company name</div>
-                <div> <span style={{color:"rgb(0,160,255)"}}>@occupation</span> for the occupation of the profile</div>
+                <div className='in_text'> <span style={{color:"rgb(0,160,255)"}}>@name</span> for the name of the profile </div>
+                <div className='in_text'> <span style={{color:"rgb(0,160,255)"}}>@company</span> for the company name</div>
+                <div className='in_text'> <span style={{color:"rgb(0,160,255)"}}>@occupation</span> for the occupation of the profile</div>
               </div>
               <div className='image_cont' style={{height:"500px"}}>
                  <img src={custom_emails}  style={{height:"80%"}}></img>
@@ -148,12 +148,6 @@ const ResourcePage = () => {
                 <AccordionTrigger>Is there any rate limiting on the number of emails to which a mail can be sent at once ?</AccordionTrigger>
                 <AccordionContent>
                   Yes. due to constraints on the server, we have a rate limit of 20 emails per request at once.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Is this platform safe ?</AccordionTrigger>
-                <AccordionContent>
-                  Yes. We have implemented robust security measures to safeguard your data and maintain the highest standards of data protection.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">

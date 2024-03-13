@@ -1,0 +1,23 @@
+.error_page{
+    top: 60px;
+    position: fixed;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.error_text_cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.error_text{
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(8,87,160);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
