@@ -26,10 +26,15 @@ export const authSlice = createSlice({
       state.isLoggedIn = false
     //   state.userName = null
     },
+    checkLogIn : (state)=>{
+       if(localStorage.getItem('communet_user_sub')){
+           state.isLoggedIn = true
+       }
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { login,logout} = authSlice.actions
+export const { login,logout,checkLogIn} = authSlice.actions
 
 export default authSlice.reducer
