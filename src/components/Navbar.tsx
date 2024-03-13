@@ -10,6 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { RootState } from '../redux/store'
 
 
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+
 function Navbar() {
   const dispatch = useDispatch();
   dispatch(checkLogIn());  // check if the user is logged in or not
@@ -18,7 +21,8 @@ function Navbar() {
   const navigate = useNavigate();
 
   const [isVertVisible, setVertVisible] = useState(true);
-
+  
+  const { toast } = useToast()
   
   function clickHandler() {
     console.log("clicked");
@@ -65,6 +69,13 @@ function Navbar() {
             dispatch(logout());
             navigate('/');
             localStorage.removeItem('communet_user_sub');
+            toast({
+              title: "Scheduled: Catch up ",
+              description: "Friday, February 10, 2023 at 5:57 PM",
+              action: (
+                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+              ),
+            })
           }}
             className="authzed_buttn"
             style={{ color: "white" }}
