@@ -37,7 +37,7 @@ function Navbar() {
           <NavLink to="./" className="nav_option_text">
             Home
           </NavLink>
-          <NavLink className="nav_option_text" to="./blog">
+          <NavLink className="nav_option_text" to="https://medium.com/@alchemyrecloak/communet-2027d8f4f634">
             Blog
           </NavLink>
           <NavLink className="nav_option_text" to="./resources">
