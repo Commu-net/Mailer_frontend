@@ -77,7 +77,7 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
     } 
     } catch (error) {
         toast({
-            title: "Mail not sent",
+            title: "An error occured while sending the mails",
             className:" text-red-600 bg-red-100"})
     }
 
