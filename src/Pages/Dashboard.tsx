@@ -10,6 +10,7 @@ import { RootState } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setUserInfo, setChange } from '@/redux/slices/userData';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -105,9 +106,12 @@ export default function Dashboard() {
           <div className='dash_head text-lg font-semibold tracking-wider md:text-[30px]'>Welcome Back, {user.split(' ')[0]} !</div>
           <div className='dash_msg text-sm w-9/10 text-gray-600 text-left font-normal md:text-[20px]'>Here is the list of all email profiles you have saved</div>
         </div>
-        <div className='dash_up_right h-full w-1/4 flex justify-center items-center md:justify-end md:pr-[20px]'>
+       {
+          user ? ( <div className='dash_up_right h-full w-1/4 flex justify-center items-center md:justify-end md:pr-[20px]'>
           <div className='un_image h-12 w-12 rounded-full object-cover bg-black text-white flex justify-center items-center md:h-16 md:w-16 md:text-[24px]'>{user.split(' ')[0].slice(0, 2).toUpperCase()}</div>
-        </div>
+        </div>) : <Skeleton className='h-[70px] w-[70px] rounded-full'/>
+        }
+       
 
       </div>
       <div className='dashboard_down space-y-5 h-[85%] w-full flex justify-start flex-col items-center '>

@@ -43,19 +43,18 @@ interface DataTableProps<TData, TValue> {
 }
 
 export function DataTable<TData, TValue>(
-  
+
   {
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) 
-{
+    columns,
+    data,
+  }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
 
   const [columnVisibility, setColumnVisibility] =
-  React.useState<VisibilityState>({})
+    React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
 
@@ -76,26 +75,26 @@ export function DataTable<TData, TValue>(
       columnFilters,
     },
   })
-
+  let emptySkeliton = new Array(7).fill(0)
   return (
     <div className="rounded-md h-[100%] w-[100%] flex flex-col justify-start items-center gap-[15px]">
-     <div  className='up_contr'>
+      <div className='up_contr'>
         <div className="flex items-center py-1 search">
-        <Input
-          placeholder="Search emails..."
-          name="email"
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm rounded-sm border-black border-[1px]"
-        />
-        <div className='invisible h-0 w-0 md:h-12 md:w-3/5 md:visible md:h-8 md:mx-[15px] flex justify-start items-center gap-[15px]'>
-          <AddProfileForm />
-          <ImportProfileForm/>
+          <Input
+            placeholder="Search emails..."
+            name="email"
+            value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              table.getColumn("email")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm rounded-sm border-black border-[1px]"
+          />
+          <div className='invisible h-0 w-0 md:h-12 md:w-3/5 md:visible md:h-8 md:mx-[15px] flex justify-start items-center gap-[15px]'>
+            <AddProfileForm />
+            <ImportProfileForm />
+          </div>
         </div>
-        </div>
-        <DropdownMenu > 
+        <DropdownMenu >
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto h-8 rounded-sm ">
               Visibility
@@ -128,14 +127,14 @@ export function DataTable<TData, TValue>(
       <Table className="bg-opacity-60 grass w-[100%]">
         <TableHeader className="bg-black z-9 sticky top-[-2px]">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow 
-             className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"
-            key={headerGroup.id}>
+            <TableRow
+              className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"
+              key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                return (  
+                return (
                   <TableHead
-                  className="border-b-20 w-[30px] text-white text-[12px] font-bold py-1"
-                  key={header.id}>
+                    className="border-b-20 w-[30px] text-white text-[12px] font-bold py-1"
+                    key={header.id}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -149,33 +148,41 @@ export function DataTable<TData, TValue>(
           ))}
         </TableHeader>
         <TableBody className="  h-fit]">
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) =>{
-              console.log(row)
-              return (
-                // add skeliton loader here 
-                !(row.original) ? (<TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="h-[60px]"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>) : (<Skeleton  className='h-[80%] py-[10%] w-[100%]' />)
-                
-              )
-            
-            })
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
+          {table.getRowModel().rows?.length ?
+            (
+              table.getRowModel().rows.map((row) => {
+                console.log(row)
+                return (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="h-[60px]"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                )
+
+              })
+            ) : (
+              emptySkeliton.map((_, index) => (
+                <TableRow key={index} className='border-none' >
+                  {
+                    columns.map((column) => (
+                      <TableCell key={column.id}>
+                        <Skeleton />
+                      </TableCell>
+                    ))
+                  }
+
+
+                </TableRow>
+              ))
+
+            )}
         </TableBody>
       </Table>
     </div>
