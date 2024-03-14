@@ -34,6 +34,9 @@ import { useForm } from "react-hook-form"
 
 import { useSelector } from "react-redux"
 
+import { useDispatch } from "react-redux"
+import { setChange } from "@/redux/slices/userData"
+
 const profileSchema = z.object({
     name: z.string({ required_error: "name is required" }).min(2, 'name should not be empty or less than 2 letter').max(50),
     email: z.string().email(),
@@ -41,7 +44,7 @@ const profileSchema = z.object({
     designation: z.string().min(2).max(50),
 })
 
-export async function addProfile(values: z.infer<typeof profileSchema>, userId: string, toast: Function) {
+export async function addProfile(values: z.infer<typeof profileSchema>, userId: string, toast: Function,dispatch:Function) {
 
     values.company = values.company ? values.company : " - "
     values.designation = values.designation ? values.designation : " - "
@@ -66,6 +69,7 @@ export async function addProfile(values: z.infer<typeof profileSchema>, userId: 
         let response = await data.json()
         console.log(response)
         if (response.statusCode === 200) {
+            dispatch(setChange(true))
             toast({
                 title: "Successfully added profile",
                 className: " text-green-600 bg-green-100"
@@ -82,6 +86,7 @@ export async function addProfile(values: z.infer<typeof profileSchema>, userId: 
 
 export default function AddProfileForm() {
     const { toast } = useToast()
+    const dispatch = useDispatch()
 
     const userId = useSelector((state: RootState) => state.userData.userId)
     console.log("this is user id ", userId)
@@ -97,8 +102,8 @@ export default function AddProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function submitHandler(values: z.infer<typeof profileSchema>, userId: string, toast: Function) {
-        addProfile(values, userId, toast)
+    function submitHandler(values: z.infer<typeof profileSchema>, userId: string, toast: Function,dispatch:Function) {
+        addProfile(values, userId, toast,dispatch)
     }
 
     return (<Dialog>
@@ -115,7 +120,7 @@ export default function AddProfileForm() {
             <Form {...form}>
                 <form onSubmit={(event) => {
                     event.preventDefault()
-                    submitHandler(form.getValues(), userId, toast)
+                    submitHandler(form.getValues(), userId, toast,dispatch)
                     console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField

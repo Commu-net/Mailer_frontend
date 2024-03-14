@@ -14,14 +14,16 @@ export interface userData {
     userId:string,
     userName:string,
     userEmail:string,
-    userLeads:Profile[]
+    userLeads:Profile[],
+    change:boolean
 }
 
 const initialState : userData = {
     userId:"",
     userName:'',
     userEmail:'',
-   userLeads:[]
+    userLeads:[],
+    change:false
 }
 
 
@@ -40,11 +42,14 @@ export const userDataSlice = createSlice({
         console.log("this is the element",element)
         state.userLeads.find((item:Profile) => item.email === element.email) ? state.userLeads : state.userLeads.push(element);
       });
+    },
+    setChange:(state, action) => {
+      state.change = action.payload
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const {setUserInfo} = userDataSlice.actions
+export const {setUserInfo,setChange} = userDataSlice.actions
 
 export default userDataSlice.reducer

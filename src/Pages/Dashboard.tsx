@@ -9,11 +9,13 @@ import { useEffect } from 'react';
 import { RootState } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setUserInfo } from '@/redux/slices/userData';
+import { setUserInfo,setChange } from '@/redux/slices/userData';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
+
   const user = useSelector((state: RootState) => state.userData.userName);
+  const dataChange = useSelector((state: RootState) => state.userData.change);
 
   function formatDate(dateString: string) {
     let date = new Date(dateString);
@@ -25,10 +27,11 @@ export default function Dashboard() {
     return output;
   }
 
-  useEffect(() => {
-    var storedSubValue = localStorage.getItem('communet_user_sub');
+  const storedSubValue = localStorage.getItem('communet_user_sub');
 
-    async function fetchUserData(url = `https://api.api-communet.tech/api/v1/mail?userEmail=${localStorage.getItem('communet_user_email')}`) {
+
+  async function fetchUserData(url = `https://api.api-communet.tech/api/v1/mail?userEmail=${localStorage.getItem('communet_user_email')}`) {
+    try {
       const response = await fetch(url, {
         method: 'GET',
         mode: 'cors',
@@ -43,10 +46,23 @@ export default function Dashboard() {
       });
       let data = await response.json()
       console.log("this is the user data", data)
-
-
       return data;
+    } catch (error) {
+      console.error('Error:', error);
     }
+  }
+
+  function reFetchUserData(dataChange:boolean) {
+    if (dataChange) {
+      fetchUserData();
+      dispatch(setChange(false));
+    }
+  }
+
+  reFetchUserData(dataChange);
+  
+
+  useEffect(() => {
     if (storedSubValue) {
       fetchUserData().then(data => {
         dispatch(setUserInfo({
@@ -61,6 +77,8 @@ export default function Dashboard() {
       })
     }
   }, [])
+
+  
 
 
 
