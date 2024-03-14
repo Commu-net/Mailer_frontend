@@ -44,6 +44,7 @@ export const userDataSlice = createSlice({
       });
     },
     setChange:(state, action) => {
+      console.log("this is the change",action.payload)
       state.change = action.payload
     }
   }
