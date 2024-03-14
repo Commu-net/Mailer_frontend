@@ -67,7 +67,7 @@ export default function Dashboard() {
   // wrirte a function to implement create and import data from excel method and pass them to add and import buttons in Demo page and button inside data-table inside DemoPage and do an api call 
   return (
     <div className="dashboard relative top-20  w-screen top-20 pl-2.5 pr-2.5 flex justify-start flex-col items-center space-y-5 md:w-[95%]">
-      <div className='email_container h-full w-full fixed z-[105] top-[90%] left-0 md:h-0'>
+      <div className='email_container h-full w-full fixed z-[10] top-[90%] left-0 md:h-0'>
         <EmailForm />
       </div>
       <div className='dashboard_up h-[15%] w-full flex justify-between items-center'>
