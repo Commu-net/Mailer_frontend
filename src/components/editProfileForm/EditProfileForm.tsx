@@ -118,9 +118,7 @@ export default function EditProfileForm(rowData: any) {
                 <DialogTitle>Edit profile</DialogTitle>
             </DialogHeader>
             <Form {...form}>
-                <form onSubmit={(event) => {
-
-                }} className="space-y-4 flex flex-col ">
+                <form  className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}
                         name="name"
