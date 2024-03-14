@@ -154,7 +154,7 @@ export function DataTable<TData, TValue>(
               console.log(row)
               return (
                 // add skeliton loader here 
-                row.original ? (<TableRow
+                !(row.original) ? (<TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   className="h-[60px]"
@@ -164,7 +164,7 @@ export function DataTable<TData, TValue>(
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
-                </TableRow>) : (<Skeleton />)
+                </TableRow>) : (<Skeleton  className='h-4 w-[250px]' />)
                 
               )
             
