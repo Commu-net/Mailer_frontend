@@ -59,10 +59,10 @@ export function EditProfile(values: z.infer<typeof profileSchema>, userid: strin
             userId: userid,
             data: {
                 _id: rowInf.id,
-                email: values.email,
-                currentDesignation: values.designation,
-                name: values.name,
-                company: values.company,
+                email: values.email ? values.email : rowInf.email,
+                currentDesignation: values.designation ? values.designation : rowInf.currentDesignation,
+                name: values.name ? values.name : rowInf.name,
+                company: values.company ? values.company : rowInf.company,
             },
         }),
     })
