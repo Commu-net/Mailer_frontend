@@ -20,16 +20,9 @@ import { useToast } from "@/components/ui/use-toast"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  company: string
-  name: string
-  email: string
-  currentDesignation: string
-  addedOn: string
-}
 
 import { RootState } from "@/redux/store"
+import { setChange } from "@/redux/slices/userData"
 
 import EditProfileForm from "@/components/editProfileForm/EditProfileForm"
 
@@ -46,7 +39,18 @@ import {
 } from "@/components/ui/alert-dialog"
 
 
-async function deleteProfile(userId: string, rowId: any, toast: Function) {
+
+
+
+export type Payment = {
+  id: string
+  company: string
+  name: string
+  email: string
+  currentDesignation: string
+  addedOn: string
+}
+async function deleteProfile(userId: string, rowId: any, toast: Function,dispatch:Function) {
   // write a function to do a delete request to this api end point http://localhost:4000/api/v1/mail
   // here it goes write the function to delete the profile
   fetch("https://api.api-communet.tech/api/v1/mail", {
@@ -63,6 +67,7 @@ async function deleteProfile(userId: string, rowId: any, toast: Function) {
     .then((data) => {
       console.log("Success:", data);
       if (data.statusCode === 200) {
+        dispatch(setChange(true))
         toast({
           title: "Successfully deleted profile",
           className: " text-green-600 bg-green-100"
@@ -79,9 +84,9 @@ async function deleteProfile(userId: string, rowId: any, toast: Function) {
 
 }
 
-function submitHandler(userId: string, rowId: string, toast: Function) {
+function submitHandler(userId: string, rowId: string, toast: Function,dispatch: Function) {
   console.log("this is the row id", rowId, "this is the user ID", userId);
-  deleteProfile(userId, rowId, toast)
+  deleteProfile(userId, rowId, toast,dispatch)
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -192,6 +197,7 @@ export const columns: ColumnDef<Payment>[] = [
     id: "actions",
     cell: ({ row }: any) => {
       let { toast } = useToast();
+      let dispatch = useDispatch()
       let userId = useSelector((state: RootState) => state.userData.userId)
       return (
         <DropdownMenu>
@@ -230,7 +236,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogAction>
                       <Button onClick={() => {
                         console.log("delete this profile ", row.original)
-                        submitHandler(userId, row.original._id, toast)
+                        submitHandler(userId, row.original._id, toast,dispatch)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
