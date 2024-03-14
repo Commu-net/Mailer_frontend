@@ -131,7 +131,7 @@ color: black;
         transform-origin: right;
         right: 0%;
         height: max(900px,100vh);
-        z-index: 5;
+        z-index: 105;
      }
      .vert_visible a {
         color: white;
@@ -164,7 +164,7 @@ color: black;
     }
     .authzed_buttn{
         width: 80%;
-        height: 100px;
+        height: 20%;
     }
     .hamburger{
         visibility: visible;
