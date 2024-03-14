@@ -4,7 +4,7 @@ import "./css/HeroSection.css"
 
 function HeroSection() {
     return ( 
-        <div className="hero h-[800px] w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
+        <div className="hero h-[800px] bg-black w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
            <div className="heromain h-[450px] w-full flex justify-center items-center flex-col sm:h-[650px]">
             <div className="h-[40%]  mt-[30px] w-[90%] text-[min(18vw,8.5rem)] font-extrabold flex justify-center items-end sm:mt-[0px] lg:mt-[50px]">
                 <h1><span className="span_1">Comm</span>unet</h1>

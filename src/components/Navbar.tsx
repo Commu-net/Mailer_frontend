@@ -24,7 +24,6 @@ function Navbar() {
   const { toast } = useToast()
   
   function clickHandler() {
-    console.log("clicked");
     setVertVisible(!isVertVisible);
   }
   return (
@@ -81,8 +80,10 @@ function Navbar() {
           }
         </div>
       </div>
-      <div className="hamburger" onClick={clickHandler}>
-        <Hamburger ></Hamburger>
+      <div className={"hamburger"+ `${isVertVisible ? " text-black ":" text-white "}`} onClick={()=>{
+        clickHandler()
+      }}>
+        <Hamburger></Hamburger>
       </div>
     </div>
   );

@@ -83,12 +83,12 @@ color: black;
     border-radius: 10px;
     height: 48%;
     font-size: 1.1rem;
-    background-color: black;
+    background-color: rgb(25,135,247);
     transition:gap 0.12s linear;
 }
 .Sign_in:hover{
     gap: 8px;
-    background-color: rgb(40, 40, 40);
+    background-color: rgb(4, 96, 187);
 }
 .hamburger{
     z-index: 7;
@@ -107,6 +107,7 @@ color: black;
         right: -20%;
         visibility: hidden;
         width: 0;
+        background-color: black ;
         transform: scale(0);
         justify-content: flex-start;
         padding-top: 50px;
@@ -125,13 +126,15 @@ color: black;
     /* to make the vertical navbar visible when hamburger is clicked */
     .vert_visible{
         visibility: visible;
-        width: 176px;
-        background-color: white;
+        width: 200px;
         transform: scale(1);
         transform-origin: right;
         right: 0%;
         height: max(900px,100vh);
         z-index: 5;
+     }
+     .vert_visible a {
+        color: white;
      }
      .authrized_options{
         flex-direction: column;
