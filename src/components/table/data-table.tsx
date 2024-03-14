@@ -164,7 +164,7 @@ export function DataTable<TData, TValue>(
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
-                </TableRow>) : (<Skeleton  className='h-4 w-[250px]' />)
+                </TableRow>) : (<Skeleton  className='h-[80%] py-[10%] w-[100%]' />)
                 
               )
             
