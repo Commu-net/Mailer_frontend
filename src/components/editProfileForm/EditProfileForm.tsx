@@ -23,26 +23,29 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+import { useToast } from "@/components/ui/use-toast"
+
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useSelector } from "react-redux"
+import { DialogClose } from "@radix-ui/react-dialog"
 
 import { RootState } from "@/redux/store"
 
 const profileSchema = z.object({
-    id:z.string(),
-    name:z.string({required_error:"name is required"}).min(2,'name should not be empty or less than 2 letter').max(50),
-    email:z.string().email(),
-    company:z.string().min(2).max(50),
-    designation:z.string().min(2).max(50),
+    id: z.string(),
+    name: z.string({ required_error: "name is required" }).min(2, 'name should not be empty or less than 2 letter').max(50),
+    email: z.string().email(),
+    company: z.string().min(2).max(50),
+    designation: z.string().min(2).max(50),
 })
 
 
 
-export function EditProfile(values: z.infer<typeof profileSchema>,userid:string, rowInf:any) {
-    console.log(values,userid)
-    console.log("this is the row info " , rowInf)
+export function EditProfile(values: z.infer<typeof profileSchema>, userid: string, rowInf: any, toast: Function) {
+    console.log(values, userid)
+    console.log("this is the row info ", rowInf)
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "PUT",
@@ -53,7 +56,7 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string,
             userId: userid,
             data: {
                 _id: rowInf.id,
-                email: values.email  ,
+                email: values.email,
                 currentDesignation: values.designation,
                 name: values.name,
                 company: values.company,
@@ -63,17 +66,29 @@ export function EditProfile(values: z.infer<typeof profileSchema>,userid:string,
         .then((response) => response.json())
         .then((data) => {
             console.log("Success:", data);
+            if (data.statusCode === 200) {
+
+                toast({
+                    title: "Profile updated successfully",
+                    className: " text-green-600 bg-green-100"
+                })
+            }
         })
         .catch((error) => {
             console.error("Error:", error);
+            toast({
+                title: "An error occured while updating this profile",
+                className: " text-red-600 bg-red-100"
+            })
         });
 
 }
 
-export default function EditProfileForm(rowData:any) {
-    
-    const userid = useSelector((state: RootState) => state.userData.userId); 
+export default function EditProfileForm(rowData: any) {
 
+    const userid = useSelector((state: RootState) => state.userData.userId);
+
+    const { toast } = useToast()
 
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
@@ -86,16 +101,16 @@ export default function EditProfileForm(rowData:any) {
     })
 
     // 2. Define a submit handler.
-    function submithandler(values: z.infer<typeof profileSchema>,userid:string) {
-        console.log("these are the Updte form values",values,userid,rowData)
+    function submithandler(values: z.infer<typeof profileSchema>, userid: string, toast: Function) {
+        console.log("these are the Updte form values", values, userid, rowData)
         const rowInf = rowData.row
-        EditProfile(values,userid,rowInf)
+        EditProfile(values, userid, rowInf, toast)
     }
 
     return (<Dialog>
         <DialogTrigger asChild>
-            <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm  flex justify-center items-center gap-[10px] bg-white active:bg-white'> 
-              Edit
+            <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm  flex justify-center items-center gap-[10px] bg-white active:bg-white'>
+                Edit
             </Button>
         </DialogTrigger>
         <DialogContent className="W-[300px] sm:max-w-[425px] h-[500px]">
@@ -107,7 +122,7 @@ export default function EditProfileForm(rowData:any) {
                     console.log('submitted')
                     event.preventDefault()
                     console.log(form.getValues())
-                    submithandler(form.getValues(),userid)
+                    submithandler(form.getValues(), userid, toast)
                 }} className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}
@@ -128,7 +143,7 @@ export default function EditProfileForm(rowData:any) {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
-                                
+
 
                                 <FormControl>
                                     <Input
@@ -141,7 +156,7 @@ export default function EditProfileForm(rowData:any) {
                             </FormItem>
                         )}
                     />
-                   <FormField
+                    <FormField
                         control={form.control}
                         name="company"
                         render={({ field }) => (
@@ -168,11 +183,13 @@ export default function EditProfileForm(rowData:any) {
                         )}
                     />
                     <div className="w-[100%] flex justify-center items-center">
-                    <Button type="submit" className="w-[20%] " onClick={(event)=>{
-                        event.preventDefault()
-                        submithandler(form.getValues(),userid)
-                    }}>Update</Button>
-                       
+                        <DialogClose asChild>
+                            <Button type="submit" className="w-[20%] " onClick={(event) => {
+                                event.preventDefault()
+                                submithandler(form.getValues(), userid, toast)
+                            }}>Update</Button>
+                        </DialogClose>
+
                     </div>
                 </form>
             </Form>

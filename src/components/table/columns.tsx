@@ -16,6 +16,7 @@ import {
 import { updateMailList } from "@/redux/slices/emailList"
 
 import { useDispatch, useSelector } from "react-redux"
+import { useToast } from "@/components/ui/use-toast"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -45,7 +46,7 @@ import {
 } from "@/components/ui/alert-dialog"
 
 
-async function deleteProfile( userId:string ,rowId :any){
+async function deleteProfile( userId:string ,rowId :any,toast:Function){
   // write a function to do a delete request to this api end point http://localhost:4000/api/v1/mail
   // here it goes write the function to delete the profile
   fetch("https://api.api-communet.tech/api/v1/mail", {
@@ -61,16 +62,26 @@ async function deleteProfile( userId:string ,rowId :any){
     .then((response) => response.json())
     .then((data) => {
         console.log("Success:", data);
+        if (data.statusCode === 200) {
+          toast({
+              title: "Successfully deleted profile",
+             className : " text-green-600 bg-green-100"
+          })
+        }
     })
     .catch((error) => {
         console.error("Error:", error);
+        toast({
+          title: "An error occoured while deleting this profile",
+         className : " text-red-600 bg-red-100"
+      })
     });
     
 }
 
-function submitHandler(userId:string,rowId:string){
+function submitHandler(userId:string,rowId:string,toast:Function){
   console.log("this is the row id",rowId,"this is the user ID",userId);
-  deleteProfile(userId,rowId)
+  deleteProfile(userId,rowId,toast)
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -180,7 +191,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Actions",
     id: "actions",
     cell: ({row}:any) => {  
-      
+      let {toast}= useToast();
      let userId = useSelector((state: RootState) => state.userData.userId)
       return (
         <DropdownMenu>
@@ -221,7 +232,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogAction>
                       <Button onClick={()=>{
                         console.log("delete this profile ",row.original)
-                        submitHandler(userId,row.original._id)
+                        submitHandler(userId,row.original._id,toast)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
