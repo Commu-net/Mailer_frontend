@@ -33,6 +33,9 @@ import { DialogClose } from "@radix-ui/react-dialog"
 
 import { RootState } from "@/redux/store"
 
+import { useDispatch } from "react-redux"
+import { setChange } from "@/redux/slices/userData"
+
 const profileSchema = z.object({
     id: z.string(),
     name: z.string({ required_error: "name is required" }).min(2, 'name should not be empty or less than 2 letter').max(50),
@@ -43,7 +46,7 @@ const profileSchema = z.object({
 
 
 
-export function EditProfile(values: z.infer<typeof profileSchema>, userid: string, rowInf: any, toast: Function) {
+export function EditProfile(values: z.infer<typeof profileSchema>, userid: string, rowInf: any, toast: Function,dispatch:Function) {
     console.log(values, userid)
     console.log("this is the row info ", rowInf)
     // write an api call to update the profile 
@@ -67,7 +70,7 @@ export function EditProfile(values: z.infer<typeof profileSchema>, userid: strin
         .then((data) => {
             console.log("Success:", data);
             if (data.statusCode === 200) {
-
+                dispatch(setChange(true))
                 toast({
                     title: "Profile updated successfully",
                     className: " text-green-600 bg-green-100"
@@ -89,6 +92,7 @@ export default function EditProfileForm(rowData: any) {
     const userid = useSelector((state: RootState) => state.userData.userId);
 
     const { toast } = useToast()
+    const dispatch = useDispatch()
 
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
@@ -101,12 +105,12 @@ export default function EditProfileForm(rowData: any) {
     })
 
     // 2. Define a submit handler.
-    function submithandler(values: z.infer<typeof profileSchema>, userid: string, toast: Function) {
+    function submithandler(values: z.infer<typeof profileSchema>, userid: string, toast: Function,dispatch:Function) {
         console.log("these are the Updte form values", values, userid, rowData)
         const rowInf = rowData.row
-        EditProfile(values, userid, rowInf, toast)
+        EditProfile(values, userid, rowInf, toast,dispatch)
     }
-
+    
     return (<Dialog>
         <DialogTrigger asChild>
             <Button variant={"default"} className='h-[100%] w-[100px]  text-black rounded-sm  flex justify-center items-center gap-[10px] bg-white active:bg-white'>
@@ -183,7 +187,7 @@ export default function EditProfileForm(rowData: any) {
                                 () => {
                                     console.log("updated profile")
                                     console.log(form.getValues())
-                                    submithandler(form.getValues(), userid, toast)
+                                    submithandler(form.getValues(), userid, toast,dispatch)
                                     // issue is that if we place the above script in onSubmit event in form it wont work 
                                     // also when these script are written here we are on able to close the form autoatically as expected
                                 }

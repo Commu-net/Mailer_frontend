@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { RootState } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setUserInfo,setChange } from '@/redux/slices/userData';
+import { setUserInfo, setChange } from '@/redux/slices/userData';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export default function Dashboard() {
     }
   }
 
-  function reFetchUserData(dataChange:boolean) {
+  function reFetchUserData(dataChange: boolean) {
     console.log("this is the data change", dataChange)
     if (dataChange) {
       fetchUserData().then(data => {
@@ -71,7 +71,7 @@ export default function Dashboard() {
   }
 
   reFetchUserData(dataChange);
-  
+
 
   useEffect(() => {
     if (storedSubValue) {
@@ -89,7 +89,7 @@ export default function Dashboard() {
     }
   }, [])
 
-  
+
 
 
 
