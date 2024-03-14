@@ -1,6 +1,8 @@
 
 import "./css/HeroSection.css"
 
+import { Player } from "@lottiefiles/react-lottie-player";
+
 
 function HeroSection() {
     return ( 
@@ -19,10 +21,7 @@ function HeroSection() {
             </div>
            </div>
            <div className=" video_cont flex justify-center items-center h-[170px] w-[80%] bg-black lg:mt-[50px]  lg:w-[60%] lg:h-[36%] sm:h-[32%] sm:w-[70%] ">
-            <video className="h-full w-full">
-                <source src="../assets/video.mp4" type="video/mp4"/> 
-                {/* this video thing i snot working as of now */}
-            </video>
+              
            </div>
         </div>);
 }
