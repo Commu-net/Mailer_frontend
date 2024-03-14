@@ -44,7 +44,7 @@ function LandingPage() {
             console.log('User is not redirected.');
             // when user first time visits the page 
         }
-    }
+    }  
 
 
 
