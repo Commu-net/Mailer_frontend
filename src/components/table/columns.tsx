@@ -31,7 +31,7 @@ export type Payment = {
 
 import { RootState } from "@/redux/store"
 
-import  EditProfileForm  from "@/components/editProfileForm/EditProfileForm"
+import EditProfileForm from "@/components/editProfileForm/EditProfileForm"
 
 import {
   AlertDialog,
@@ -46,42 +46,42 @@ import {
 } from "@/components/ui/alert-dialog"
 
 
-async function deleteProfile( userId:string ,rowId :any,toast:Function){
+async function deleteProfile(userId: string, rowId: any, toast: Function) {
   // write a function to do a delete request to this api end point http://localhost:4000/api/v1/mail
   // here it goes write the function to delete the profile
   fetch("https://api.api-communet.tech/api/v1/mail", {
     method: "DELETE",
     headers: {
-        "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-        userId: userId,
-        _id: rowId,
+      userId: userId,
+      _id: rowId,
     }),
-})
+  })
     .then((response) => response.json())
     .then((data) => {
-        console.log("Success:", data);
-        if (data.statusCode === 200) {
-          toast({
-              title: "Successfully deleted profile",
-             className : " text-green-600 bg-green-100"
-          })
-        }
+      console.log("Success:", data);
+      if (data.statusCode === 200) {
+        toast({
+          title: "Successfully deleted profile",
+          className: " text-green-600 bg-green-100"
+        })
+      }
     })
     .catch((error) => {
-        console.error("Error:", error);
-        toast({
-          title: "An error occoured while deleting this profile",
-         className : " text-red-600 bg-red-100"
+      console.error("Error:", error);
+      toast({
+        title: "An error occoured while deleting this profile",
+        className: " text-red-600 bg-red-100"
       })
     });
-    
+
 }
 
-function submitHandler(userId:string,rowId:string,toast:Function){
-  console.log("this is the row id",rowId,"this is the user ID",userId);
-  deleteProfile(userId,rowId,toast)
+function submitHandler(userId: string, rowId: string, toast: Function) {
+  console.log("this is the row id", rowId, "this is the user ID", userId);
+  deleteProfile(userId, rowId, toast)
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -190,9 +190,9 @@ export const columns: ColumnDef<Payment>[] = [
   {
     header: "Actions",
     id: "actions",
-    cell: ({row}:any) => {  
-      let {toast}= useToast();
-     let userId = useSelector((state: RootState) => state.userData.userId)
+    cell: ({ row }: any) => {
+      let { toast } = useToast();
+      let userId = useSelector((state: RootState) => state.userData.userId)
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -204,21 +204,19 @@ export const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuItem
               onClick={(event) => {
-                  event.preventDefault()
+                event.preventDefault()
               }}
             >
-              <EditProfileForm row={row.original}/>  
-              
-
+              <EditProfileForm row={row.original} />
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={(event) => {
-                  event.preventDefault()
+                event.preventDefault()
               }}
             >
               <AlertDialog>
-                <AlertDialogTrigger className="w-[100%]" style={{outline:"2px solid transparent"}}>Delete</AlertDialogTrigger>
+                <AlertDialogTrigger className="w-[100%]" style={{ outline: "2px solid transparent" }}>Delete</AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
                     <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -230,9 +228,9 @@ export const columns: ColumnDef<Payment>[] = [
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction>
-                      <Button onClick={()=>{
-                        console.log("delete this profile ",row.original)
-                        submitHandler(userId,row.original._id,toast)
+                      <Button onClick={() => {
+                        console.log("delete this profile ", row.original)
+                        submitHandler(userId, row.original._id, toast)
                       }}>Continue</Button>
                     </AlertDialogAction>
                   </AlertDialogFooter>
