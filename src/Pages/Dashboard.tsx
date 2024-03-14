@@ -55,7 +55,17 @@ export default function Dashboard() {
   function reFetchUserData(dataChange:boolean) {
     console.log("this is the data change", dataChange)
     if (dataChange) {
-      fetchUserData();
+      fetchUserData().then(data => {
+        dispatch(setUserInfo({
+          id: localStorage.getItem('communet_user_id'),   // temporarly getting id like this will updae when api gets updated 
+          name: localStorage.getItem('communet_user_name'),
+          useremail: localStorage.getItem('communet_user_email'),
+          emails: data?.data.map((item: any) => ({
+            ...item,
+            addedOn: formatDate(item.addedOn)
+          }))
+        }))
+      });
       dispatch(setChange(false));
     }
   }
