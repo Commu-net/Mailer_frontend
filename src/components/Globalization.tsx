@@ -15,7 +15,8 @@ function Globalization() {
              src={earth}
              loop = {true}
              autoplay
-             className='planet_cont scale-[1.5]'
+             className='planet_cont scale-[0.7]'
+            
              
              />
         </div> 
