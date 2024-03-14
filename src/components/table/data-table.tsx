@@ -125,7 +125,7 @@ export function DataTable<TData, TValue>(
       </div>
 
       <Table className="bg-opacity-60 grass w-[100%]">
-        <TableHeader className="bg-black z-10 sticky top-[-2px]">
+        <TableHeader className="bg-black z-9 sticky top-[-2px]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow 
              className="border-b-20 bg-black text-white text-[12px] font-bold px-0 py-2"

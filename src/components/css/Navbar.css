@@ -164,12 +164,12 @@ color: black;
     }
     .authzed_buttn{
         width: 80%;
-        height: 20%;
+        height: 100px;
     }
     .hamburger{
         visibility: visible;
         margin-left: 15px;
-        z-index: 7;
+        z-index: 106;
         height: fit-content;
         width: fit-content;
         transform: scale(1);
