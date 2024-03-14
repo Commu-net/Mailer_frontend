@@ -9,8 +9,8 @@ function ToolInfo() {
     <div className='text_mid w-[60%]  text h-30 w-4/5 text-gray-500 flex items-end justify-center text-[min(3.5vw,1.4rem)]'>
     Communet is your all-in-one solution for targeted outreach, seamlessly connecting you with the right audience, at the right time, and in the right way to maximize your opportunities.
     </div>
-    <div className='image h-1/2 w-4/5 flex justify-center items-center'>
-        <img src={features}  className='h-[60%] sm:w-[60%] sm:h-[90%] ' alt='feat'/>
+    <div className='image h-[60%] w-4/5 flex justify-center items-center'>
+        <img src={features}  className=' ' alt='feat'/>
     </div>
     </div> );
 }

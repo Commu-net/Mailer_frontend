@@ -138,7 +138,7 @@ color: black;
         color: white;
      }
      .vert_nav a:hover{
-        color: rgb(25,135,247);;
+        color: rgb(25,135,247);
      }
      .authrized_options{
         flex-direction: column;
