@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import React from "react"
 
+import { Skeleton } from '../ui/skeleton'
 
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
@@ -152,17 +153,19 @@ export function DataTable<TData, TValue>(
             table.getRowModel().rows.map((row) =>{
               console.log(row)
               return (
-                <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-                className="h-[60px]"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
+                // add skeliton loader here 
+                row.original ? (<TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  className="h-[60px]"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>) : (<Skeleton />)
+                
               )
             
             })
