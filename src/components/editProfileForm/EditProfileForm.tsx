@@ -122,6 +122,7 @@ export default function EditProfileForm(rowData: any) {
                     console.log('submitted')
                     event.preventDefault()
                     console.log(form.getValues())
+                    
                     submithandler(form.getValues(), userid, toast)
                 }} className="space-y-4 flex flex-col ">
                     <FormField
@@ -184,10 +185,7 @@ export default function EditProfileForm(rowData: any) {
                     />
                     <div className="w-[100%] flex justify-center items-center">
                         <DialogClose asChild>
-                            <Button type="submit" className="w-[20%] " onClick={(event) => {
-                                event.preventDefault()
-                                submithandler(form.getValues(), userid, toast)
-                            }}>Update</Button>
+                            <Button type="submit" className="w-[20%] " >Update</Button>
                         </DialogClose>
 
                     </div>
