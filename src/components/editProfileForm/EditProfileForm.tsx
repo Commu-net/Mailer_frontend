@@ -119,11 +119,7 @@ export default function EditProfileForm(rowData: any) {
             </DialogHeader>
             <Form {...form}>
                 <form onSubmit={(event) => {
-                    console.log('submitted')
-                    event.preventDefault()
-                    console.log(form.getValues())
-                    
-                    submithandler(form.getValues(), userid, toast)
+
                 }} className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}
@@ -185,7 +181,15 @@ export default function EditProfileForm(rowData: any) {
                     />
                     <div className="w-[100%] flex justify-center items-center">
                         <DialogClose asChild>
-                            <Button type="submit" className="w-[20%] " >Update</Button>
+                            <Button type="submit" className="w-[20%] " onClick={
+                                (event) => {
+                                    console.log("updated profile")
+                                    event.preventDefault()
+                                    console.log(form.getValues())
+                                    submithandler(form.getValues(), userid, toast)
+                                    // issue is that if we place the above script in onSubmit event in form it wont work 
+                                }
+                            }>Update</Button>
                         </DialogClose>
 
                     </div>
