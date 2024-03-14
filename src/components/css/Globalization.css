@@ -1,0 +1,11 @@
+.planet_cont::before{
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 20px 0px #000000;
+}

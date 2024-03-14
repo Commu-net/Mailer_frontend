@@ -3,9 +3,10 @@ import "./css/HeroSection.css"
 
 import { Player } from "@lottiefiles/react-lottie-player";
 import main from '../assets/json/main.json'
-
+import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
+    const navigate = useNavigate();
     return ( 
         <div className="hero h-[800px]  w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
            <div className="heromain h-[500px] w-full flex justify-center items-center flex-col sm:h-[650px]">
@@ -17,8 +18,14 @@ function HeroSection() {
             </div>
             <div className="h-[10%] w-full mt-[40px] gap-3 flex justify-center items-center sm:h-[13%] mt-[60px]    ">
 
-                <button className="gs_button h-9 w-28 text-white sm:h-[50px] w-[150px]">Get Started</button>
-                <button     className="lm_button  h-9 w-28 text-white sm:h-[50px] w-[150px] ">Learn more</button>
+                <button className="gs_button h-9 w-28 text-white sm:h-[50px] w-[150px]" 
+                onClick={()=>{
+                    navigate('/login')
+                }}>Get Started</button>
+                <button     className="lm_button  h-9 w-28 text-white sm:h-[50px] w-[150px] "
+                onClick={()=>{
+                    navigate('/resources    ')
+                }}>Learn more</button>
             </div>
            </div>
            <div className=" video_cont relative top-[50px] flex justify-center items-center h-[10px] w-[80%]  lg:mt-[50px]  lg:w-[60%] lg:h-[36%] sm:h-[32%] sm:w-[70%] ">

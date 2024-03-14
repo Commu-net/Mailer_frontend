@@ -25,7 +25,7 @@ export default function LoginPage() {
   return (
     <div className='login h-[728px] w-[100% ] flex justify-center items-center'>
       <div className='image_container'>
-        <div className='planet_cont'>
+        <div className='mail_anim_cont'>
            <Player
             src={mailanimation}
             loop
