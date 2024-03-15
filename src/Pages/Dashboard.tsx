@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   const storedSubValue = localStorage.getItem('communet_user_sub');
 
-
+ 
   async function fetchUserData(url = `https://api.api-communet.tech/api/v1/mail?userEmail=${localStorage.getItem('communet_user_email')}`) {
     try {
       const response = await fetch(url, {
