@@ -90,7 +90,7 @@ export default function ImportProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(_values: z.infer<typeof formSchema>) {
         sendFileName("sax")
     }
 
