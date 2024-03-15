@@ -151,7 +151,6 @@ export function DataTable<TData, TValue>(
           {table.getRowModel().rows?.length ?
             (
               table.getRowModel().rows.map((row) => {
-                console.log(row)
                 return (
                   <TableRow
                     key={row.id}
