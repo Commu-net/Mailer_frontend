@@ -94,6 +94,7 @@ const sendFile = async function sendFile(link:string,values: z.infer<typeof form
 
  
 async function sendExcelFile(link:string,values: z.infer<typeof formSchema>) {
+
     // this wil hae a PUT request with the file 
     try {
         const response =  await fetch(`${link}`, {
@@ -101,8 +102,8 @@ async function sendExcelFile(link:string,values: z.infer<typeof formSchema>) {
          headers: {
             "Content-Type": "application/json",
         },
-        body: values.file,
-
+        body: JSON.stringify({file_name:values.file.name,
+            user_id: localStorage.getItem('communet_user_id'),}),
         })
         const resposne = response.json();
         return resposne;
