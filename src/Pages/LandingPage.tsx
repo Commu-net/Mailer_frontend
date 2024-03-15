@@ -49,7 +49,7 @@ function LandingPage() {
 
 
     return ( <div className="LandingPage h-[3150px] max-w-[1304px] flex justify-start items-center flex-col sm:h-[3600px] lg:h-[3820px]">
-        <HeroSection/> 
+        <HeroSection/>  
         <ToolInfo/>
         <Globalization/>
         <Services/>

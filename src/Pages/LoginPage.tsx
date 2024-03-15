@@ -23,8 +23,8 @@ export default function LoginPage() {
 
 
   return (
-    <div className='login h-[728px] w-[100% ] flex justify-center items-center'>
-      <div className='image_container'>
+    <div className='login lg:h-[728px] w-[100% ] flex justify-center items-center sm:h-[400px]'>
+      <div className='image_container  hidden lg:flex  '>
         <div className='mail_anim_cont'>
            <Player
             src={mailanimation}
@@ -34,8 +34,8 @@ export default function LoginPage() {
             />
         </div>
       </div>
-      <div className='login_sect'>
-        <div className='card_container'>
+      <div className='login_sect lg:w-[50%] md:w-[65%] sm: w-[90%]'>
+        <div className='card_container lg:w-[50%] lg:h-[50%] md:h-[67%] sm: w-[100%]'>
           <div className='log_head'>
             Welcome user
           </div>
