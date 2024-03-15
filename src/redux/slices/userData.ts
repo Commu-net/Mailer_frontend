@@ -39,12 +39,12 @@ export const userDataSlice = createSlice({
       // set the list empty before adding the new list
       state.userLeads = [];
       action.payload.emails?.forEach((element: Profile) => {
-        console.log("this is the element",element)
+        // console.log("this is the element",element)
         state.userLeads.find((item:Profile) => item.email === element.email) ? state.userLeads : state.userLeads.push(element);
       });
     },
     setChange:(state, action) => {
-      console.log("this is the change",action.payload)
+      // console.log("this is the change",action.payload)
       state.change = action.payload
     }
   }
