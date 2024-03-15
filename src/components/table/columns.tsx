@@ -113,6 +113,7 @@ export const columns: ColumnDef<Payment>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value: boolean) => {
           dispatch(updateMailList(row.original))
+          console.log("this is the row", row.original) 
           // console.log(data)
           row.toggleSelected(!!value)
         }}

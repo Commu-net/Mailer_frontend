@@ -102,6 +102,7 @@ export default function EmailForm() {
 
     const userEmail = useSelector((state: RootState) => state.userData.userEmail);
     const emailList = useSelector((state: any) => state.emailList.emailList)
+    console.log("this is the emai list ",emailList)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
