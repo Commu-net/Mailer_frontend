@@ -60,7 +60,8 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
         });
 
         const responseData = await response.text();
-      return  sendFile(responseData, values); // Access 'link' property from the response data
+        console.log(responseData);
+      return await sendFile(responseData, values); // Access 'link' property from the response data
     } catch (error) {
         console.log(error)
     }
