@@ -7,11 +7,11 @@ export const service  = [
     {
         icon:1,
         head:"Cold mailing",
-        desc:"Establish a presence in the corporate and among managers to get  opportunities."
+        desc:"Establish a presence in the corporate to get  opportunities."
     },
     {
         icon:0,
         head:"Email Marketing",
-        desc:"Enhance your social advertisement by reaching out to a diverse audience "
+        desc:"Enhance your advertisement by reaching out to a diverse audience "
     }
 ]

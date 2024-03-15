@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function HeroSection() {
     const navigate = useNavigate();
     return ( 
-        <div className="hero h-[800px]  w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
+        <div className="hero h-[840px]  w-full flex justify-center items-center flex-col sm:h-[1080px] 2xl:h-[1280px] pb-[200px]">
            <div className="heromain h-[500px] w-full flex justify-center items-center flex-col sm:h-[650px]">
             <div className="h-[40%]  mt-[30px] w-[90%] text-[min(18vw,8.5rem)] font-extrabold flex justify-center items-end sm:mt-[0px] lg:mt-[50px]">
                 <h1><span className="span_1">Comm</span>unet</h1>
@@ -28,7 +28,7 @@ function HeroSection() {
                 }}>Learn more</button>
             </div>
            </div>
-           <div className=" video_cont relative top-[50px] flex justify-center items-center h-[10px] w-[80%]  lg:mt-[50px]  lg:w-[60%] lg:h-[36%] sm:h-[32%] sm:w-[70%] ">
+           <div className=" video_cont relative top-[50px] flex justify-center items-center h-[100px] w-[80%]  lg:mt-[50px]  lg:w-[60%] lg:h-[36%] sm: h-[32%] sm: w-[90%] ">
               <Player 
               autoplay 
               loop
