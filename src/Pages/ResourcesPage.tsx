@@ -14,11 +14,26 @@ import {
 
 const ResourcePage = () => {
   return (
-    <div className="doc flex justify-center  text-black w-[100%]">
+    <div className="doc flex justify-center  text-black md:w-[60%] sm:w-[90%]">
 
+   <div className="side_doc md:w-[60%] sm:w-[90%]">
+        <div className="inner_side sm: w-[100%] flex items-center justify-start">
+          {/* Sidebar navigation links */}
+          <ul className="overflow-x-scroll space-y-2 flex justify-center items-start gap-[20px] ">
+          <li className='sm: mx-[200px] md:mx-[0]'><a href="#getting-started" className="hover:text-blue-500"></a></li>
+            <li  className='min-w-[100px]'><a href="#getting-started" className="hover:text-blue-500">Get started</a></li>
+            <li  className='min-w-[100px]'><a href="#introduction_doc" className="hover:text-blue-500">Introduction</a></li>
+            <li  className='min-w-[100px]'><a href="#features" className="hover:text-blue-500">Features</a></li>
+            <li  className='min-w-[100px]'><a href="#security" className="hover:text-blue-500">Security</a></li>
+            <li  className='min-w-[100px]'><a href="#contribute" className="hover:text-blue-500">Contribute</a></li>
+            <li  className='min-w-[100px]'><a href="#faqs" className="hover:text-blue-500">FAQs</a></li>
+            {/* Add more navigation links as needed */}
+          </ul>
+        </div>
+      </div>
 
       {/* Main content area */}
-      <div className=" main_doc py-8 ">
+      <div className=" main_doc py-8 sm: w-[96%] px-0 sm: top-[100px]">
         {/* Documentation content */}
         <div id='getting-started' className='page_start'>
           <div className='page_head'> Getting Started</div>
@@ -42,7 +57,7 @@ const ResourcePage = () => {
         </div>
         <div id="features" className=" features">
           <h2 className=" page_head">Features</h2>
-          <div className='page_intro'>Explore the key features of Communet designed to streamline your email marketing efforts:</div>
+          <div className='page_intro md:px-0 sm:px-[5px]'>Explore the key features of Communet designed to streamline your email marketing efforts:</div>
 
           <div className='sub_head'>
             1. Bulk Mailing
@@ -153,7 +168,7 @@ const ResourcePage = () => {
               <AccordionItem value="item-3">
                 <AccordionTrigger>Does the platform supports importing profile via excel sheet ?</AccordionTrigger>
                 <AccordionContent>
-                  Currently we do not support importing profiles via excel sheet. However, we are working on this feature and it will be available soon.
+                  Yes we do  support importing profiles via excel sheet
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -163,20 +178,7 @@ const ResourcePage = () => {
       </div>
 
       {/* Sidebar */}
-      <div className="side_doc ">
-        <div className="inner_side p-4">
-          {/* Sidebar navigation links */}
-          <ul className="space-y-2 flex justify-start items-start flex-col">
-            <li><a href="#getting-started" className="hover:text-blue-500">Getting Started</a></li>
-            <li><a href="#introduction_doc" className="hover:text-blue-500">Introduction</a></li>
-            <li><a href="#features" className="hover:text-blue-500">Features</a></li>
-            <li><a href="#security" className="hover:text-blue-500">Security</a></li>
-            <li><a href="#contribute" className="hover:text-blue-500">Contribute</a></li>
-            <li><a href="#faqs" className="hover:text-blue-500">FAQs</a></li>
-            {/* Add more navigation links as needed */}
-          </ul>
-        </div>
-      </div>
+     
     </div>
   );
 };
