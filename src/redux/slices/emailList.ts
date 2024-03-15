@@ -30,7 +30,7 @@ export const emaiSlice = createSlice({
       console.log("this is the action payload",action.payload)
       const prof = action.payload
        if(initialState.emailList.find(profile=>profile.id==action.payload._id)){
-        initialState.emailList = initialState.emailList.filter((item)=> item._id!=prof.id)
+        initialState.emailList = initialState.emailList.filter((item)=> item.id!=prof.id)
        }
        else{
         initialState.emailList.push({
