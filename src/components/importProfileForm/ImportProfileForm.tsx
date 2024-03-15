@@ -84,7 +84,7 @@ const sendFile = async function sendFile(link:string,values: z.infer<typeof form
             body: values.file,
         });
         if (response.status === 200) {
-           return sendExcelFile(link, values);
+           return sendExcelFile(values);
         }
     } catch (error) {
         console.log(error);
@@ -93,11 +93,11 @@ const sendFile = async function sendFile(link:string,values: z.infer<typeof form
 }
 
  
-async function sendExcelFile(link:string,values: z.infer<typeof formSchema>) {
+async function sendExcelFile(values: z.infer<typeof formSchema>) {
 
     // this wil hae a PUT request with the file 
     try {
-        const response =  await fetch(`${link}`, {
+        const response =  await fetch(`https://j6c8s86qu1.execute-api.ap-south-1.amazonaws.com/Prod/parser`, {
         method: 'POST',
          headers: {
             "Content-Type": "application/json",
