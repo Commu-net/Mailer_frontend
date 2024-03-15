@@ -74,7 +74,7 @@ const sendFile = async function sendFile(link:string,values: z.infer<typeof form
     // this wil hae a PUT request with the file 
     try {
         console.log("in sendfile ",link); 
-        const response =  await fetch(`${link}`, {
+        const response =  await fetch(link, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/octet-stream",
