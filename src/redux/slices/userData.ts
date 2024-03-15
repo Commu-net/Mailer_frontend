@@ -33,6 +33,7 @@ export const userDataSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action) => {
+      console.log("user data is stored in redux",action.payload)
       state.userId = action.payload.id;
       state.userName = action.payload.name;
       state.userEmail = action.payload.useremail;
@@ -44,7 +45,7 @@ export const userDataSlice = createSlice({
       });
     },
     setChange:(state, action) => {
-      // console.log("this is the change",action.payload)
+      console.log("this is the change",action.payload)
       state.change = action.payload
     }
   }
