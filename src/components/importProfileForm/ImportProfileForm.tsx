@@ -49,7 +49,7 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
     // this api will send the nae of file to this end point as POST 
 
     try {
-        let response = await fetch("https://2suzhf2obf.execute-api.ap-south-1.amazonaws.com/Prod/link", {
+        let response = await fetch("https://cr9m4tlf41.execute-api.ap-south-1.amazonaws.com/Prod/link", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
