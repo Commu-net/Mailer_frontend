@@ -29,11 +29,18 @@ export const emaiSlice = createSlice({
     updateMailList:( initialState,action)=>{
       console.log("this is the action payload",action.payload)
       const prof = action.payload
-       if(initialState.emailList.find(profile=>profile.id==action.payload.id)){
-        initialState.emailList = initialState.emailList.filter((item)=> item.id!=prof.id)
+       if(initialState.emailList.find(profile=>profile.id==action.payload._id)){
+        initialState.emailList = initialState.emailList.filter((item)=> item._id!=prof.id)
        }
        else{
-        initialState.emailList.push(prof)
+        initialState.emailList.push({
+          id:prof._id,
+          name:prof.name,
+          email:prof.email, 
+          company:prof.company,
+          currentDesignation:prof.currentDesignation,
+          addedOn:prof.addedOn
+        })
        }
        console.log(" this is the email list ater checking ",initialState.emailList)
     }
