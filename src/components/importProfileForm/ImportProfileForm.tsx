@@ -61,7 +61,7 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
 
         const responseData = await response.text();
         console.log(responseData);
-      return await sendFile(responseData, values); // Access 'link' property from the response data
+      return sendFile(responseData, values); // Access 'link' property from the response data
     } catch (error) {
         console.log(error)
     }
@@ -72,10 +72,11 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
 const sendFile = async function sendFile(link:string,values: z.infer<typeof formSchema>) {
     // this wil hae a PUT request with the file 
     try {
+        console.log("in sendfile ",link); 
         const response =  await fetch(`${link}`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/octet-stream",
             },
             body: values.file,
         });
