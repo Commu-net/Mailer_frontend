@@ -18,6 +18,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 
+import { useToast } from "../ui/use-toast"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,6 +27,9 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+
+import { useDispatch } from "react-redux"
+import { setChange } from "@/redux/slices/userData"
 
 
 
@@ -38,24 +42,26 @@ const formSchema = z.object({
     }),
 })
 
-export async function sendFileName(name:String) {
+
+async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
 
     // console.log("this is the form",values)
     // this api will send the nae of file to this end point as POST 
 
     try {
         let response = await fetch("https://2suzhf2obf.execute-api.ap-south-1.amazonaws.com/Prod/link", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            file_name:name
-        }),
-        
-    }
-    )
-    console.log(response)
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                file_name: name
+            }),
+        });
+
+        const responseData = await response.json(); // Extract JSON response
+        console.log(response);
+      return  sendFile(responseData.link, values); // Access 'link' property from the response data
     } catch (error) {
         console.log(error)
     }
@@ -63,25 +69,50 @@ export async function sendFileName(name:String) {
 
 }
 
-// export async function sendFile(values: z.infer<typeof formSchema>) {
-//     // this wil hae a PUT request with the file 
-//     try {
-//         const response =  await fetch('https://api.api-communet.tech/api/v1/send/', {
-//         method: 'PUT',
-//          headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: values.file,
+const sendFile = async function sendFile(link:string,values: z.infer<typeof formSchema>) {
+    // this wil hae a PUT request with the file 
+    try {
+        const response =  await fetch(`${link}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: values.file,
+        });
+        if (response.status === 200) {
+           return sendExcelFile(link, values);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 
-//         })
-//     } catch (error) {
-        
-//     }
+}
 
-// }
+ 
+async function sendExcelFile(link:string,values: z.infer<typeof formSchema>) {
+    // this wil hae a PUT request with the file 
+    try {
+        const response =  await fetch(`${link}`, {
+        method: 'POST',
+         headers: {
+            "Content-Type": "application/json",
+        },
+        body: values.file,
+
+        })
+        const resposne = response.json();
+        return resposne;
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
 
 export default function ImportProfileForm() {
-    
+    const { toast } = useToast()
+    const dispatch = useDispatch()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -90,8 +121,15 @@ export default function ImportProfileForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(_values: z.infer<typeof formSchema>) {
-        sendFileName("sax")
+    async function onSubmit(_values: z.infer<typeof formSchema>) {
+      const response = await sendFileName(form?.control?._fields?.file?._f?.value?.name,form.getValues());
+      if(response?.statusCode === 200){
+        toast({
+            title: "File uploaded successfully",
+            className: " text-green-600 bg-green-100"
+        })
+        dispatch(setChange(true))
+      }
     }
 
     return (<Dialog>
