@@ -38,11 +38,47 @@ const formSchema = z.object({
     }),
 })
 
-export function importFile(values: z.infer<typeof formSchema>) {
+export async function sendFileName(name:String) {
 
-    console.log("this is the form",values)
+    // console.log("this is the form",values)
+    // this api will send the nae of file to this end point as POST 
+
+    try {
+        let response = await fetch("https://2suzhf2obf.execute-api.ap-south-1.amazonaws.com/Prod/link", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            file_name:name
+        }),
+        
+    }
+    )
+    console.log(response)
+    } catch (error) {
+        console.log(error)
+    }
+
 
 }
+
+// export async function sendFile(values: z.infer<typeof formSchema>) {
+//     // this wil hae a PUT request with the file 
+//     try {
+//         const response =  await fetch('https://api.api-communet.tech/api/v1/send/', {
+//         method: 'PUT',
+//          headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: values.file,
+
+//         })
+//     } catch (error) {
+        
+//     }
+
+// }
 
 export default function ImportProfileForm() {
     
@@ -55,7 +91,7 @@ export default function ImportProfileForm() {
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof formSchema>) {
-        importFile(values)
+        sendFileName("sax")
     }
 
     return (<Dialog>
