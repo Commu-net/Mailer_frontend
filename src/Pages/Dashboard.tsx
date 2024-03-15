@@ -46,7 +46,6 @@ export default function Dashboard() {
         referrerPolicy: 'no-referrer',
       });
       let data = await response.json()
-      console.log("this is the user data", data)
       return data;
     } catch (error) {
       console.error('Error:', error);

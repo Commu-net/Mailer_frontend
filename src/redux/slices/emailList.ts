@@ -34,6 +34,7 @@ export const emaiSlice = createSlice({
        else{
         initialState.emailList.push(prof)
        }
+       console.log(initialState.emailList)
     }
   }
 })

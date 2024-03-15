@@ -65,7 +65,6 @@ async function deleteProfile(userId: string, rowId: any, toast: Function,dispatc
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
       if (data.statusCode === 200) {
         dispatch(setChange(true))
         toast({
@@ -85,7 +84,6 @@ async function deleteProfile(userId: string, rowId: any, toast: Function,dispatc
 }
 
 function submitHandler(userId: string, rowId: string, toast: Function,dispatch: Function) {
-  console.log("this is the row id", rowId, "this is the user ID", userId);
   deleteProfile(userId, rowId, toast,dispatch)
 }
 
