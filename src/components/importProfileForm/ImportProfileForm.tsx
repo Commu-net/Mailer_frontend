@@ -45,7 +45,6 @@ const formSchema = z.object({
 
 async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
 
-    // console.log("this is the form",values)
     // this api will send the nae of file to this end point as POST 
 
     try {
@@ -60,13 +59,11 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
         });
 
         const responseData = await response.text();
-        console.log(responseData);
-        console.log(typeof responseData);
 
         const cleanedLink = responseData.replace(/^"|"$/g, ''); 
       return sendFile(cleanedLink, values); // Access 'link' property from the response data
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 
 
@@ -75,7 +72,6 @@ async function sendFileName(name:string,values: z.infer<typeof formSchema>) {
 const sendFile = async function sendFile(link:string,values: z.infer<typeof formSchema>) {
     // this wil hae a PUT request with the file 
     try {
-        console.log("in sendfile ",link); 
         const response =  await fetch(link, {
             method: 'PUT',
             headers: {
@@ -87,7 +83,7 @@ const sendFile = async function sendFile(link:string,values: z.infer<typeof form
            return sendExcelFile(values);
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 
 }
@@ -108,7 +104,7 @@ async function sendExcelFile(values: z.infer<typeof formSchema>) {
         const resposne = response.json();
         return resposne;
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 
 }
@@ -152,7 +148,6 @@ export default function ImportProfileForm() {
                 <form onSubmit={(event) => {
                     event.preventDefault()
                     onSubmit(form.getValues())
-                    console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                    
                     <FormField

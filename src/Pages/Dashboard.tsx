@@ -53,7 +53,6 @@ export default function Dashboard() {
   }
 
   function reFetchUserData(dataChange: boolean) {
-    console.log("this is the data change", dataChange)
     if (dataChange) {
       fetchUserData().then(data => {
         dispatch(setUserInfo({

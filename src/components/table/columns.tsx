@@ -111,8 +111,6 @@ export const columns: ColumnDef<Payment>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value: boolean) => {
           dispatch(updateMailList(row.original))
-          console.log("this is the row", row.original) 
-          // console.log(data)
           row.toggleSelected(!!value)
         }}
         aria-label="Select row"
@@ -234,7 +232,6 @@ export const columns: ColumnDef<Payment>[] = [
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction>
                       <Button onClick={() => {
-                        console.log("delete this profile ", row.original)
                         submitHandler(userId, row.original._id, toast,dispatch)
                       }}>Continue</Button>
                     </AlertDialogAction>

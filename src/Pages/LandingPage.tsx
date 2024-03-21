@@ -26,7 +26,6 @@ function LandingPage() {
     // run this only if user is not logged in or communet_user_sub is not in loal storage
     if(!isLogged){
         if (isRedirected()) {
-            console.log('User is redirected.');
             const url = new URLSearchParams(window.location.search).toString()
             const userEmail = decodeURIComponent(url.split("=")[1].split("&")[0])
             const userId  = url.split("=")[4]
@@ -41,7 +40,6 @@ function LandingPage() {
             // show dashboard and other user-specific content
     
         } else {
-            console.log('User is not redirected.');
             // when user first time visits the page 
         }
     }  

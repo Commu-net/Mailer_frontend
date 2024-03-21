@@ -47,8 +47,6 @@ const profileSchema = z.object({
 
 
 export function EditProfile(values: z.infer<typeof profileSchema>, userid: string, rowInf: any, toast: Function,dispatch:Function) {
-    console.log(values, userid)
-    console.log("this is the row info ", rowInf)
     // write an api call to update the profile 
     fetch("https://api.api-communet.tech/api/v1/mail", {
         method: "PUT",
@@ -68,7 +66,6 @@ export function EditProfile(values: z.infer<typeof profileSchema>, userid: strin
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log("Success:", data);
             if (data.statusCode === 200) {
                 dispatch(setChange(true))
                 toast({
@@ -106,7 +103,6 @@ export default function EditProfileForm(rowData: any) {
 
     // 2. Define a submit handler.
     function submithandler(values: z.infer<typeof profileSchema>, userid: string, toast: Function,dispatch:Function) {
-        console.log("these are the Updte form values", values, userid, rowData)
         const rowInf = rowData.row
         EditProfile(values, userid, rowInf, toast,dispatch)
     }
@@ -185,8 +181,6 @@ export default function EditProfileForm(rowData: any) {
                         <DialogClose asChild>
                             <Button type="submit" className="w-[20%] " onClick={
                                 () => {
-                                    console.log("updated profile")
-                                    console.log(form.getValues())
                                     submithandler(form.getValues(), userid, toast,dispatch)
                                     // issue is that if we place the above script in onSubmit event in form it wont work 
                                     // also when these script are written here we are on able to close the form autoatically as expected

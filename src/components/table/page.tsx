@@ -13,10 +13,7 @@ import { RootState } from "@/redux/store"
 //  const data = useSelector((state: RootState) => state.emailList.emailList)
 
 export default function DemoPage() {
-  const data = useSelector((state: RootState) => state.userData.userLeads)  
-  console.log("this is the user data being ued for data table",data)   // use this line instead of the line below
-  //  dont use this line, this is just for testing
-  // console.log(emailList)
+  const data = useSelector((state: RootState) => state.userData.userLeads)
   return (
     <div className="container max-w-full flex justify-center items-center  h-[100%] p-0 w-[100%]">
       <DataTable columns={columns} data={data} />

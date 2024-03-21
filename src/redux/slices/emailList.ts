@@ -27,7 +27,6 @@ export const emaiSlice = createSlice({
   initialState,
   reducers: {
     updateMailList:( initialState,action)=>{
-      console.log("this is the action payload",action.payload)
       const prof = action.payload
        if(initialState.emailList.find(profile=>profile.id==action.payload._id)){
         initialState.emailList = initialState.emailList.filter((item)=> item.id!=prof.id)
@@ -42,7 +41,6 @@ export const emaiSlice = createSlice({
           addedOn:prof.addedOn
         })
        }
-       console.log(" this is the email list ater checking ",initialState.emailList)
     }
   }
 })

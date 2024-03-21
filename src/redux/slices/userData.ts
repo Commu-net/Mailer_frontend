@@ -33,19 +33,16 @@ export const userDataSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action) => {
-      console.log("user data is stored in redux",action.payload)
       state.userId = action.payload.id;
       state.userName = action.payload.name;
       state.userEmail = action.payload.useremail;
       // set the list empty before adding the new list
       state.userLeads = [];
       action.payload.emails?.forEach((element: Profile) => {
-        // console.log("this is the element",element)
         state.userLeads.find((item:Profile) => item.email === element.email) ? state.userLeads : state.userLeads.push(element);
       });
     },
     setChange:(state, action) => {
-      console.log("this is the change",action.payload)
       state.change = action.payload
     }
   }

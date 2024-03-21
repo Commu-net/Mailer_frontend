@@ -49,7 +49,6 @@ export async function addProfile(values: z.infer<typeof profileSchema>, userId: 
     values.company = values.company ? values.company : " - "
     values.designation = values.designation ? values.designation : " - "
 
-    console.log(values, userId)
     try {
         let data = await fetch("https://api.api-communet.tech/api/v1/mail", {
             method: "POST",
@@ -67,7 +66,6 @@ export async function addProfile(values: z.infer<typeof profileSchema>, userId: 
             }),
         })
         let response = await data.json()
-        console.log(response)
         if (response.statusCode === 200) {
             dispatch(setChange(true))
             toast({
@@ -89,7 +87,6 @@ export default function AddProfileForm() {
     const dispatch = useDispatch()
 
     const userId = useSelector((state: RootState) => state.userData.userId)
-    console.log("this is user id ", userId)
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
@@ -121,7 +118,6 @@ export default function AddProfileForm() {
                 <form onSubmit={(event) => {
                     event.preventDefault()
                     submitHandler(form.getValues(), userId, toast, dispatch)
-                    console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}

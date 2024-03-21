@@ -68,8 +68,6 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
         method: 'POST',
         body: formData,
     })
-    const data = await response.json();
-    console.log(data);
     if (response.ok) {
         toast({
             title: "Mail sent successfully",
@@ -85,14 +83,11 @@ async function sendMail(values: z.infer<typeof formSchema>, emailString: string,
 
 export function onSend(values: z.infer<typeof formSchema>, profileList: any[], userEmail: string,toast:Function) {
 
-    console.log("this is the form", values)
-    console.log("this is the profiles", profileList)
     let str = ""
     for (let i = 0; i < profileList.length; i++) {
         str += profileList[i].email + ","
     }
     str = str.slice(0, -1)
-    console.log(str)
     sendMail(values, str, userEmail,toast)
 
 
@@ -102,7 +97,6 @@ export default function EmailForm() {
 
     const userEmail = useSelector((state: RootState) => state.userData.userEmail);
     const emailList = useSelector((state: any) => state.emailList.emailList)
-    console.log("this is the emai list ",emailList)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -129,9 +123,7 @@ export default function EmailForm() {
             <Form {...form}>
                 <form onSubmit={(event) => {
                     event.preventDefault()
-                    console.log(form.getValues())
                     submitHandler(form.getValues(),toast)
-                    console.log('submitted')
                 }} className="space-y-4 flex flex-col ">
                     <FormField
                         control={form.control}
