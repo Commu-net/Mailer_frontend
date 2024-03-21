@@ -7,7 +7,7 @@ function ToolInfo() {
         What is Communet ?
     </div>
     <div className='text_mid md:w-[60%]  text h-30  text-gray-500 flex items-end justify-center text-[min(3.5vw,1.4rem)] sm:w-[90%] '>
-    Communet is a builk mailing utility for targeted outreach, connecting you with the right audience, in the right way to maximize your opportunities.
+    Communet is a bulk mailing utility for targeted outreach, connecting you with the right audience, in the right way to maximize your opportunities.
     </div>
     <div className='image md:h-[70%] w-4/5 flex justify-center items-center sm:h-[90%]'>
         <img src={features}  style={{height:"80%", width:"auto"}} alt='feat'/>
