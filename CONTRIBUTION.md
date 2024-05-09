@@ -38,6 +38,12 @@ There are various ways you can contribute to Mailer_Frontend. Here are some aven
 - Write clean, readable, and maintainable code.
 - Include comments in your code where necessary.
 
+## Pull Request Guidelines
+
+- Keep pull requests concise and focused on a single issue or feature.
+- Provide a detailed description of your changes in the pull request.
+- Reference any relevant issue numbers in your pull request description.
+
 ## Documentation
 
 If you are adding new features or making changes that require documentation updates, please include them in your pull requests.
