@@ -1,0 +1,96 @@
+/* Additional styles for App.js */
+.App-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.Communet-logo {
+  max-width: 100px;
+}
+
+.Communet-heading {
+  color: #0099ff; 
+  background-color: #050700; /* Cool color for the heading */
+}
+
+.communet-info {
+  margin-top: 20px;
+  text-align: center;
+  background-color: #f3f7f8; /* Center-align the text */
+  }
+
+.communet-info p {
+  margin-bottom: 10px; /* Add space between paragraphs */
+}
+
+.suggestion-box {
+  margin-top: 50px;
+  text-align: center;
+  background-color: #54c1cd; /* Light gray background color */
+  padding: 20px;
+  border-radius: 10px; /* Rounded border */
+  border: 2px solid #0d0751; /* Light gray border */
+}
+
+.suggestion-input {
+  width: 300px; /* Increase input width */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded border */
+  margin-top: 20px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  margin-left: 10px; /* Add margin for better spacing */
+  background-color: #aa00ff; /* Blue submit button */
+  color: #f4f8f9f1; /* White text color */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded border */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #0077cc; /* Darker blue on hover */
+  
+}
+
+.thank-you-message {
+  color: #e908fe; /* Cool color for the thank you message */
+  margin-top: 20px; /* Add margin for better spacing */
+  text-decoration: underline;
+  
+}
+
+.record-suggestion-message {
+  color: #ff0000; /* Red color for the record suggestion message */
+  margin-top: 10px; /* Add margin for better spacing */
+}
+
+.record-suggestion-message.hidden {
+  display: none; /* Hide the message initially */
+}
+.sub-heading {
+  color: #333; /* Dark color for the subheadings */
+  text-align: center; /* Center-align the subheadings */
+  font-size: 1.5em; /* Increase the font size of the subheadings */
+}
+
+.no-bullets {
+  list-style-type: none; /* Remove the bullets from the list */
+}
+
+.record-suggestion-message {
+  display: none; /* Hide the message initially */
+}
+
+.record-suggestion-message.show {
+  display: block; /* Show the message when needed */
+}
+.using-communet-we-can {
+  color: #8a16cc; /* Your desired color */
+  text-decoration: underline;
+}
