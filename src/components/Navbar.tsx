@@ -54,7 +54,7 @@ function Navbar() {
             isLogged ? <NavLink className="nav_option_text" to="./dashboard" onClick={() => {
               clickHandler()
             }}>
-              Dashboard
+              Dashboard for the client
             </NavLink> : null
           }
         </div>
